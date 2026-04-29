@@ -516,6 +516,13 @@
         return () => document.removeEventListener('mousedown', handler);
       }, []);
 
+      useEffect(() => {
+        const cp = document.getElementById('ai-control-plane');
+        if (cp) cp.innerText = activeMode
+          ? `Current Active Lens: ${activeMode}. Respond to the current section using this lens.`
+          : 'No lens active.';
+      }, [activeMode]);
+
       const handleTabChange = (id) => {
         setActiveTab(id);
         setActiveMode(null);
@@ -660,6 +667,7 @@
                             key={opt}
                             onClick={() => handleModeSelect(opt)}
                             className="w-full text-left px-4 py-2.5 text-sm transition-colors"
+                            aria-pressed={activeMode === opt}
                             style={{
                               backgroundColor: activeMode === opt ? 'var(--brand-light)' : 'transparent',
                               color: activeMode === opt ? 'var(--brand)' : 'var(--text-body)',
