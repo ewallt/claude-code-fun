@@ -464,23 +464,23 @@
     ];
 
     const ENGAGEMENT_MODES = [
-      { group: "Foundations", options: ["Explain it simply", "Key insight", "Expand with examples"] },
-      { group: "Lenses", options: ["Compare / contrast", "Biographical moment", "So what — why does this matter today?", "Connections — what did this influence?"] },
-      { group: "Challenge", options: ["Skeptic's view", "Counterfactual — what if this hadn't happened?"] },
+      { group: "The Biology", options: ["The mechanism", "The tipping point", "What your body is trying to tell you"] },
+      { group: "The Research", options: ["How we found this out", "What we still don't know", "The consensus that shifted"] },
+      { group: "Your Life", options: ["The intervention", "The risk you're probably underestimating", "What to ask your doctor"] },
     ];
 
     const ALL_MODES = ENGAGEMENT_MODES.flatMap(g => g.options);
 
     const GIC_INSTRUCTIONS = `For Gemini in Chrome: When a menu option is active, respond to this section using that lens. Skip preamble. Write in clear paragraphs, be engaging, match length to complexity. Format your response using bullet points. Respond in plain text, never HTML.
-- "Explain it simply" = plain explanation for a beginner.
-- "Key insight" = the most crucial underlying theme.
-- "Expand with examples" = rich expansion with concrete examples.
-- "Compare / contrast" = compare to what came before/after; what contemporaries thought vs. what history decided.
-- "Biographical moment" = what was happening in this person's life at this moment; what drove this decision or obsession.
-- "So what — why does this matter today?" = why this still matters; what it changes about how we see the world.
-- "Connections — what did this influence?" = downstream influence; cross-domain connections.
-- "Skeptic's view" = the strongest critique; what rejectors thought they were seeing.
-- "Counterfactual — what if this hadn't happened?" = what would be missing; who almost got here first.`;
+- "The mechanism" = what's actually happening inside the body or brain at a biological level.
+- "The tipping point" = when and why this process goes wrong; the threshold that matters.
+- "What your body is trying to tell you" = symptoms and signals as meaningful biological communication.
+- "How we found this out" = the experiment, study, or discovery that cracked this open.
+- "What we still don't know" = open questions, limits of current evidence, where research is unsettled.
+- "The consensus that shifted" = what medicine believed before; what changed and why.
+- "The intervention" = what actually moves the needle; what the evidence says works.
+- "The risk you're probably underestimating" = what most people miss or dismiss; the underappreciated danger.
+- "What to ask your doctor" = the conversation this science opens up; practical clinical implications.`;
 
     const SOURCES = [...new Set(SECTIONS.map(s => s.source))];
 
