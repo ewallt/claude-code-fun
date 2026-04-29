@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="app-version" content="claude-code-fun-dashboard v1.0 2026-04-29">
+  <meta name="app-version" content="claude-code-fun-dashboard v1.1 2026-04-29">
   <title>Claude Code Fun — App Gallery</title>
   <style>
     :root {
@@ -37,6 +37,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      transition: background-color 0.3s, border-color 0.3s;
     }
 
     .site-title {
@@ -44,43 +45,40 @@
       font-weight: 700;
       color: var(--brand);
       letter-spacing: -0.02em;
+      transition: color 0.3s;
     }
 
     .site-subtitle {
       font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 2px;
+      transition: color 0.3s;
     }
 
-    .gear-control {
+    .theme-swatches {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
     }
 
-    .theme-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-family: monospace;
-    }
-
-    .gear-btn {
-      background: var(--input-bg);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      width: 34px;
-      height: 34px;
-      border-radius: 6px;
+    .swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid transparent;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s, border-color 0.2s, background 0.3s;
+      transition: transform 0.15s, border-color 0.15s;
+      outline: none;
+      padding: 0;
     }
 
-    .gear-btn:hover {
-      color: var(--brand);
-      border-color: var(--brand);
+    .swatch:hover {
+      transform: scale(1.2);
+    }
+
+    .swatch.active {
+      border-color: var(--text-body);
+      transform: scale(1.15);
     }
 
     main {
@@ -100,20 +98,22 @@
       margin-bottom: 1.25rem;
       padding-bottom: 0.6rem;
       border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
     }
 
     .category-title {
-      font-size: 1.05rem;
       font-weight: 600;
       color: var(--brand);
       letter-spacing: 0.03em;
       text-transform: uppercase;
       font-size: 0.8rem;
+      transition: color 0.3s;
     }
 
     .category-count {
       font-size: 0.75rem;
       color: var(--text-muted);
+      transition: color 0.3s;
     }
 
     .card-grid {
@@ -122,7 +122,7 @@
       gap: 1rem;
     }
 
-    .card {
+    a.card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -130,17 +130,21 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      transition: border-color 0.2s, background-color 0.3s;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, background-color 0.3s, transform 0.15s;
     }
 
-    .card:hover {
+    a.card:hover {
       border-color: var(--brand);
+      transform: translateY(-2px);
     }
 
     .card-title {
       font-size: 0.975rem;
       font-weight: 600;
       color: var(--text-card);
+      transition: color 0.3s;
     }
 
     .card-desc {
@@ -148,6 +152,7 @@
       color: var(--text-muted);
       line-height: 1.5;
       flex: 1;
+      transition: color 0.3s;
     }
 
     .card-footer {
@@ -165,20 +170,13 @@
       padding: 2px 8px;
       border-radius: 999px;
       font-family: monospace;
+      transition: color 0.3s, background-color 0.3s, border-color 0.3s;
     }
 
-    .card-link {
-      font-size: 0.8rem;
-      font-weight: 600;
+    .card-arrow {
+      font-size: 0.85rem;
       color: var(--brand);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .card-link:hover {
-      text-decoration: underline;
+      transition: color 0.3s;
     }
 
     footer {
@@ -187,6 +185,7 @@
       color: var(--text-muted);
       font-size: 0.75rem;
       border-top: 1px solid var(--border);
+      transition: color 0.3s, border-color 0.3s;
     }
   </style>
 </head>
@@ -197,15 +196,7 @@
     <div class="site-title">Claude Code Fun</div>
     <div class="site-subtitle">App Gallery</div>
   </div>
-  <div class="gear-control">
-    <span class="theme-label" id="theme-label">navy</span>
-    <button class="gear-btn" id="gear-btn" title="Switch theme" aria-label="Switch theme">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-      </svg>
-    </button>
-  </div>
+  <div class="theme-swatches" id="swatches"></div>
 </header>
 
 <main>
@@ -216,22 +207,22 @@
       <span class="category-count">2 apps</span>
     </div>
     <div class="card-grid">
-      <div class="card">
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/notebooklm/layered-reader-healthy-aging/" target="_blank">
         <div class="card-title">Healthy Aging</div>
         <div class="card-desc">Eight sources on brain health, sleep, microplastics, gut microbiome, and more — organized for AI-assisted deep exploration.</div>
         <div class="card-footer">
           <span class="card-tag">GiC</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/notebooklm/layered-reader-healthy-aging/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/notebooklm/lr-modern-art/" target="_blank">
         <div class="card-title">Movements in Modern Art</div>
         <div class="card-desc">Impressionism and beyond — painters, movements, and the ideas that shaped modern art, structured for lens-based reading.</div>
         <div class="card-footer">
           <span class="card-tag">GiC</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/notebooklm/lr-modern-art/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -241,46 +232,46 @@
       <span class="category-count">5 apps</span>
     </div>
     <div class="card-grid">
-      <div class="card">
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/behold-your-god/" target="_blank">
         <div class="card-title">BYG Companion App</div>
         <div class="card-desc">Web companion for the F.T. Wright <em>Behold Your God</em> series — themes, quotes, and navigation across all ten illustrations.</div>
         <div class="card-footer">
           <span class="card-tag">web app</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/behold-your-god/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/behold-your-god-flashcards/" target="_blank">
         <div class="card-title">BYG Flashcards</div>
         <div class="card-desc">Flashcard study set drawn from the Behold Your God source material — key concepts, characters, and theological themes.</div>
         <div class="card-footer">
           <span class="card-tag">web app</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/behold-your-god-flashcards/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/notebooklm/byg-nuclear-plant/" target="_blank">
         <div class="card-title">BYG: Nuclear Plant</div>
         <div class="card-desc">Animated narrated video — Illustration 01. The first completed BYG video, built in Remotion with Edge TTS narration.</div>
         <div class="card-footer">
           <span class="card-tag">video</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/notebooklm/byg-nuclear-plant/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/notebooklm/byg-god-not-criminal/" target="_blank">
         <div class="card-title">BYG: God Not Criminal</div>
         <div class="card-desc">Animated narrated video — Illustration 02. Exploring the character of God through the lens of justice and mercy.</div>
         <div class="card-footer">
           <span class="card-tag">video</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/notebooklm/byg-god-not-criminal/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/notebooklm/egw-preaching/" target="_blank">
         <div class="card-title">EGW Preaching</div>
         <div class="card-desc">Sermon and preaching resource app drawing from Ellen White source material, organized for study and reference.</div>
         <div class="card-footer">
           <span class="card-tag">web app</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/notebooklm/egw-preaching/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -290,30 +281,30 @@
       <span class="category-count">3 apps</span>
     </div>
     <div class="card-grid">
-      <div class="card">
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/braess-paradox/" target="_blank">
         <div class="card-title">Braess's Paradox</div>
         <div class="card-desc">Interactive demonstration of how adding a road to a network can slow everyone down — the counterintuitive logic of traffic flow.</div>
         <div class="card-footer">
           <span class="card-tag">interactive</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/braess-paradox/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/braess-paradox-slides/" target="_blank">
         <div class="card-title">Braess's Paradox — Slides</div>
         <div class="card-desc">Slide-format walkthrough of the Braess's Paradox concept, suitable for presentation or step-by-step self-guided reading.</div>
         <div class="card-footer">
           <span class="card-tag">slides</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/braess-paradox-slides/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/drinker-paradox/" target="_blank">
         <div class="card-title">Drinker Paradox</div>
         <div class="card-desc">An exploration of the Drinker Paradox — the surprising logical truth that in any bar, there is someone such that if they drink, everyone drinks.</div>
         <div class="card-footer">
           <span class="card-tag">interactive</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/drinker-paradox/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -323,22 +314,22 @@
       <span class="category-count">2 apps</span>
     </div>
     <div class="card-grid">
-      <div class="card">
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/bible-role/" target="_blank">
         <div class="card-title">Bible Role</div>
         <div class="card-desc">An interactive app exploring the role of the Bible — structured for study, reflection, and guided exploration of scripture's scope and authority.</div>
         <div class="card-footer">
           <span class="card-tag">web app</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/bible-role/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/enlightenment-explorer/" target="_blank">
         <div class="card-title">Enlightenment Explorer</div>
         <div class="card-desc">Navigate the ideas, figures, and debates of the Enlightenment — structured for curious readers and theological reflection.</div>
         <div class="card-footer">
           <span class="card-tag">web app</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/enlightenment-explorer/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -348,22 +339,22 @@
       <span class="category-count">2 apps</span>
     </div>
     <div class="card-grid">
-      <div class="card">
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/notebooklm/nlm-workflow-explainer/" target="_blank">
         <div class="card-title">NLM Workflow Explainer</div>
         <div class="card-desc">A visual walkthrough of the NotebookLM automated video workflow — how sources, notebooks, and videos are built end-to-end.</div>
         <div class="card-footer">
           <span class="card-tag">explainer</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/notebooklm/nlm-workflow-explainer/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://ewallt.github.io/claude-code-fun/philosophy1-slides/" target="_blank">
         <div class="card-title">Philosophy 1 — Slides</div>
         <div class="card-desc">Slide-format introduction to foundational philosophy — core arguments, thinkers, and questions organized for review.</div>
         <div class="card-footer">
           <span class="card-tag">slides</span>
-          <a class="card-link" href="https://ewallt.github.io/claude-code-fun/philosophy1-slides/" target="_blank">Open →</a>
+          <span class="card-arrow">→</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -377,6 +368,7 @@
   const THEMES = [
     {
       name: 'navy',
+      swatch: '#8bb9ff',
       vars: {
         '--app-bg': '#0b1020', '--card-bg': '#111833', '--input-bg': '#1a2347',
         '--brand': '#8bb9ff', '--text-body': '#e6ecff', '--text-card': '#e6ecff',
@@ -385,6 +377,7 @@
     },
     {
       name: 'archives',
+      swatch: '#0f766e',
       vars: {
         '--app-bg': '#f5f5f4', '--card-bg': '#e7e5e4', '--input-bg': '#d6d3d1',
         '--brand': '#0f766e', '--text-body': '#292524', '--text-card': '#0f766e',
@@ -393,6 +386,7 @@
     },
     {
       name: 'explorer',
+      swatch: '#d4a574',
       vars: {
         '--app-bg': '#e8dcc8', '--card-bg': '#1a1815', '--input-bg': '#26231f',
         '--brand': '#d4a574', '--text-body': '#2c2416', '--text-card': '#faf8f3',
@@ -401,6 +395,7 @@
     },
     {
       name: 'high-command',
+      swatch: '#fef08a',
       vars: {
         '--app-bg': '#022c22', '--card-bg': '#064e3b', '--input-bg': '#065f46',
         '--brand': '#fef08a', '--text-body': '#ecfdf5', '--text-card': '#ecfdf5',
@@ -411,13 +406,21 @@
 
   let currentTheme = 0;
   const root = document.documentElement;
-  const label = document.getElementById('theme-label');
+  const swatchContainer = document.getElementById('swatches');
 
-  document.getElementById('gear-btn').addEventListener('click', () => {
-    currentTheme = (currentTheme + 1) % THEMES.length;
-    const theme = THEMES[currentTheme];
-    Object.entries(theme.vars).forEach(([k, v]) => root.style.setProperty(k, v));
-    label.textContent = theme.name;
+  const buttons = THEMES.map((theme, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'swatch' + (i === 0 ? ' active' : '');
+    btn.style.background = theme.swatch;
+    btn.title = theme.name;
+    btn.setAttribute('aria-label', theme.name + ' theme');
+    btn.addEventListener('click', () => {
+      currentTheme = i;
+      Object.entries(theme.vars).forEach(([k, v]) => root.style.setProperty(k, v));
+      buttons.forEach((b, j) => b.classList.toggle('active', j === i));
+    });
+    swatchContainer.appendChild(btn);
+    return btn;
   });
 </script>
 
