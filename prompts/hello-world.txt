@@ -1,0 +1,1 @@
+Write the text "Hello World" and nothing else.
