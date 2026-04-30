@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="app-version" content="sp-restaurants v1.0 2026-04-29">
+  <meta name="app-version" content="sp-restaurants v1.1 2026-04-29">
   <title>São Paulo Dining Guide</title>
   <style>
     :root {
@@ -385,6 +385,103 @@ const RESTAURANTS = [
     stars: 4.4, reviews: null,
     highlight: 'Italian with notably good pizza. Service reviews are inconsistent.',
     description: 'Worth considering if pizza is the priority.',
+    hours: null,
+    distance: '~22 km', driveTime: '35–50 min', uber: 'R$40–55',
+  },
+
+  // ── PIZZA ───────────────────────────────────────────────────────────────────
+  {
+    cuisine: 'Pizza',
+    name: 'Pizza Chena',
+    address: 'R. Guararapes, 432',
+    neighborhood: 'Brooklin',
+    stars: 4.7, reviews: 2517,
+    highlight: 'SP8 2025 Zona Sul champion — best pizza portuguesa in the category. Operating since 1983.',
+    description: 'One of São Paulo\'s most decorated neighborhood pizzerias. The pizza portuguesa is the thing to order.',
+    hours: 'Mon–Wed 18–23h, Fri–Sat 18–24h (closed Thu & Sun)',
+    distance: '~15 km', driveTime: '25–38 min', uber: 'R$30–42',
+    topPick: true,
+  },
+  {
+    cuisine: 'Pizza',
+    name: "Paul's Boutique Pizza",
+    address: 'R. Dr. Renato Paes de Barros, 167',
+    neighborhood: 'Itaim Bibi',
+    stars: 4.4, reviews: 960,
+    highlight: 'Chef Paul Cho brings a NY-style approach — thin crust, electric oven, American and Italian combinations.',
+    description: 'Boutique operation with a distinct personality. Good pick if you want something different from classic SP-style.',
+    hours: null,
+    distance: '~25 km', driveTime: '38–55 min', uber: 'R$45–60',
+  },
+  {
+    cuisine: 'Pizza',
+    name: 'Bráz Pizzaria',
+    address: 'Multiple locations',
+    neighborhood: 'Moema / Itaim',
+    stars: 4.4, reviews: null,
+    highlight: 'Ranked #5 world artisan pizza chain in 2022. Reliable, consistent, well-regarded across the city.',
+    description: 'The reliable benchmark. Not as interesting as Chena but easier to get a table. Good fallback.',
+    hours: null,
+    distance: '~18 km', driveTime: '28–42 min', uber: 'R$35–48',
+  },
+  {
+    cuisine: 'Pizza',
+    name: 'Bacio del Nonno',
+    address: 'R. Julio Diniz, 210',
+    neighborhood: 'Vila Olímpia',
+    stars: 4.0, reviews: null,
+    highlight: 'Rodízio with 70+ pizza flavors rotating. Best for groups or indecisive nights.',
+    description: 'Operating since 1990. The format is the point — variety and a social experience over precision.',
+    hours: null,
+    distance: '~22 km', driveTime: '35–50 min', uber: 'R$40–55',
+    note: 'Rodízio format',
+  },
+
+  // ── JAPANESE ────────────────────────────────────────────────────────────────
+  {
+    cuisine: 'Japanese',
+    name: 'TATÁ Sushi',
+    address: 'R. Dr. Mário Ferraz, 449',
+    neighborhood: 'Itaim Bibi',
+    stars: 4.5, reviews: null,
+    highlight: 'Sleek contemporary Japanese with open kitchen. Accessible price point for the quality.',
+    description: 'The go-to for a solid, modern Japanese meal without the formality or reservation requirements of the fine-dining options.',
+    hours: null,
+    distance: '~25 km', driveTime: '38–55 min', uber: 'R$45–60',
+    topPick: true,
+  },
+  {
+    cuisine: 'Japanese',
+    name: 'Kinoshita',
+    address: 'R. Jacques Félix, 405',
+    neighborhood: 'Vila Nova Conceição',
+    stars: 4.6, reviews: 995,
+    highlight: '1 Michelin star. Kappo-style cuisine — chef cooks in front of you, traditional Japanese progression.',
+    description: 'Reserve in advance. This is a special-occasion restaurant; the food is serious and the experience is structured.',
+    hours: null,
+    distance: '~25 km', driveTime: '38–55 min', uber: 'R$45–60',
+    note: 'Reserve required',
+  },
+  {
+    cuisine: 'Japanese',
+    name: 'Kuro',
+    address: 'R. Pedroso Alvarenga, 665',
+    neighborhood: 'Itaim Bibi',
+    stars: 4.7, reviews: null,
+    highlight: '10-seat omakase. 16-course Binchotan grill menu. One of the best omakase experiences in the city.',
+    description: 'Reservation essential — this fills up fast. Go for the full experience; not suitable for a quick dinner.',
+    hours: null,
+    distance: '~25 km', driveTime: '38–55 min', uber: 'R$45–60',
+    note: 'Reserve required', noteWarning: false,
+  },
+  {
+    cuisine: 'Japanese',
+    name: 'Hakka Sushi',
+    address: 'R. Olimpíadas, 66',
+    neighborhood: 'Vila Olímpia',
+    stars: 4.4, reviews: null,
+    highlight: 'Consistently praised for fresh tuna quality. More casual and accessible than the omakase spots.',
+    description: 'Good neighborhood sushi — no theater, just fresh fish. Solid choice when you want Japanese without the commitment.',
     hours: null,
     distance: '~22 km', driveTime: '35–50 min', uber: 'R$40–55',
   },
