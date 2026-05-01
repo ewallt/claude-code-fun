@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="navy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medieval Animal Trials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            /* Navy (Default) */
+            --bg: #0b1020;
+            --header-bg: #111833;
+            --text: #e6ecff;
+            --card-bg: #111833;
+            --card-border: #26325b;
+            --accent: #8bb9ff;
+            --text-card: #8bb9ff;
+            --text-muted: #bcc5e3;
+        }
+
+        [data-theme="archives"] {
+            --bg: #f5f5f4;
+            --header-bg: #e7e5e4;
+            --text: #292524;
+            --card-bg: #ffffff;
+            --card-border: #d6d3d1;
+            --accent: #0f766e;
+            --text-card: #0f766e;
+            --text-muted: #4a4540;
+        }
+
+        [data-theme="explorer"] {
+            --bg: #0a0a0a;
+            --header-bg: #1a1a1a;
+            --text: #e5e7eb;
+            --card-bg: #111827;
+            --card-border: #374151;
+            --accent: #10b981;
+            --text-card: #10b981;
+            --text-muted: #9ca3af;
+        }
+
+        [data-theme="high-command"] {
+            --bg: #022c22;
+            --header-bg: #064e3b;
+            --text: #ecfdf5;
+            --card-bg: #065f46;
+            --card-border: #065f46;
+            --accent: #fef08a;
+            --text-card: #fef08a;
+            --text-muted: #81eebb;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s;
+        }
+
+        .swatch:hover {
+            transform: scale(1.2);
+        }
+
+        .swatch.active {
+            border-color: var(--accent);
+        }
+
+        .tab-btn {
+            position: relative;
+            padding-bottom: 8px;
+            opacity: 0.6;
+            transition: opacity 0.3s, color 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .card-accent-text {
+            color: var(--text-card);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--card-border);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 px-6 py-4 flex justify-between items-center glass border-b border-[var(--card-border)] bg-[var(--header-bg)]">
+        <h1 class="text-2xl md:text-3xl font-display font-bold tracking-tight" style="color: var(--accent);">
+            Medieval Animal Trials
+        </h1>
+        <div class="flex items-center space-x-3">
+            <div onclick="setTheme('navy')" class="swatch bg-[#111833] border-gray-400" title="Navy"></div>
+            <div onclick="setTheme('archives')" class="swatch bg-[#e7e5e4] border-gray-400" title="Archives"></div>
+            <div onclick="setTheme('explorer')" class="swatch bg-[#1a1a1a] border-gray-400" title="Explorer"></div>
+            <div onclick="setTheme('high-command')" class="swatch bg-[#064e3b] border-gray-400" title="High Command"></div>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="sticky top-[72px] z-40 bg-[var(--header-bg)] border-b border-[var(--card-border)] px-6 overflow-x-auto scrollbar-hide">
+        <div class="flex space-x-8 py-4 max-w-7xl mx-auto">
+            <button onclick="showTab('overview')" id="btn-overview" class="tab-btn font-semibold text-sm uppercase tracking-wider">Overview</button>
+            <button onclick="showTab('cases')" id="btn-cases" class="tab-btn font-semibold text-sm uppercase tracking-wider">Case Files</button>
+            <button onclick="showTab('figures')" id="btn-figures" class="tab-btn font-semibold text-sm uppercase tracking-wider">Key Figures</button>
+            <button onclick="showTab('context')" id="btn-context" class="tab-btn font-semibold text-sm uppercase tracking-wider">Legal Context</button>
+            <button onclick="showTab('reading')" id="btn-reading" class="tab-btn font-semibold text-sm uppercase tracking-wider">Reading</button>
+        </div>
+    </nav>
+
+    <main class="p-6 md:p-10 max-w-7xl mx-auto">
+        
+        <!-- Overview Section -->
+        <section id="overview" class="tab-content">
+            <div class="max-w-4xl mx-auto card rounded-2xl p-8 md:p-12 shadow-2xl">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-8 card-accent-text">A Peculiar Jurisprudence</h2>
+                <div class="space-y-6 text-lg leading-relaxed text-[var(--text-muted)]">
+                    <p>Between the years 900 and 1750 CE, European legal systems engaged in a practice that strikes the modern mind as surreal: the formal criminal prosecution of animals. These were not mere culls or impulsive acts of vengeance, but sophisticated legal proceedings complete with judges, defense attorneys, and sworn testimony.</p>
+                    <p>The practice was rooted in a complex theological framework where all of creation was seen as subject to divine law. If an animal violated the natural order—particularly through homicide or crop destruction—it was believed that justice must be restored through formal ritual and legal judgment.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                    <div class="p-6 rounded-xl border border-[var(--card-border)] bg-black/10">
+                        <h3 class="text-xl font-bold mb-3 card-accent-text">Secular Criminal Trials</h3>
+                        <p class="text-[var(--text-muted)]">Handled domestic animals (pigs, cows, horses) accused of physical harm to humans. These trials often resulted in capital punishment carried out by professional executioners.</p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-[var(--card-border)] bg-black/10">
+                        <h3 class="text-xl font-bold mb-3 card-accent-text">Ecclesiastical Proceedings</h3>
+                        <p class="text-[var(--text-muted)]">Focused on "vermin" (rats, weevils, locusts) that damaged crops. Since they couldn't be caught individually, the Church issued formal warnings, excommunications, or curses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Files Section -->
+        <section id="cases" class="tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Case 1 -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">France, 1386</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Sow of Falaise</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">A pig was accused of murdering an infant. In a bizarre display of legal theater, the sow was dressed in human clothes—a jacket and breeches—before being publicly hanged in the town square.</p>
+                    <div class="pt-4 border-t border-[var(--card-border)] font-semibold card-accent-text">Verdict: Guilty, Execution</div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Switzerland, 1474</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Rooster of Basel</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">A rooster was brought to trial for the "heinous and unnatural crime" of laying an egg. In an era where this was seen as a portent of sorcery or the birth of a cockatrice, the bird was burned at the stake.</p>
+                    <div class="pt-4 border-t border-[var(--card-border)] font-semibold card-accent-text">Verdict: Sorcery, Stake</div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Savigny, 1457</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Sow & Six Piglets</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">A sow and her six piglets were charged with killing a five-year-old. While the sow was condemned, the piglets were acquitted on account of their youth and the "bad example" of their mother.</p>
+                    <div class="pt-4 border-t border-[var(--card-border)] font-semibold card-accent-text">Verdict: Partial Acquittal</div>
+                </div>
+
+                <!-- Case 4 -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">France, c. 1519</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Rats of Autun</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">Accused of destroying barley crops, the rats were defended by Bartholomew Chassenée, who famously argued they couldn't attend court because the journey was too dangerous due to cats.</p>
+                    <div class="pt-4 border-t border-[var(--card-border)] font-semibold card-accent-text">Outcome: Legal Delay</div>
+                </div>
+
+                <!-- Case 5 -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Savoy, 1587</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Weevils' Compromise</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">After years of litigation regarding vineyard destruction, the villagers of St. Julien offered the weevils a specific plot of fertile land in exchange for leaving the vineyards alone.</p>
+                    <div class="pt-4 border-t border-[var(--card-border)] font-semibold card-accent-text">Outcome: Land Settlement</div>
+                </div>
+
+                <!-- Case 6 -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Aosta, 1584</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Caterpillars' Curse</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">When caterpillars decimated the local greenery, the ecclesiastical court followed strict procedure, eventually issuing a formal decree of excommunication against the insects.</p>
+                    <div class="pt-4 border-t border-[var(--card-border)] font-semibold card-accent-text">Sentence: Excommunication</div>
+                </div>
+                
+                <!-- Additional Cases -->
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Moussy, 1314</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Bull of Moussy</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">Charged with homicide after goring a man. The court treated the animal exactly as a human killer, ordering it to be hanged from the village gallows.</p>
+                    <div class="pt-4 border-t border(--card-border) font-semibold card-accent-text">Verdict: Hanged</div>
+                </div>
+
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Dijon, 1314</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Horse of Dijon</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">A horse found guilty of homicide. Condemned to death by the local magistrate to satisfy the requirement of blood for blood as per current custom.</p>
+                    <div class="pt-4 border-t border(--card-border) font-semibold card-accent-text">Verdict: Death</div>
+                </div>
+
+                <div class="card rounded-2xl p-8 flex flex-col">
+                    <div class="mb-4 inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/20 card-accent-text w-fit">Senlis, 1567</div>
+                    <h3 class="text-2xl font-display font-bold mb-4">The Pig of Senlis</h3>
+                    <p class="text-[var(--text-muted)] mb-6 flex-grow">Following the killing of a child, this pig's execution was so high-profile it led to new local regulations regarding animal husbandry and legal liability.</p>
+                    <div class="pt-4 border-t border(--card-border) font-semibold card-accent-text">Outcome: Execution & Policy</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Figures Section -->
+        <section id="figures" class="tab-content">
+            <div class="max-w-3xl mx-auto card rounded-2xl overflow-hidden shadow-2xl">
+                <div class="h-32 bg-[var(--accent)] opacity-20"></div>
+                <div class="px-8 pb-12 -mt-16">
+                    <div class="w-32 h-32 rounded-2xl bg-[var(--card-bg)] border-4 border-[var(--bg)] mx-auto flex items-center justify-center text-4xl mb-6 shadow-lg">⚖️</div>
+                    <h2 class="text-3xl font-display font-bold text-center mb-2">Bartholomew Chassenée</h2>
+                    <p class="text-center font-bold card-accent-text mb-8 uppercase tracking-widest text-sm">Jurist & Defender of the Rats (1480–1541)</p>
+                    <div class="space-y-4 text-[var(--text-muted)] leading-relaxed">
+                        <p>A brilliant French jurist whose career was launched by his ingenious defense of the rats of Autun. He argued that since the summons had been read in every parish, the rats were aware of the trial, but were prevented from attending by the "mortal enemies" (cats) lying in wait on all the roads.</p>
+                        <p>He later became the First President of the Parlement of Provence. His masterpiece, <em>Consilium primum</em>, remains the most detailed historical treatise on how and why animals should be treated as legal subjects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Context Section -->
+        <section id="context" class="tab-content">
+            <div class="max-w-4xl mx-auto grid grid-cols-1 gap-8">
+                <div class="card rounded-2xl p-8 md:p-10">
+                    <h3 class="text-2xl font-display font-bold mb-6 card-accent-text">Theological & Legal Foundation</h3>
+                    <p class="text-[var(--text-muted)] mb-6 leading-relaxed">The medieval worldview did not see nature as an "other" but as a subset of God's kingdom. Following the Fall of Adam, creation was seen as corrupted but still subject to the Great Chain of Being. Animals, though lacking reason, were believed to be capable of knowing they had violated the peace of the community.</p>
+                    <ul class="list-disc list-inside space-y-3 text-[var(--text-muted)]">
+                        <li>Recognition of animal agency within a divine hierarchy.</li>
+                        <li>Requirement for "Blood Atonement" in cases of homicide.</li>
+                        <li>The belief that formal legal rituals could restore cosmic order.</li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card rounded-2xl p-8">
+                        <h4 class="text-xl font-bold mb-4 card-accent-text">The Secular Route</h4>
+                        <p class="text-sm text-[var(--text-muted)]">Applied to domestic animals. Procedure: Arrest, Imprisonment (often in human jails), Trial, Sentence (hanging, burying alive, or burning).</p>
+                    </div>
+                    <div class="card rounded-2xl p-8">
+                        <h4 class="text-xl font-bold mb-4 card-accent-text">The Church Route</h4>
+                        <p class="text-sm text-[var(--text-muted)]">Applied to pests. Procedure: Petition to the Bishop, Three Warnings (monitory), Exorcism or Excommunication if they fail to depart.</p>
+                    </div>
+                </div>
+
+                <div class="text-center py-12 px-6">
+                    <p class="text-2xl font-display italic opacity-70">"The practice declined through the Enlightenment as philosophy drew sharper distinctions between human reason and animal instinct."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading Section -->
+        <section id="reading" class="tab-content">
+            <div class="max-w-3xl mx-auto card rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-display font-bold mb-10 card-accent-text">Further Exploration</h2>
+                <ul class="space-y-6">
+                    <li class="flex items-start group">
+                        <span class="text-2xl mr-4 group-hover:scale-110 transition-transform">📚</span>
+                        <div>
+                            <h4 class="text-xl font-bold">The Criminal Prosecution and Capital Punishment of Animals</h4>
+                            <p class="text-[var(--text-muted)]">E.P. Evans (1906) — The seminal work that first categorized these trials for a modern audience.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start group">
+                        <span class="text-2xl mr-4 group-hover:scale-110 transition-transform">📜</span>
+                        <div>
+                            <h4 class="text-xl font-bold">The Prosecution and Punishment of Animals and Lifeless Things</h4>
+                            <p class="text-[var(--text-muted)]">Walter Woodburn Hyde (1916) — An in-depth look at the evolution of legal responsibility from antiquity through the Middle Ages.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start group">
+                        <span class="text-2xl mr-4 group-hover:scale-110 transition-transform">🖋️</span>
+                        <div>
+                            <h4 class="text-xl font-bold">The Law is an Ass: Reading E.P. Evans</h4>
+                            <p class="text-[var(--text-muted)]">Piers Bierne (1994) — A modern sociological perspective on what these trials tell us about human-animal relationships.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show target content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Handle buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + tabId).classList.add('active');
+            
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Update swatch active state
+            document.querySelectorAll('.swatch').forEach(sw => {
+                sw.classList.remove('active');
+            });
+            const selectedSwatch = document.querySelector(`.swatch[onclick="setTheme('${theme}')"]`);
+            if (selectedSwatch) selectedSwatch.classList.add('active');
+            
+            // Store preference
+            localStorage.setItem('animal-trials-theme', theme);
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('animal-trials-theme') || 'navy';
+            setTheme(savedTheme);
+            showTab('overview');
+        }
+    </script>
+</body>
+</html>

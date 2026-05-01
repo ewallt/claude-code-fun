@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Germany's Castles - Data Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --app-bg: #0b1020;
+            --card-bg: #111833;
+            --text-body: #e6ecff;
+            --text-card: #e6ecff;
+            --brand: #8bb9ff;
+            --border: #26325b;
+            --text-muted: #bcc5e3;
+        }
+
+        [data-theme='archives'] {
+            --app-bg: #f5f5f4;
+            --card-bg: #e7e5e4;
+            --text-body: #292524;
+            --text-card: #0f766e;
+            --brand: #0f766e;
+            --border: #d6d3d1;
+            --text-muted: #4a4540;
+        }
+
+        [data-theme='explorer'] {
+            --app-bg: #e8dcc8;
+            --card-bg: #1a1815;
+            --text-body: #2c2416;
+            --text-card: #faf8f3;
+            --brand: #7a3e10;
+            --border: #5a5041;
+            --text-muted: #a89580;
+        }
+
+        [data-theme='high-command'] {
+            --app-bg: #022c22;
+            --card-bg: #064e3b;
+            --text-body: #ecfdf5;
+            --text-card: #ecfdf5;
+            --brand: #fef08a;
+            --border: #065f46;
+            --text-muted: #81eebb;
+        }
+
+        body {
+            background-color: var(--app-bg);
+            color: var(--text-body);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: var(--app-bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            color: var(--text-card);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--brand);
+            border-bottom-color: var(--brand);
+        }
+
+        .theme-swatch {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .theme-swatch.active {
+            border-color: var(--text-body);
+        }
+
+        .text-brand { color: var(--brand); }
+        .text-muted { color: var(--text-muted); }
+        .border-theme { border-color: var(--border); }
+
+        /* Explorer brand color text exception */
+        [data-theme='explorer'] .card .text-brand {
+            color: var(--text-card);
+        }
+
+        .hidden-tab { display: none; }
+    </style>
+</head>
+<body data-theme="navy">
+
+    <header class="header-sticky p-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-3 items-center">
+            <div></div> <!-- Empty Left -->
+            <div class="text-center">
+                <h1 class="text-2xl font-bold tracking-tight">Germany's Castles</h1>
+                <p class="text-xs uppercase tracking-widest text-muted mt-1">A record of a thousand years of political fragmentation</p>
+            </div>
+            <div class="flex justify-end space-x-2">
+                <div onclick="setTheme('navy')" class="theme-swatch bg-[#8bb9ff]" title="Navy"></div>
+                <div onclick="setTheme('archives')" class="theme-swatch bg-[#0f766e]" title="Archives"></div>
+                <div onclick="setTheme('explorer')" class="theme-swatch bg-[#d4a574]" title="Explorer"></div>
+                <div onclick="setTheme('high-command')" class="theme-swatch bg-[#fef08a]" title="High Command"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="border-b border-theme sticky top-[73px] bg-[var(--app-bg)] z-40">
+        <div class="max-w-7xl mx-auto flex justify-center space-x-4">
+            <button onclick="showTab('overview')" id="tab-overview" class="tab-btn active">Overview</button>
+            <button onclick="showTab('profiles')" id="tab-profiles" class="tab-btn">Profiles</button>
+            <button onclick="showTab('geography')" id="tab-geography" class="tab-btn">Geography</button>
+            <button onclick="showTab('history')" id="tab-history" class="tab-btn">History</button>
+            <button onclick="showTab('glossary')" id="tab-glossary" class="tab-btn">Glossary</button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 min-h-screen">
+        
+        <!-- OVERVIEW TAB -->
+        <div id="content-overview" class="tab-content grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card md:col-span-2">
+                <h2 class="text-xl font-bold mb-3 text-brand">The Hook</h2>
+                <p class="leading-relaxed">Germany has more castles than the United States has McDonald's. While the US has roughly 14,000 locations, Germany boasts between 20,000 and 25,000 castles—intact structures, romantic ruins, and documented foundations. This averages to one every 25 kilometers across a country the size of Montana.</p>
+            </div>
+            
+            <div class="card">
+                <h2 class="text-xl font-bold mb-3 text-brand">Why So Many?</h2>
+                <ul class="space-y-4">
+                    <li>
+                        <strong class="block text-lg">Imperial Patchwork</strong>
+                        <span class="text-muted text-sm">Medieval Germany was the Holy Roman Empire—a patchwork of hundreds of independent territories. Rulers traveled constantly, building castles every 15 miles to house their courts during transit.</span>
+                    </li>
+                    <li>
+                        <strong class="block text-lg">Status Symbols</strong>
+                        <span class="text-muted text-sm">Every count, duke, and bishop needed a fortified residence as a "business address" and seat of government.</span>
+                    </li>
+                    <li>
+                        <strong class="block text-lg">Political Fragmentation</strong>
+                        <span class="text-muted text-sm">Germany remained fragmented far longer than centralizing powers like France, leading to centuries of competitive building.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2 class="text-xl font-bold mb-3 text-brand">The Raubritter Era</h2>
+                <p class="text-sm mb-4">The "robber knights" were minor nobles who turned hilltop fortresses into extortion tools during the Great Interregnum (1250–1273).</p>
+                <p class="text-sm italic border-l-2 border-theme pl-3">"The most brazen stretched iron chains across the river from their castle banks, physically stopping ships until a fee was paid."</p>
+                <p class="mt-4 text-xs text-muted">This era is the direct origin of the American English phrase "robber baron."</p>
+            </div>
+        </div>
+
+        <!-- PROFILES TAB -->
+        <div id="content-profiles" class="tab-content hidden-tab grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Burg Eltz</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Moselle Valley • 12th Century</p>
+                <p class="text-sm mb-4">Rising from a narrow rock in a forested gorge, Eltz has been owned by the same family for nearly 900 years. Its organic, "lopsided" appearance results from three family branches building separate wings around a single courtyard.</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: Privately owned, open Apr-Nov</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Neuschwanstein</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Bavaria • 1869–1886</p>
+                <p class="text-sm mb-4">A 19th-century Wagnerian fantasy commissioned by King Ludwig II. Not a fortress, but a stage set for mythology. It inspired Disney's Sleeping Beauty Castle and the studio's iconic logo.</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: 1.3 million annual visitors</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Wartburg Castle</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Thuringia • Founded 1067</p>
+                <p class="text-sm mb-4">Where Martin Luther lived as "Junker Jörg" in 1521. Here he translated the New Testament into German, effectively standardizing the modern German language.</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: UNESCO World Heritage Site</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Heidelberg Castle</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Baden-Württemberg • 14th–17th Century</p>
+                <p class="text-sm mb-4">The "most famous ruin in Germany." Its pink sandstone walls loom over the old town. Home to the world's largest wine barrel (219,000 liters).</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: Iconic Romantic Ruin</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Hohenzollern Castle</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Swabian Alps • 1846–1867</p>
+                <p class="text-sm mb-4">Ancestral home of Prussian kings and German Emperors. Rebuilt three times, the current neo-Gothic structure houses the Prussian royal crown.</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: Private property of heirs</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Marksburg Castle</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Rhine Gorge • 12th Century</p>
+                <p class="text-sm mb-4">The only Rhine hilltop castle that was never destroyed. It remains the most complete medieval preservation on the river, including a torture chamber and knights' hall.</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: Never captured or destroyed</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Schwerin Castle</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Mecklenburg-Vorpommern • 1845–1857</p>
+                <p class="text-sm mb-4">A fairy-tale island castle reflected in lake water. Modeled after the French Château de Chambord, it currently houses the state parliament.</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: Active Legislature House</div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Frankenstein Castle</h3>
+                <p class="text-xs font-mono uppercase opacity-70 mb-2">Hesse • 13th Century</p>
+                <p class="text-sm mb-4">Ruins named after the "Franckenstein" lords. Linked to alchemist Johann Konrad Dippel, who allegedly tried to animate dead tissue with "animal oil."</p>
+                <div class="text-xs bg-black/20 p-2 rounded">Status: Now a Halloween destination</div>
+            </div>
+        </div>
+
+        <!-- GEOGRAPHY TAB -->
+        <div id="content-geography" class="tab-content hidden-tab grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">The Rhine Gorge</h3>
+                <p class="text-sm opacity-80 mb-2">Bingen to Koblenz</p>
+                <p class="text-sm">The most castle-dense stretch of river in the world. Over 40 castle sites in 65 kilometers. Highlights include Pfalzgrafenstein (built in the middle of the river) and the massive Rheinfels ruin.</p>
+            </div>
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">The Moselle Valley</h3>
+                <p class="text-sm opacity-80 mb-2">Steep Vineyard Terraces</p>
+                <p class="text-sm">Winding through steep ridges, the Moselle features Eltz, Cochem, and Thurant. Often cited as the more beautiful and less crowded alternative to the Rhine.</p>
+            </div>
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Bavaria</h3>
+                <p class="text-sm opacity-80 mb-2">Royal Alpine Splendor</p>
+                <p class="text-sm">Concentration of Wittelsbach palaces and Ludwig II's fantasy constructions, centered around the Alps and pristine lakes.</p>
+            </div>
+            <div class="card">
+                <h3 class="text-lg font-bold text-brand">Central Germany</h3>
+                <p class="text-sm opacity-80 mb-2">Thuringia & Saxony</p>
+                <p class="text-sm">Home to older Romanesque structures like Wartburg and the Kyffhäuser ruins, steeped in imperial mythology and the legend of the sleeping Emperor Barbarossa.</p>
+            </div>
+        </div>
+
+        <!-- HISTORY TAB -->
+        <div id="content-history" class="tab-content hidden-tab grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <h3 class="text-xl font-bold mb-3 text-brand">Primary Functions</h3>
+                <ul class="list-disc list-inside text-sm space-y-2">
+                    <li><strong>Defense:</strong> Thick walls and hilltop visibility controlled territory.</li>
+                    <li><strong>Residence:</strong> Noble social centers and seats of justice.</li>
+                    <li><strong>Administration:</strong> Local government where taxes and rents were collected.</li>
+                    <li><strong>Revenue:</strong> Toll booths on major river arteries.</li>
+                    <li><strong>Status:</strong> Visible demonstrations of rank and political power through height.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="text-xl font-bold mb-3 text-brand">The Decline & Rebirth</h3>
+                <p class="text-sm mb-4">Castles became obsolete with gunpowder and the rise of city courts. Many were destroyed by Louis XIV's armies or the Thirty Years' War.</p>
+                <p class="text-sm">The 19th-century <strong>Romantic Movement</strong> saved them. Ruins were no longer eyesores but "sublime objects." This led to the restoration of Rhine castles and the "neo-medieval" building boom.</p>
+            </div>
+        </div>
+
+        <!-- GLOSSARY TAB -->
+        <div id="content-glossary" class="tab-content hidden-tab grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="card">
+                <span class="text-brand font-bold">Burg</span>
+                <p class="text-xs mt-1">Fortified medieval castle for defense and residence.</p>
+            </div>
+            <div class="card">
+                <span class="text-brand font-bold">Schloss</span>
+                <p class="text-xs mt-1">Palace or manor house; functional rather than defensive.</p>
+            </div>
+            <div class="card">
+                <span class="text-brand font-bold">Festung</span>
+                <p class="text-xs mt-1">Large-scale fortress designed purely for military use.</p>
+            </div>
+            <div class="card">
+                <span class="text-brand font-bold">Bergfried</span>
+                <p class="text-xs mt-1">Tall, narrow central keep used as a final refuge.</p>
+            </div>
+            <div class="card">
+                <span class="text-brand font-bold">Raubritter</span>
+                <p class="text-xs mt-1">"Robber knight" using a castle for extortion/banditry.</p>
+            </div>
+            <div class="card">
+                <span class="text-brand font-bold">Ganerben</span>
+                <p class="text-xs mt-1">Joint heirs co-owning a castle in separate wings.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="p-8 border-t border-theme text-center">
+        <p class="text-xs text-muted">Architectural Data Viewer • Content by European Castle Institute • Zero-Build System 2026</p>
+    </footer>
+
+    <script>
+        function setTheme(themeName) {
+            document.body.setAttribute('data-theme', themeName);
+            // Update active swatch UI
+            document.querySelectorAll('.theme-swatch').forEach(swatch => {
+                swatch.classList.toggle('active', swatch.title.toLowerCase().replace(' ', '-') === themeName);
+            });
+        }
+
+        function showTab(tabId) {
+            // Update Tab Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            // Update Content Visibility
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden-tab');
+            });
+            document.getElementById('content-' + tabId).classList.remove('hidden-tab');
+            
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize UI highlight for default theme
+        document.querySelector('.theme-swatch.bg-\\[\\#8bb9ff\\]').classList.add('active');
+    </script>
+</body>
+</html>
+
