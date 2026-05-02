@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -16,221 +15,40 @@
     --text-muted: #bcc5e3;
     --border: #26325b;
   }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-background: var(–app-bg);
-color: var(–text-body);
-font-family: system-ui, -apple-system, sans-serif;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-header {
-position: sticky;
-top: 0;
-z-index: 10;
-background: var(–card-bg);
-border-bottom: 1px solid var(–border);
-display: grid;
-grid-template-columns: 1fr auto 1fr;
-align-items: center;
-padding: 14px 24px;
-gap: 12px;
-transition: background-color 0.3s, border-color 0.3s;
-}
-
-.site-title {
-font-size: 1.25rem;
-font-weight: 700;
-color: var(–brand);
-letter-spacing: 0.01em;
-transition: color 0.3s;
-}
-
-.site-subtitle {
-font-size: 0.8rem;
-color: var(–text-muted);
-margin-top: 2px;
-transition: color 0.3s;
-}
-
-.theme-swatches {
-display: flex;
-align-items: center;
-gap: 8px;
-}
-
-.swatch {
-width: 20px;
-height: 20px;
-border-radius: 50%;
-border: 2px solid transparent;
-cursor: pointer;
-transition: transform 0.15s, border-color 0.15s;
-outline: none;
-padding: 0;
-}
-.swatch:hover { transform: scale(1.2); }
-.swatch.active { border-color: var(–text-body); transform: scale(1.15); }
-
-.tab-bar {
-display: flex;
-background: var(–card-bg);
-border-bottom: 1px solid var(–border);
-padding: 0 24px;
-overflow-x: auto;
-scrollbar-width: none;
-transition: background-color 0.3s, border-color 0.3s;
-}
-.tab-bar::-webkit-scrollbar { display: none; }
-
-.tab-btn {
-background: none;
-border: none;
-border-bottom: 3px solid transparent;
-padding: 12px 18px;
-font-size: 0.88rem;
-font-weight: 600;
-color: var(–text-muted);
-cursor: pointer;
-white-space: nowrap;
-transition: color 0.2s, border-color 0.2s;
-outline: none;
-}
-.tab-btn:hover { color: var(–text-body); }
-.tab-btn.active {
-color: var(–brand);
-border-bottom-color: var(–brand);
-}
-
-main {
-flex: 1;
-padding: 28px 24px;
-max-width: 960px;
-width: 100%;
-margin: 0 auto;
-}
-
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-
-.cards-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-gap: 18px;
-}
-
-.card {
-background: var(–card-bg);
-border: 1px solid var(–border);
-border-radius: 12px;
-padding: 22px 22px 18px;
-transition: background-color 0.3s, border-color 0.3s;
-}
-
-.card-header {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 14px;
-}
-
-.card-icon {
-font-size: 2rem;
-line-height: 1;
-flex-shrink: 0;
-}
-
-.card-meta {
-display: flex;
-flex-direction: column;
-gap: 2px;
-}
-
-.card-name {
-font-size: 1rem;
-font-weight: 700;
-color: var(–brand);
-transition: color 0.3s;
-}
-
-.card-origin {
-font-size: 0.78rem;
-color: var(–text-muted);
-transition: color 0.3s;
-}
-
-.card-era {
-font-size: 0.75rem;
-color: var(–text-muted);
-font-style: italic;
-transition: color 0.3s;
-}
-
-.card-divider {
-border: none;
-border-top: 1px solid var(–border);
-margin: 0 0 14px;
-transition: border-color 0.3s;
-}
-
-.card-label {
-font-size: 0.7rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-color: var(–brand);
-margin-bottom: 5px;
-transition: color 0.3s;
-}
-
-.card-fact {
-font-size: 0.875rem;
-color: var(–text-card);
-line-height: 1.5;
-margin-bottom: 14px;
-transition: color 0.3s;
-}
-
-.card-trivia {
-font-size: 0.82rem;
-color: var(–text-muted);
-line-height: 1.45;
-font-style: italic;
-transition: color 0.3s;
-}
-
-.category-badge {
-display: inline-block;
-margin-top: 14px;
-font-size: 0.7rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.07em;
-color: var(–text-muted);
-border: 1px solid var(–border);
-border-radius: 20px;
-padding: 2px 10px;
-transition: color 0.3s, border-color 0.3s;
-}
-
-footer {
-border-top: 1px solid var(–border);
-text-align: center;
-padding: 14px 24px;
-font-size: 0.78rem;
-color: var(–text-muted);
-transition: border-color 0.3s, color 0.3s;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--app-bg); color: var(--text-body); font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; display: flex; flex-direction: column; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
+  header { position: sticky; top: 0; z-index: 10; background: var(--card-bg); border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 14px 24px; gap: 12px; transition: background-color 0.3s, border-color 0.3s; }
+  .site-title { font-size: 1.25rem; font-weight: 700; color: var(--brand); letter-spacing: 0.01em; transition: color 0.3s; }
+  .site-subtitle { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; transition: color 0.3s; }
+  .theme-swatches { display: flex; align-items: center; gap: 8px; }
+  .swatch { width: 20px; height: 20px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; transition: transform 0.15s, border-color 0.15s; outline: none; padding: 0; }
+  .swatch:hover { transform: scale(1.2); }
+  .swatch.active { border-color: var(--text-body); transform: scale(1.15); }
+  .tab-bar { display: flex; background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 0 24px; overflow-x: auto; scrollbar-width: none; transition: background-color 0.3s, border-color 0.3s; }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { background: none; border: none; border-bottom: 3px solid transparent; padding: 12px 18px; font-size: 0.88rem; font-weight: 600; color: var(--text-muted); cursor: pointer; white-space: nowrap; transition: color 0.2s, border-color 0.2s; outline: none; }
+  .tab-btn:hover { color: var(--text-body); }
+  .tab-btn.active { color: var(--brand); border-bottom-color: var(--brand); }
+  main { flex: 1; padding: 28px 24px; max-width: 960px; width: 100%; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+  .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 18px; transition: background-color 0.3s, border-color 0.3s; }
+  .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card-icon { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+  .card-meta { display: flex; flex-direction: column; gap: 2px; }
+  .card-name { font-size: 1rem; font-weight: 700; color: var(--brand); transition: color 0.3s; }
+  .card-origin { font-size: 0.78rem; color: var(--text-muted); transition: color 0.3s; }
+  .card-era { font-size: 0.75rem; color: var(--text-muted); font-style: italic; transition: color 0.3s; }
+  .card-divider { border: none; border-top: 1px solid var(--border); margin: 0 0 14px; transition: border-color 0.3s; }
+  .card-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); margin-bottom: 5px; transition: color 0.3s; }
+  .card-fact { font-size: 0.875rem; color: var(--text-card); line-height: 1.5; margin-bottom: 14px; transition: color 0.3s; }
+  .card-trivia { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; font-style: italic; transition: color 0.3s; }
+  .category-badge { display: inline-block; margin-top: 14px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; transition: color 0.3s, border-color 0.3s; }
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 14px 24px; font-size: 0.78rem; color: var(--text-muted); transition: border-color 0.3s, color 0.3s; }
 </style>
-
 </head>
 <body>
-
 <header>
   <div></div>
   <div style="text-align:center">
@@ -239,105 +57,27 @@ transition: border-color 0.3s, color 0.3s;
   </div>
   <div class="theme-swatches" id="swatches" style="justify-content:flex-end"></div>
 </header>
-
 <div class="tab-bar" id="tabBar"></div>
 <main id="mainContent"></main>
-
 <footer>A curated collection of hat lore &mdash; for dinner parties, pub quizzes, and the relentlessly curious.</footer>
-
 <script>
 const THEMES = [
-  {
-    name: 'navy', swatch: '#8bb9ff',
-    vars: { '--app-bg':'#0b1020','--card-bg':'#111833','--input-bg':'#1a2347','--brand':'#8bb9ff','--text-body':'#e6ecff','--text-card':'#e6ecff','--text-muted':'#bcc5e3','--border':'#26325b' }
-  },
-  {
-    name: 'archives', swatch: '#0f766e',
-    vars: { '--app-bg':'#f5f5f4','--card-bg':'#e7e5e4','--input-bg':'#d6d3d1','--brand':'#0f766e','--text-body':'#292524','--text-card':'#0f766e','--text-muted':'#4a4540','--border':'#d6d3d1' }
-  },
-  {
-    name: 'explorer', swatch: '#d4a574',
-    vars: { '--app-bg':'#e8dcc8','--card-bg':'#1a1815','--input-bg':'#26231f','--brand':'#7a3e10','--text-body':'#2c2416','--text-card':'#faf8f3','--text-muted':'#a89580','--border':'#5a5041' }
-  },
-  {
-    name: 'high-command', swatch: '#fef08a',
-    vars: { '--app-bg':'#022c22','--card-bg':'#064e3b','--input-bg':'#065f46','--brand':'#fef08a','--text-body':'#ecfdf5','--text-card':'#ecfdf5','--text-muted':'#81eebb','--border':'#065f46' }
-  }
+  { name: 'navy', swatch: '#8bb9ff', vars: { '--app-bg':'#0b1020','--card-bg':'#111833','--input-bg':'#1a2347','--brand':'#8bb9ff','--text-body':'#e6ecff','--text-card':'#e6ecff','--text-muted':'#bcc5e3','--border':'#26325b' } },
+  { name: 'archives', swatch: '#0f766e', vars: { '--app-bg':'#f5f5f4','--card-bg':'#e7e5e4','--input-bg':'#d6d3d1','--brand':'#0f766e','--text-body':'#292524','--text-card':'#0f766e','--text-muted':'#4a4540','--border':'#d6d3d1' } },
+  { name: 'explorer', swatch: '#d4a574', vars: { '--app-bg':'#e8dcc8','--card-bg':'#1a1815','--input-bg':'#26231f','--brand':'#7a3e10','--text-body':'#2c2416','--text-card':'#faf8f3','--text-muted':'#a89580','--border':'#5a5041' } },
+  { name: 'high-command', swatch: '#fef08a', vars: { '--app-bg':'#022c22','--card-bg':'#064e3b','--input-bg':'#065f46','--brand':'#fef08a','--text-body':'#ecfdf5','--text-card':'#ecfdf5','--text-muted':'#81eebb','--border':'#065f46' } }
 ];
-
 const HATS = [
-  {
-    name: "Chef's Hat",
-    aka: "Toque Blanche",
-    icon: "👨‍🍳",
-    origin: "France",
-    era: "16th century onward",
-    fact: "The tall white chef's hat has 100 pleats, each traditionally representing one way the chef knows how to cook an egg. The height of the toque historically signaled rank in the kitchen — the head chef wore the tallest.",
-    trivia: "The word 'toque' comes from the Arabic 'taq,' meaning a round hat. The white color was popularized by Marie-Antoine Carême in the early 1800s to signal cleanliness.",
-    category: "Culinary"
-  },
-  {
-    name: "Top Hat",
-    aka: "",
-    icon: "🎩",
-    origin: "England",
-    era: "1797",
-    fact: "When haberdasher James Hetherington wore the first top hat on the streets of London in 1797, he was arrested for disturbing the peace. The hat caused such a sensation that women fainted, children screamed, and a crowd rioted in the street.",
-    trivia: "He was charged with 'appearing on the public highway wearing upon his head a tall structure of shining lustre and calculated to frighten timid people.' He paid a fine of 50 shillings.",
-    category: "Fashion"
-  },
-  {
-    name: "Mortarboard",
-    aka: "Graduation Cap",
-    icon: "🎓",
-    origin: "Europe",
-    era: "15th century",
-    fact: "The flat-topped graduation cap is said to have been designed so that professors could carry books balanced on their heads, keeping their hands free. The tassel was added later as a ceremonial touch.",
-    trivia: "The square top is thought to derive from the academic biretta worn by medieval scholars and clergy. Whether the book-balancing origin is true or folklore remains debated.",
-    category: "Academic"
-  },
-  {
-    name: "Sombrero",
-    aka: "",
-    icon: "🪅",
-    origin: "Mexico / Spain",
-    era: "16th century",
-    fact: "The name sombrero comes directly from the Spanish word 'sombra,' meaning shadow or shade. It was designed purely for function — maximum brim width to shield the wearer from the brutal sun during long days of outdoor labor.",
-    trivia: "The widest traditional sombreros can measure up to 6 feet in diameter. In Mexican culture, the charro sombrero is an elaborate, embroidered version worn for performances and celebrations.",
-    category: "Cultural"
-  },
-  {
-    name: "Beret",
-    aka: "",
-    icon: "🫡",
-    origin: "Basque Country",
-    era: "Bronze Age origins, modern form 17th century",
-    fact: "Despite being universally associated with France, the beret actually originated with Basque shepherds in the Pyrenees mountains, who needed a simple, weatherproof hat for life outdoors. The French adopted and marketed it so effectively that they became synonymous with it.",
-    trivia: "The beret became a symbol of military special forces worldwide — the Green Berets, British SAS, and French Foreign Legion all adopted it. Each color carries specific meaning within military hierarchy.",
-    category: "Cultural"
-  },
-  {
-    name: "Bowler Hat",
-    aka: "Derby",
-    icon: "🎱",
-    origin: "England",
-    era: "1849",
-    fact: "The bowler hat was designed not for bankers or gentlemen, but for gamekeepers on the Coke estate in Norfolk, who needed a hard, low-profile hat that wouldn't get knocked off by branches while on horseback. It became the signature of the British banking class — the opposite of its rugged working-class origin.",
-    trivia: "Designed by hatmakers Thomas and William Bowler on commission from the Coke family. In the American West it was called the Derby and was actually more popular than the cowboy hat among working cowboys.",
-    category: "Fashion"
-  }
+  { name: "Chef's Hat", aka: "Toque Blanche", icon: "&#x1F468;&#x200D;&#x1F373;", origin: "France", era: "16th century onward", fact: "The tall white chef's hat has 100 pleats, each traditionally representing one way the chef knows how to cook an egg. The height of the toque historically signaled rank in the kitchen — the head chef wore the tallest.", trivia: "The word 'toque' comes from the Arabic 'taq,' meaning a round hat. The white color was popularized by Marie-Antoine Careme in the early 1800s to signal cleanliness.", category: "Culinary" },
+  { name: "Top Hat", aka: "", icon: "&#x1F3A9;", origin: "England", era: "1797", fact: "When haberdasher James Hetherington wore the first top hat on the streets of London in 1797, he was arrested for disturbing the peace. The hat caused such a sensation that women fainted, children screamed, and a crowd rioted in the street.", trivia: "He was charged with 'appearing on the public highway wearing upon his head a tall structure of shining lustre and calculated to frighten timid people.' He paid a fine of 50 shillings.", category: "Fashion" },
+  { name: "Mortarboard", aka: "Graduation Cap", icon: "&#x1F393;", origin: "Europe", era: "15th century", fact: "The flat-topped graduation cap is said to have been designed so that professors could carry books balanced on their heads, keeping their hands free. The tassel was added later as a ceremonial touch.", trivia: "The square top is thought to derive from the academic biretta worn by medieval scholars and clergy. Whether the book-balancing origin is true or folklore remains debated.", category: "Academic" },
+  { name: "Sombrero", aka: "", icon: "&#x1FAA5;", origin: "Mexico / Spain", era: "16th century", fact: "The name sombrero comes directly from the Spanish word 'sombra,' meaning shadow or shade. It was designed purely for function — maximum brim width to shield the wearer from the brutal sun during long days of outdoor labor.", trivia: "The widest traditional sombreros can measure up to 6 feet in diameter. In Mexican culture, the charro sombrero is an elaborate, embroidered version worn for performances and celebrations.", category: "Cultural" },
+  { name: "Beret", aka: "", icon: "&#x1FAE1;", origin: "Basque Country", era: "Bronze Age origins, modern form 17th century", fact: "Despite being universally associated with France, the beret actually originated with Basque shepherds in the Pyrenees mountains, who needed a simple, weatherproof hat for life outdoors. The French adopted and marketed it so effectively that they became synonymous with it.", trivia: "The beret became a symbol of military special forces worldwide — the Green Berets, British SAS, and French Foreign Legion all adopted it. Each color carries specific meaning within military hierarchy.", category: "Cultural" },
+  { name: "Bowler Hat", aka: "Derby", icon: "&#x1F3B1;", origin: "England", era: "1849", fact: "The bowler hat was designed not for bankers or gentlemen, but for gamekeepers on the Coke estate in Norfolk, who needed a hard, low-profile hat that wouldn't get knocked off by branches while on horseback. It became the signature of the British banking class — the opposite of its rugged working-class origin.", trivia: "Designed by hatmakers Thomas and William Bowler on commission from the Coke family. In the American West it was called the Derby and was actually more popular than the cowboy hat among working cowboys.", category: "Fashion" }
 ];
-
-// Derive tabs: All + unique categories in data order
 const categoryOrder = [];
 HATS.forEach(h => { if (!categoryOrder.includes(h.category)) categoryOrder.push(h.category); });
-const TABS = [{ id: 'all', label: 'All Hats', hats: HATS }, ...categoryOrder.map(cat => ({
-  id: cat.toLowerCase().replace(/\s+/g, '-'),
-  label: cat,
-  hats: HATS.filter(h => h.category === cat)
-}))];
-
-// Swatches
+const TABS = [{ id: 'all', label: 'All Hats', hats: HATS }, ...categoryOrder.map(cat => ({ id: cat.toLowerCase().replace(/\s+/g, '-'), label: cat, hats: HATS.filter(h => h.category === cat) }))];
 const swatchContainer = document.getElementById('swatches');
 THEMES.forEach((theme, i) => {
   const btn = document.createElement('button');
@@ -347,13 +87,11 @@ THEMES.forEach((theme, i) => {
   btn.addEventListener('click', () => applyTheme(i));
   swatchContainer.appendChild(btn);
 });
-
 function applyTheme(idx) {
   const theme = THEMES[idx];
   Object.entries(theme.vars).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
   document.querySelectorAll('.swatch').forEach((s, i) => s.classList.toggle('active', i === idx));
 }
-
 function makeCard(hat) {
   const card = document.createElement('div');
   card.className = 'card';
@@ -361,7 +99,7 @@ function makeCard(hat) {
     <div class="card-header">
       <div class="card-icon">${hat.icon}</div>
       <div class="card-meta">
-        <div class="card-name">${hat.name}${hat.aka ? ' <span style="font-weight:400;font-size:0.82em;color:var(--text-muted)">/ ${hat.aka}</span>' : ''}</div>
+        <div class="card-name">${hat.name}${hat.aka ? ' <span style="font-weight:400;font-size:0.82em;color:var(--text-muted)">/ ' + hat.aka + '</span>' : ''}</div>
         <div class="card-origin">${hat.origin}</div>
         <div class="card-era">${hat.era}</div>
       </div>
@@ -375,34 +113,27 @@ function makeCard(hat) {
   `;
   return card;
 }
-
-// Tabs + panels
 const tabBar = document.getElementById('tabBar');
 const mainEl = document.getElementById('mainContent');
-
 TABS.forEach((tab, i) => {
   const btn = document.createElement('button');
   btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
   btn.textContent = tab.label;
   btn.addEventListener('click', () => switchTab(i));
   tabBar.appendChild(btn);
-
   const panel = document.createElement('div');
   panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
-
   const grid = document.createElement('div');
   grid.className = 'cards-grid';
   tab.hats.forEach(hat => grid.appendChild(makeCard(hat)));
   panel.appendChild(grid);
   mainEl.appendChild(panel);
 });
-
 function switchTab(idx) {
   document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
   document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
 }
 applyTheme(0);
 </script>
-
 </body>
 </html>
