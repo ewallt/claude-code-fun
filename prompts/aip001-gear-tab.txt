@@ -1,0 +1,119 @@
+aip001 — Gear with Tabs App Builder
+
+Using the input already in our conversation, build a single-file HTML web app. Output only the complete HTML — no explanation, no preamble, no markdown fences.
+
+---
+
+APP STRUCTURE
+
+Single file. No external CSS frameworks. No CDN dependencies. Vanilla JS only.
+
+Structure:
+  <head>: meta charset, viewport, <style>
+  <body>: <header>, tab bar, <main>, <footer>, <script>
+
+---
+
+HEADER
+
+Three-column grid: empty left, centered title block, swatches right-aligned.
+
+  <header>
+    <div></div>
+    <div style="text-align:center">
+      <div class="site-title">[App Title]</div>
+      <div class="site-subtitle">[Subtitle]</div>
+    </div>
+    <div class="theme-swatches" id="swatches" style="justify-content:flex-end"></div>
+  </header>
+
+Header: position sticky, top 0, z-index 10.
+
+---
+
+THEME SYSTEM
+
+Four swatch dots in the header. Build the THEMES array in JS; render swatch buttons dynamically. Apply theme by setting CSS variables on document.documentElement.
+
+const THEMES = [
+  {
+    name: 'navy', swatch: '#8bb9ff',
+    vars: { '--app-bg':'#0b1020','--card-bg':'#111833','--input-bg':'#1a2347','--brand':'#8bb9ff','--text-body':'#e6ecff','--text-card':'#e6ecff','--text-muted':'#bcc5e3','--border':'#26325b' }
+  },
+  {
+    name: 'archives', swatch: '#0f766e',
+    vars: { '--app-bg':'#f5f5f4','--card-bg':'#e7e5e4','--input-bg':'#d6d3d1','--brand':'#0f766e','--text-body':'#292524','--text-card':'#0f766e','--text-muted':'#4a4540','--border':'#d6d3d1' }
+  },
+  {
+    name: 'explorer', swatch: '#d4a574',
+    vars: { '--app-bg':'#e8dcc8','--card-bg':'#1a1815','--input-bg':'#26231f','--brand':'#7a3e10','--text-body':'#2c2416','--text-card':'#faf8f3','--text-muted':'#a89580','--border':'#5a5041' }
+  },
+  {
+    name: 'high-command', swatch: '#fef08a',
+    vars: { '--app-bg':'#022c22','--card-bg':'#064e3b','--input-bg':'#065f46','--brand':'#fef08a','--text-body':'#ecfdf5','--text-card':'#ecfdf5','--text-muted':'#81eebb','--border':'#065f46' }
+  }
+];
+
+Swatch CSS:
+  .swatch { width:20px;height:20px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform 0.15s,border-color 0.15s;outline:none;padding:0; }
+  .swatch:hover { transform:scale(1.2); }
+  .swatch.active { border-color:var(--text-body);transform:scale(1.15); }
+
+Default theme on load: navy.
+
+---
+
+TABS
+
+Derive tab names from the data — never hardcode in HTML. Render dynamically.
+
+Active tab: color var(--brand), border-bottom 3px solid var(--brand).
+Inactive tabs: color var(--text-muted).
+
+---
+
+CARDS
+
+Adapt card structure to the content. Use:
+  Background: var(--card-bg)
+  Border: var(--border)
+  Body text: var(--text-card)
+  Secondary text: var(--text-muted)
+  Accents / titles: var(--brand) — page-level only; on Explorer dark cards use var(--text-card) instead
+
+Every color references a CSS variable. No hardcoded hex anywhere except inside THEMES and :root.
+
+---
+
+RULES
+
+- All hover, active, focus states use CSS variables
+- Add smooth transitions to body and key structural elements:
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s
+- Explorer note: --brand (#7a3e10) is calibrated for the light parchment background. Card text uses --text-card, not --brand.
+
+---
+
+FOOTER
+
+Centered, var(--text-muted), border-top 1px solid var(--border). Brief attribution line.
+
+---
+
+INPUT INTERPRETATION
+
+From the input already in context, identify:
+  1. App title and subtitle
+  2. Tab categories — what naturally groups the content
+  3. Card structure — what fields each item needs
+
+If the input is a document: derive categories from its sections.
+If the input is a list: derive categories from item types or tags.
+
+Use judgment — tabs should reflect the natural shape of the data, not be invented.
+
+---
+
+OUTPUT
+
+Complete single-file HTML only. Nothing before or after it.
