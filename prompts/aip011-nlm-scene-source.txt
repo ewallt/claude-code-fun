@@ -1,0 +1,108 @@
+AIP011 — NotebookLM Scene Source Writer
+
+You are going to write a scene-format source document for a NotebookLM cinematic video. I will tell you the book or topic at the end of this prompt.
+
+The output will be uploaded to NotebookLM as a source document. NotebookLM will use it to generate a cinematic documentary-style video. Your job is to write scenes that give the video engine something physical and cinematic to render — not an essay, not a summary.
+
+---
+
+OUTPUT FORMAT
+
+The document has three parts:
+
+1. TITLE AND OVERVIEW
+A short title and 2-4 sentences explaining the topic, the angle, and why it matters.
+
+2. SCENES (6-8 scenes)
+Each scene follows this structure exactly:
+
+Scene N — [Short Descriptive Title]
+
+[1-3 paragraphs of narrative prose. One idea. Concrete and visual. Camera intent embedded in the prose — not labeled.]
+
+SETTING: [Physical location and time of day]
+SUBJECT: [Who or what is the physical anchor]
+IN-SCENE MOTION: [What is moving within the frame]
+LIGHTING: [Specific lighting condition]
+NARRATION BEAT: [What concept or information is being conveyed in the audio]
+
+3. KEY TAKEAWAY
+2 sentences. The central idea the viewer walks away with.
+
+---
+
+SCENE WRITING RULES
+
+Follow these rules for every scene:
+
+RULE 1 — Every scene needs a physical anchor.
+Ground each scene in something physical: a person doing something, an environment with inherent motion, an object being used, or an atmospheric condition. Do not write abstract scenes.
+
+Weak: "The concept of resilience permeates the narrative."
+Strong: "A woman sits at a workbench under a single lamp, reassembling a broken mechanism with steady hands. The camera pushes in slowly on her face."
+
+RULE 2 — Describe motion explicitly.
+State what is moving within the frame. Do not assume the engine will infer it.
+Reliable motion: people walking, gesturing, reacting; wind moving fabric; water flowing; fire flickering; crowds moving; simple object interactions.
+
+RULE 3 — Embed camera intent in the prose.
+Do not label the camera action. Write it into the scene description.
+
+Instead of: "CAMERA: slow zoom in"
+Write: "The camera pushes in slowly on his face as the light flickers."
+
+Reliable camera actions to embed:
+- Push-in / slow zoom in: signals focus, intensity. Use for key revelations.
+- Pull-back / crane up: signals scale, consequence. Use for establishing scope.
+- Tracking shot: follows a subject in motion. Use for progress, journey.
+- Aerial / crane shot: establishes geography, epic scale.
+- Handheld: adds grit, tension, documentary feel.
+- Slow pan: connection, lateral survey. Slow only — fast pans smear.
+- Rack focus: shift in attention from foreground to background or vice versa.
+
+Never combine movements in one scene.
+
+RULE 4 — Use specific lighting.
+Name the lighting condition in every scene. Examples:
+- "Golden hour light raking across stone walls"
+- "Flickering candlelight reflecting in the subject's eyes"
+- "Cold blue shadow filling the room"
+- "Harsh noon light, no shadows"
+- "Green glow of an early computer terminal"
+
+RULE 5 — Write as a screenwriter, not a narrator.
+The narration delivers the ideas. The scene description governs what is visually happening at the same time. Each scene is a unit of physical action.
+
+RULE 6 — No apostrophes or single quotes in the text.
+Rephrase to avoid them. Use em-dashes instead of contractions where needed.
+
+---
+
+STRUCTURE GUIDANCE
+
+- Aim for 6-8 scenes. More shorter scenes is better than fewer longer ones.
+- Each scene moves the idea forward — not sideways. Build like a story unfolding.
+- The opening scene should establish the core tension or hook.
+- The closing scene before the Key Takeaway should resolve or land the central insight.
+- Split a scene if it covers more than one distinct idea or shifts setting mid-paragraph.
+
+---
+
+TRANSLATING ABSTRACT IDEAS INTO PHYSICAL SCENES
+
+For books about ideas, psychology, or concepts, convert each idea into a physical situation before writing:
+
+- Where would this idea live in the physical world?
+- Who would be present?
+- What would they be doing?
+
+Examples:
+- "The passage of time" -- timelapse of light moving across a stone floor, camera tilting up slowly
+- "An expert who was wrong" -- a confident figure at a lectern, audience nodding, then a later scene: the same figure alone, reading a single page, face changing
+- "Collaboration" -- two figures at opposite ends of a table, papers spread between them, slowly moving closer as they work
+
+---
+
+Now write the scene source document for the following book or topic:
+
+[BOOK TITLE OR TOPIC HERE]
