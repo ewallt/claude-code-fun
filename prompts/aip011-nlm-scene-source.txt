@@ -1,8 +1,8 @@
 AIP011 — NotebookLM Scene Source Writer
 
-You are going to write a scene-format source document for a NotebookLM cinematic video. I will tell you the book or topic at the end of this prompt.
+You are going to write a scene-format source document for a NotebookLM cinematic video.
 
-The output will be uploaded to NotebookLM as a source document. NotebookLM will use it to generate a cinematic documentary-style video. Your job is to write scenes that give the video engine something physical and cinematic to render — not an essay, not a summary.
+The book title or topic may already be filled in at the end of this prompt. If it is, proceed directly. If the placeholder is still blank or unfilled, ask the user for the book title or topic before continuing.
 
 ---
 
@@ -52,39 +52,39 @@ Instead of: "CAMERA: slow zoom in"
 Write: "The camera pushes in slowly on his face as the light flickers."
 
 Reliable camera actions to embed:
-- Push-in / slow zoom in: signals focus, intensity. Use for key revelations.
-- Pull-back / crane up: signals scale, consequence. Use for establishing scope.
-- Tracking shot: follows a subject in motion. Use for progress, journey.
-- Aerial / crane shot: establishes geography, epic scale.
-- Handheld: adds grit, tension, documentary feel.
-- Slow pan: connection, lateral survey. Slow only — fast pans smear.
-- Rack focus: shift in attention from foreground to background or vice versa.
+• Push-in / slow zoom in: signals focus, intensity. Use for key revelations.
+• Pull-back / crane up: signals scale, consequence. Use for establishing scope.
+• Tracking shot: follows a subject in motion. Use for progress, journey.
+• Aerial / crane shot: establishes geography, epic scale.
+• Handheld: adds grit, tension, documentary feel.
+• Slow pan: connection, lateral survey. Slow only — fast pans smear.
+• Rack focus: shift in attention from foreground to background or vice versa.
 
-Never combine movements in one scene.
+Never combine two camera movements in a single scene. A common mistake is pairing a push-in with a pan — pick one and commit to it.
 
 RULE 4 — Use specific lighting.
 Name the lighting condition in every scene. Examples:
-- "Golden hour light raking across stone walls"
-- "Flickering candlelight reflecting in the subject's eyes"
-- "Cold blue shadow filling the room"
-- "Harsh noon light, no shadows"
-- "Green glow of an early computer terminal"
+• "Golden hour light raking across stone walls"
+• "Flickering candlelight reflecting in the subject's eyes"
+• "Cold blue shadow filling the room"
+• "Harsh noon light, no shadows"
+• "Green glow of an early computer terminal"
 
 RULE 5 — Write as a screenwriter, not a narrator.
 The narration delivers the ideas. The scene description governs what is visually happening at the same time. Each scene is a unit of physical action.
 
-RULE 6 — No apostrophes or single quotes in the text.
+RULE 6 — No apostrophes or single quotes anywhere in the text.
 Rephrase to avoid them. Use em-dashes instead of contractions where needed.
 
 ---
 
 STRUCTURE GUIDANCE
 
-- Aim for 6-8 scenes. More shorter scenes is better than fewer longer ones.
-- Each scene moves the idea forward — not sideways. Build like a story unfolding.
-- The opening scene should establish the core tension or hook.
-- The closing scene before the Key Takeaway should resolve or land the central insight.
-- Split a scene if it covers more than one distinct idea or shifts setting mid-paragraph.
+• Write exactly 6-8 scenes. More shorter scenes is better than fewer longer ones.
+• Each scene moves the idea forward — not sideways. Build like a story unfolding.
+• The opening scene should establish the core tension or hook.
+• The closing scene before the Key Takeaway should resolve or land the central insight.
+• Split a scene if it covers more than one distinct idea or shifts setting mid-paragraph.
 
 ---
 
@@ -92,17 +92,15 @@ TRANSLATING ABSTRACT IDEAS INTO PHYSICAL SCENES
 
 For books about ideas, psychology, or concepts, convert each idea into a physical situation before writing:
 
-- Where would this idea live in the physical world?
-- Who would be present?
-- What would they be doing?
+• Where would this idea live in the physical world?
+• Who would be present?
+• What would they be doing?
 
 Examples:
-- "The passage of time" -- timelapse of light moving across a stone floor, camera tilting up slowly
-- "An expert who was wrong" -- a confident figure at a lectern, audience nodding, then a later scene: the same figure alone, reading a single page, face changing
-- "Collaboration" -- two figures at opposite ends of a table, papers spread between them, slowly moving closer as they work
+• "The passage of time" — timelapse of light moving across a stone floor, camera tilting up slowly
+• "An expert who was wrong" — a confident figure at a lectern, audience nodding, then a later scene: the same figure alone, reading a single page, face changing
+• "Collaboration" — two figures at opposite ends of a table, papers spread between them, slowly moving closer as they work
 
 ---
 
-Now write the scene source document for the following book or topic:
-
-[BOOK TITLE OR TOPIC HERE]
+TOPIC: [BOOK TITLE OR TOPIC HERE]
