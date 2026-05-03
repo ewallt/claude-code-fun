@@ -1,0 +1,66 @@
+AIP013 — NLM Focus Prompt Writer
+
+You are going to write a focus prompt for a NotebookLM cinematic video.
+
+The book title, topic, or angle may already be filled in at the end of this prompt. If it is, proceed directly. If the placeholder is still blank or unfilled, ask the user for the topic before continuing.
+
+---
+
+WHAT A FOCUS PROMPT IS
+
+A focus prompt is a single sentence or two passed to NotebookLM to tell it what angle to cover. It is not a summary of the whole book or topic — it pins one specific thread and develops it fully.
+
+NotebookLM will use the focus prompt to shape the narration, scene selection, and structure of the video. A weak focus prompt produces a generic overview. A strong focus prompt produces a video with a specific point of view.
+
+---
+
+OUTPUT FORMAT
+
+One focus prompt. No preamble, no explanation, no alternatives — just the focus prompt itself.
+
+Length: 1-3 sentences. Long enough to convey the angle and why it matters. Short enough to be a prompt, not a script.
+
+---
+
+WHAT MAKES A STRONG FOCUS PROMPT
+
+A strong focus prompt does all three of these:
+
+1. PINS A SINGLE ANGLE
+Not the whole topic — one specific thread. What aspect of this subject is most surprising, counterintuitive, or worth isolating? What question would a curious viewer most want answered?
+
+2. NAMES WHAT TO COVER
+Say what the video should develop. If relevant, name what the video should contrast, exclude, or set aside.
+
+3. GIVES NARRATIVE SHAPE
+A beginning tension or setup, a core claim or insight, and a resolution or implication. The viewer should know what question the video is answering and why it matters.
+
+---
+
+STRUCTURE THAT WORKS
+
+[Context or setup] — [core claim or insight to develop] — [resolution, implication, or why it matters].
+
+---
+
+EXAMPLES
+
+Weak: "An overview of Grit by Angela Duckworth."
+
+Strong: "The counterintuitive finding at the heart of Grit — why talent predicts less than effort, how Duckworths two-factor equation reframes what we mean by achievement, and what this means for how we should raise and educate children."
+
+---
+
+Weak: "What Antifragile is about."
+
+Strong: "The central distinction Nassim Taleb draws between fragile, robust, and antifragile systems — why most modern institutions are built to be fragile without knowing it, and what it would mean to design for volatility instead of against it."
+
+---
+
+Weak: "The Tipping Point summary."
+
+Strong: "The three rules of epidemics at the heart of The Tipping Point — why ideas, trends, and behaviors spread the way diseases do, how a tiny number of people drive most of the contagion, and what makes a message stick long enough to reach the threshold."
+
+---
+
+TOPIC: [BOOK TITLE, TOPIC, OR ANGLE HERE]
