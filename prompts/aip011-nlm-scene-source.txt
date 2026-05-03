@@ -2,7 +2,7 @@ AIP011 — NotebookLM Scene Source Writer
 
 You are going to write a scene-format source document for a NotebookLM cinematic video.
 
-The book title or topic may already be filled in at the end of this prompt. If it is, proceed directly. If the placeholder is still blank or unfilled, ask the user for the book title or topic before continuing.
+Ask the user for the book title or topic before proceeding.
 
 ---
 
@@ -103,4 +103,3 @@ Examples:
 
 ---
 
-TOPIC: [BOOK TITLE OR TOPIC HERE]

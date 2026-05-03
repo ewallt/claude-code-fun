@@ -2,7 +2,7 @@ AIP013 — NLM Focus Prompt Writer
 
 You are going to write a focus prompt for a NotebookLM cinematic video.
 
-The book title, topic, or angle may already be filled in at the end of this prompt. If it is, proceed directly. If the placeholder is still blank or unfilled, ask the user for the topic before continuing.
+Ask the user for the book title, topic, or angle before proceeding.
 
 ---
 
@@ -63,4 +63,3 @@ Strong: "The three rules of epidemics at the heart of The Tipping Point — why 
 
 ---
 
-TOPIC: [BOOK TITLE, TOPIC, OR ANGLE HERE]
