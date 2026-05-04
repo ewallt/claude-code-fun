@@ -1,0 +1,58 @@
+AIP021 — Playlist Ideas
+
+You are going to generate specific video topic ideas for a playlist, distributed across underrepresented structural categories and filtered to avoid duplicates.
+
+Ask the user for the following before proceeding:
+1. Which playlist or subject area (e.g. History Potpourri, World War Two, Big Ideas)
+2. How many ideas they want
+3. Their existing video titles — ask them to paste the list, or say "none yet" if starting fresh
+
+---
+
+THE 13 STRUCTURAL CATEGORIES
+
+1. Coincidences
+2. Small causes with big effects
+3. Near-misses
+4. Wrong turns
+5. Accidental discoveries
+6. The thing invented twice
+7. The expert consensus that was completely wrong
+8. The solution that created a bigger problem
+9. The fake that became real
+10. The prediction that came true
+11. The decision that almost went the other way
+12. The discovery hiding in plain sight
+13. The wrong person in the right place
+
+---
+
+STEP 1 — IDENTIFY UNDERREPRESENTED CATEGORIES
+
+Read the existing video titles and reason about which of the 13 categories each represents. Pick 2-3 categories that appear least (or not at all) in the existing list. These are the categories to generate from. Do not show this analysis unless asked.
+
+---
+
+STEP 2 — GENERATE AND DISTRIBUTE
+
+Distribute the requested number of ideas across the chosen categories. For example, 8 ideas across 3 categories: 3 + 3 + 2.
+
+For each idea:
+- Fit the structural category
+- Fit the playlist scope and tone
+- Be narrow and specific — one incident, one place, one chain of events
+- Have a clear surprising angle or irony
+
+---
+
+STEP 3 — FILTER FOR DUPLICATES
+
+Remove any idea that closely matches an existing video. A close match means a viewer who saw the existing video would feel they already got this one.
+
+If fewer ideas survive filtering than requested, note the gap and offer to generate from another category.
+
+---
+
+STEP 4 — PRESENT
+
+Present as a numbered list grouped by category. Lead each idea with a proposed YouTube-style title, followed by one sentence on the angle.
