@@ -1,0 +1,268 @@
+Card Gallery with Theme Switcher — App Builder
+
+Start by working with the user to decide on a topic. Ask what subject they want to explore, discuss how many sections make sense and what the cards within each section will cover. Once the topic and structure are agreed, build the app and output only the complete HTML — no explanation, no preamble, no markdown fences.
+
+---
+
+APP STRUCTURE
+
+Single-file HTML. Tailwind CSS via CDN. All content lives in a CONFIG object injected before the Tailwind config. Fonts: Lora (body) and Playfair Display (headings) via Google Fonts.
+
+---
+
+CONFIG OBJECT
+
+Place CONFIG in a <script> tag immediately after the Tailwind CDN script, before the Tailwind config block.
+
+Shape:
+
+const CONFIG = {
+
+  meta: {
+    pageTitle:  "",
+    heroTitle:  "",
+    shortTitle: "",   // used in nav bar
+    subtitle:   "",   // italic tagline under hero title
+    footerText: ""
+  },
+
+  defaultTheme: "coal",   // must match an id in themes[]
+
+  themes: [
+    {
+      id:   "coal",
+      name: "Coal",
+      dark: true,
+      colors: { 50: "#fdfbf7", 100: "#f6f2e9", 200: "#e8dfcd", 800: "#2a2825", 900: "#1a1815" }
+    },
+    {
+      id:   "navy",
+      name: "Navy",
+      dark: true,
+      colors: { 50: "#f0f4fb", 100: "#dce8f5", 200: "#c7d2e8", 800: "#1a2744", 900: "#0f1729" }
+    },
+    {
+      id:   "forest",
+      name: "Forest",
+      dark: true,
+      colors: { 50: "#f0f5f1", 100: "#dceee0", 200: "#c7d8cb", 800: "#1a3a22", 900: "#0f2014" }
+    },
+    {
+      id:   "parchment",
+      name: "Parchment",
+      dark: false,
+      colors: { 50: "#fdfbf7", 100: "#f6f2e9", 200: "#e8dfcd", 800: "#2a2825", 900: "#1a1815" }
+    }
+  ],
+
+  hero: {
+    imageUrl: "",   // Wikimedia Special:FilePath URL
+    imageAlt: "",
+    ctaText:  "Enter the Gallery"
+  },
+
+  sections: [
+    {
+      id:       "",
+      navLabel: "",   // 1-2 words for nav bar
+      part:     "Part 1",
+      title:    "",
+      intro:    "",   // 1-2 sentence section intro
+      cards: [
+        {
+          imageUrl:     "",
+          imageAlt:     "",
+          imageCaption: "",   // artist, title, year, institution
+          name:         "",
+          label:        "",   // short role or angle
+          paragraphs:   ["", "", ""],   // 2-3 paragraphs of substantive content
+          footerLabel:  "The Contribution",
+          footerText:   ""
+        }
+      ],
+      blockquote: {           // optional — omit if not present
+        text:        "",
+        attribution: ""
+      },
+      closingLine: ""         // optional — omit if not present
+    }
+  ],
+
+  coda: {
+    id:       "coda",
+    navLabel: "Coda",
+    part:     "Coda",
+    title:    "",
+    intro:    "",
+    cards: [
+      { title: "", text: "" },
+      { title: "", text: "" },
+      { title: "", text: "" }
+    ],
+    closingLine: ""
+  }
+
+};
+
+---
+
+TAILWIND CONFIG
+
+Place immediately after the CONFIG script. Gallery colors must reference CSS variables — not hex — so the runtime theme switcher works:
+
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Lora", "serif"],
+        serif: ["Playfair Display", "serif"]
+      },
+      colors: {
+        gallery: {
+          50:  "var(--g50)",
+          100: "var(--g100)",
+          200: "var(--g200)",
+          800: "var(--g800)",
+          900: "var(--g900)"
+        }
+      }
+    }
+  }
+}
+
+---
+
+CSS
+
+:root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+/* initialized by applyTheme() on load — placeholder values don't matter */
+
+.fade-in-section {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-section.is-visible { opacity: 1; transform: none; }
+.art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+
+---
+
+THEME SWITCHING
+
+Track active theme in a module-level variable:
+
+  let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+applyTheme() sets the five CSS vars on :root. Call it before render() on load, and again on every switch:
+
+  function applyTheme(theme) {
+    const r = document.documentElement;
+    r.style.setProperty("--g50",  theme.colors[50]);
+    r.style.setProperty("--g100", theme.colors[100]);
+    r.style.setProperty("--g200", theme.colors[200]);
+    r.style.setProperty("--g800", theme.colors[800]);
+    r.style.setProperty("--g900", theme.colors[900]);
+  }
+
+switchTheme() updates activeTheme, calls applyTheme(), calls render(), then marks all fade-in sections visible (so already-scrolled content doesn't re-fade):
+
+  function switchTheme(themeId) {
+    activeTheme = CONFIG.themes.find(t => t.id === themeId);
+    applyTheme(activeTheme);
+    render();
+    document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+  }
+
+---
+
+GEAR PICKER
+
+Fixed to bottom-right corner. Gear icon (&#9881;) opens a panel listing theme names. Active theme label in amber, others in gallery-100:
+
+  <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;">
+    <button onclick="togglePicker()">&#9881;</button>
+    <div id="picker-panel" ...><!-- populated by JS --></div>
+  </div>
+
+Style the button and panel using bg-gallery-800 / text-gallery-200 so it follows the active theme.
+
+---
+
+RENDER FUNCTION
+
+render() reads activeTheme.dark (not CONFIG.theme.dark) to switch between dark and light variants:
+
+  const dark = activeTheme.dark;
+
+Dark/light affects:
+  - body class: bg-gallery-900 text-gallery-100 vs bg-gallery-50 text-gallery-800
+  - Nav: bg-gallery-900/95 border-gallery-800 vs bg-gallery-50/90 border-gallery-200
+  - Hero gradient: from-gallery-900/30 via-gallery-900/70 to-gallery-900 vs light equivalent
+  - Hero CTA button border and hover colors
+
+Do NOT add transition-colors to body, nav, or hero gradient — these must switch instantly.
+transition-colors on structural elements creates a sluggish 500ms color fade on every theme switch.
+Only use transition-colors for individual hover interactions (links, buttons, card hovers).
+
+---
+
+CARD LAYOUT
+
+Each section's cards render into a grid. 2 cards → md:grid-cols-2, 3 cards → md:grid-cols-3.
+Image height: h-64 for 2-card sections, h-48 for 3-card sections.
+
+All cards use the dark card style (bg-gallery-900 text-gallery-100) — the gallery color scheme
+provides the contrast. Amber (text-amber-500) is used for accents, labels, and footer headings.
+
+Each card has:
+  - Image (click to open lightbox)
+  - Name heading + label span
+  - "Read more" accordion button (chevron icon, max-height transition)
+  - Accordion body: paragraphs + footer label/text separated by a border
+
+Coda cards are imageless: just title (text-amber-500) and text paragraph.
+
+---
+
+IMAGES
+
+Use Wikimedia Commons Special:FilePath for all images:
+
+  https://commons.wikimedia.org/wiki/Special:FilePath/[Exact_Filename]?width=800   (cards)
+  https://commons.wikimedia.org/wiki/Special:FilePath/[Exact_Filename]?width=1600  (lightbox)
+
+Filename encoding: spaces → underscores, commas → %2C, accented chars → percent-encoded.
+Never use /thumb/ URLs — they produce 404s on large files.
+Never guess filenames — always confirm from the actual Commons file page.
+
+---
+
+NAV AND HERO
+
+Nav: fixed, frosted glass (backdrop-blur-md), links to all section ids plus coda. Home glyph (⌂) links to top.
+
+Hero: full-viewport height. Hero image is blurred decorative background (opacity-30, blur-sm, scale-105). Gradient overlay fades image into the page color. Title, subtitle, CTA button centered over it.
+
+---
+
+LIGHTBOX
+
+Full-screen overlay (z-[100]), black/90 background. Enlarged image + caption. Close on ×, Escape key, or click outside image.
+
+---
+
+SCROLL ANIMATIONS
+
+IntersectionObserver adds is-visible to .fade-in-section elements at 0.15 threshold. Register after render(). On theme switch, mark all visible immediately so re-render doesn't re-fade scrolled content.
+
+---
+
+FOOTER
+
+bg-gallery-900 text-gallery-200. Single centered line of text from CONFIG.meta.footerText.
+
+---
+
+OUTPUT
+
+Complete single-file HTML only. Nothing before or after it.
