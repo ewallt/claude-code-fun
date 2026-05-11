@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading…</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+    // ─── CONFIG ───────────────────────────────────────────────────────────────
+    // Edit this object to change content and design. The rest of the file is
+    // the template — leave it alone.
+
+    const CONFIG = {
+
+      meta: {
+        pageTitle:  "The American Sublime: Hudson River School",
+        heroTitle:  "The American Sublime",
+        shortTitle: "Hudson River School",
+        subtitle:   "How the Hudson River School turned wilderness into national identity",
+        footerText: "The American Sublime: Hudson River School Paintings. Artwork sourced from Wikimedia Commons (public domain)."
+      },
+
+      defaultTheme: 'coal',
+
+      themes: [
+        {
+          id:   'coal',
+          name: 'Coal',
+          dark: true,
+          colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+        },
+        {
+          id:   'navy',
+          name: 'Navy',
+          dark: true,
+          colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' }
+        },
+        {
+          id:   'forest',
+          name: 'Forest',
+          dark: true,
+          colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' }
+        },
+        {
+          id:   'parchment',
+          name: 'Parchment',
+          dark: false,
+          colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+        }
+      ],
+
+      hero: {
+        imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Frederic_Edwin_Church_-_Twilight_in_the_Wilderness.jpg",
+        imageAlt: "Twilight in the Wilderness by Frederic Edwin Church",
+        ctaText:  "Enter the Gallery"
+      },
+
+      sections: [
+        {
+          id:       "founders",
+          navLabel: "Founders",
+          part:     "Part 1",
+          title:    "The Founding Vision",
+          intro:    "In the 1820s, two painters looked at the Hudson Valley and saw not scenery but argument — a case, made in paint, for what America was and what it risked losing.",
+          cards: [
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Thomas_Cole_-_The_Oxbow_(Met).jpg",
+              imageAlt:     "The Oxbow by Thomas Cole",
+              imageCaption: "Thomas Cole, View from Mount Holyoke (The Oxbow) — 1836, Metropolitan Museum of Art, New York",
+              name:         "Thomas Cole",
+              label:        "The Father of American Landscape",
+              paragraphs: [
+                "Thomas Cole (1801–1848) emigrated from England at seventeen and first encountered the Hudson Valley in 1825, on a sketching trip that would define American painting. Within months, three of his Hudson views were purchased by John Trumbull, Asher Durand, and William Dunlap — the moment that announced the movement to itself.",
+                "Cole understood the American wilderness as a moral subject: not merely beautiful, but freighted with meaning about civilization, time, and Providence. His five-painting series <em>The Course of Empire</em> (1833–36) argued that all civilizations rise and fall, and that untouched nature outlasts them all.",
+                "\"The Oxbow\" (1836) stages the argument within a single canvas: storm-torn wilderness to the left, cultivated valley to the right, and Cole himself — barely visible, a tiny figure — sitting between them with his easel, mediating. The painting asks which side you are on, and whether the question matters."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Established the philosophical framework that gave American landscape its moral weight. Cole insisted that wilderness was not merely scenery but argument — an expression of divine purpose and a warning about what progress costs."
+            },
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Asher_Durand_Kindred_Spirits.jpg",
+              imageAlt:     "Kindred Spirits by Asher B. Durand",
+              imageCaption: "Asher B. Durand, Kindred Spirits — 1849, Crystal Bridges Museum of American Art, Bentonville",
+              name:         "Asher B. Durand",
+              label:        "The Apostle of the Forest Interior",
+              paragraphs: [
+                "Where Cole stood on mountaintops and saw the vast sweep of civilization against nature, Asher B. Durand (1796–1886) went into the forest. His \"Kindred Spirits\" (1849) — painted as a gift for the poet William Cullen Bryant, in memory of Thomas Cole — shows Cole and Bryant standing on a Catskill ledge surrounded by trees. It became one of the most beloved images in American art: the idea that poetry, painting, and wilderness belonged together in the same grove.",
+                "Durand's \"Letters on Landscape Painting\" (1855) became the movement's manifesto. He argued that painters should study nature directly — not through European convention — and that every detail of a leaf, a rock, a stream reflected divine order. He trained a generation to go outside and look.",
+                "As president of the National Academy of Design for seventeen years, Durand gave the movement institutional ground. He did not merely paint the landscape school — he administered it into existence."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Made the forest interior an American sacred space. His insistence on direct observation from nature, combined with his role as the movement's central institution builder, gave the Hudson River School its philosophical foundation and its professional home."
+            }
+          ],
+          blockquote: {
+            text:        "We are still in Eden; the wall that shuts us out of the garden is our own ignorance and folly.",
+            attribution: "Thomas Cole"
+          }
+        },
+        {
+          id:       "sublime",
+          navLabel: "Sublime",
+          part:     "Part 2",
+          title:    "The Sublime Amplified",
+          intro:    "The second generation took the movement's ambitions and enlarged them to continental scale — painting not just the Hudson Valley but the entire American hemisphere, at canvases so large they required their own rooms.",
+          cards: [
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Church_Heart_of_the_Andes.jpg",
+              imageAlt:     "Heart of the Andes by Frederic Edwin Church",
+              imageCaption: "Frederic Edwin Church, The Heart of the Andes — 1859, Metropolitan Museum of Art, New York",
+              name:         "Frederic Edwin Church",
+              label:        "The Painter of Continental Scale",
+              paragraphs: [
+                "Frederic Edwin Church (1826–1900) was Thomas Cole's only formal student, and he carried Cole's ambitions further than Cole could have imagined. Where Cole painted the Hudson Valley, Church painted the entire Western Hemisphere — Ecuador, Colombia, Jamaica, Labrador, the Arctic.",
+                "\"The Heart of the Andes\" (1859) caused a sensation when it was exhibited in New York: 100,000 people paid twenty-five cents each to view it through opera glasses, as though peering through a window at an actual landscape. The canvas stretched nearly six feet tall and eleven feet wide. It showed the Ecuadorian Andes with the precision of a scientist and the drama of a prophet: every tropical flower in the foreground identifiable to species, every snowcapped peak in the background dissolving into cloud.",
+                "Church understood that Americans needed an expanded version of their own mythology — one that made the United States the center of a hemisphere, not just a nation. His paintings were landscape as manifest destiny."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Internationalized the Hudson River School's vision, extending its sense of divine landscape from the local to the continental. His paintings were the most ambitious American artworks of the 19th century in both scale and geographical reach."
+            },
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Albert_Bierstadt%2C_Among_the_Sierra_Nevada_Mountains.jpg",
+              imageAlt:     "Among the Sierra Nevada Mountains by Albert Bierstadt",
+              imageCaption: "Albert Bierstadt, Among the Sierra Nevada, California — 1868, Smithsonian American Art Museum, Washington D.C.",
+              name:         "Albert Bierstadt",
+              label:        "The Painter of Western Enormity",
+              paragraphs: [
+                "Albert Bierstadt (1830–1902) first went West on a government survey expedition in 1859 and returned with sketches he transformed into enormous studio paintings — some over twelve feet wide — showing Americans a country most of them would never see. His Rockies and Sierras were theatrical: cloud-drenched peaks, golden crepuscular light, meadows of deer and cattle in perfect repose.",
+                "\"Among the Sierra Nevada, California\" (1868) deploys everything Bierstadt had learned about producing awe: rays of light breaking through clouds onto a still alpine lake, mountains reflected in perfect symmetry, a scale that dwarfs every living thing in the frame. Critics found it excessive; the public found it transcendent. He became the most commercially successful American painter of his era.",
+                "The West he painted was already disappearing. The transcontinental railroad was completed in 1869. His paintings fixed the image of a pristine, untouched West in the American imagination at the precise moment that image was becoming historical."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Made the American West visually available to the East at the moment its wildness was ending. His paintings became the template for how Americans imagined their western landscape — a template so powerful it still governs the visual language of national parks today."
+            }
+          ],
+          blockquote: {
+            text:        "The natural landscape is the art of God.",
+            attribution: "Albert Bierstadt"
+          }
+        },
+        {
+          id:       "luminists",
+          navLabel: "Luminists",
+          part:     "Part 3",
+          title:    "The Luminists",
+          intro:    "While Church and Bierstadt pursued scale and drama, a quieter group of painters turned inward — replacing grandeur with stillness, and the heroic landscape with the question of light itself.",
+          cards: [
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Kensett_John_F_Lake_George.jpg",
+              imageAlt:     "Lake George by John Frederick Kensett",
+              imageCaption: "John Frederick Kensett, Lake George — 1869, Metropolitan Museum of Art, New York",
+              name:         "John Frederick Kensett",
+              label:        "The Poet of Stillness",
+              paragraphs: [
+                "John Frederick Kensett (1816–1872) reduced the American landscape to its simplest elements: a band of water, a strip of shore, a sky. No storms, no sublime drama, no geological enormity. Just light on flat water and absolute stillness.",
+                "\"Lake George\" (1869) is characteristic: a wide horizontal canvas, pale blues and silver whites, a thin rocky shore in the foreground, low hills receding into distance. Nothing happens. Nothing needs to. Kensett understood that the opposite of drama could carry equal weight — that restraint was itself a statement about what mattered in a landscape."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Pioneered an American mode of visual silence. His work proved that reduction — a horizon, a lake, a sky — could carry as much emotional force as Church's panoramas or Bierstadt's spectacle."
+            },
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/A_Gorge_in_the_Mountains_(Kauterskill_Clove)_MET_R49X_351R2.jpg",
+              imageAlt:     "A Gorge in the Mountains (Kauterskill Clove) by Sanford Robinson Gifford",
+              imageCaption: "Sanford Robinson Gifford, A Gorge in the Mountains (Kauterskill Clove) — 1862, Metropolitan Museum of Art, New York",
+              name:         "Sanford Robinson Gifford",
+              label:        "The Painter of Aerial Light",
+              paragraphs: [
+                "Sanford Robinson Gifford (1823–1880) was the most atmospheric of the Luminists — a painter for whom the real subject of any landscape was the quality of air between viewer and scene. He called this quality \"ether\" and spent his career learning to render it: the specific haze of late afternoon, the way mountain ridges dissolve into sky, the moment when solid and vaporous become indistinguishable.",
+                "\"A Gorge in the Mountains (Kauterskill Clove)\" (1862) shows the Catskills' most dramatic ravine bathed in golden afternoon light. The trees and rocks are present but approximate — dissolved by the luminous air that Gifford considered the true subject. He was not painting Kauterskill Clove so much as painting the light that Kauterskill Clove happened to hold on a specific afternoon in October."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Took Luminism to its logical extreme: the landscape as a vehicle for rendering immaterial atmospheric light. His work influenced the American plein-air tradition and the later tradition of landscape as pure meditation on visibility."
+            },
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Martin_Johnson_Heade_-Thunder_Storm_on_Narragansett_Bay_ATC.jpg",
+              imageAlt:     "Thunderstorm over Narragansett Bay by Martin Johnson Heade",
+              imageCaption: "Martin Johnson Heade, Thunder Storm on Narragansett Bay — 1868, Amon Carter Museum of American Art, Fort Worth",
+              name:         "Martin Johnson Heade",
+              label:        "The Prophet of Weather",
+              paragraphs: [
+                "Martin Johnson Heade (1819–1904) painted storms — not the dramatic lightning-strike storms of popular imagination, but the long ominous pre-storm stillness. His paintings show the moment when the light goes strange, the water goes glassy, and every living thing falls quiet. His storms are coming; they have not arrived. The tension is the subject.",
+                "\"Thunderstorm over Narragansett Bay\" (1868) is his masterpiece in this mode: a narrow horizontal canvas, a bay flat as a mirror, sails hanging limp, a dark wall of cloud moving in from the left. Everything is calm; everything is about to change. The painting has a nearly cinematic quality of frozen time — a single frame extracted from a sequence of catastrophe."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Mapped a previously unexplored emotional territory in American landscape: the sublime of anxiety rather than awe. His pre-storm paintings are among the most psychologically acute works of 19th-century American art."
+            }
+          ],
+          closingLine: "Between them, Kensett, Gifford, and Heade demonstrated that the American landscape's richest subject was not its grandeur but its light — and that light could carry silence, menace, and transcendence in equal measure."
+        },
+        {
+          id:       "west",
+          navLabel: "West",
+          part:     "Part 4",
+          title:    "The American West",
+          intro:    "As the railroad pushed west, painters followed — finding in the new territories a landscape that exceeded anything the East could offer, and a political urgency their predecessors had never faced.",
+          cards: [
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Rainbow_over_the_Grand_Canyon_of_the_Yellowstone%2C_1900%2C_by_Thomas_Moran_-_SAAM_-_DSC00847.JPG",
+              imageAlt:     "Rainbow over the Grand Canyon of the Yellowstone by Thomas Moran",
+              imageCaption: "Thomas Moran, Rainbow over the Grand Canyon of the Yellowstone — 1900, Smithsonian American Art Museum, Washington D.C.",
+              name:         "Thomas Moran",
+              label:        "The Painter of Yellowstone",
+              paragraphs: [
+                "Thomas Moran (1837–1926) joined the Hayden Geological Survey's 1871 expedition to the Yellowstone region — then essentially unknown to the American public — and returned with sketches he transformed into a seven-by-twelve-foot canvas: \"The Grand Canyon of the Yellowstone\" (1872). Congress purchased it for $10,000 and hung it in the Senate lobby. It was among the paintings that directly influenced the decision to make Yellowstone the world's first national park.",
+                "Moran's Yellowstone was not documentary record. He rearranged topography to improve composition, heightened the volcanic colors to match the place's thermal intensity, and painted a landscape that felt less like an observed scene than a divine revelation. His paintings did not merely show Yellowstone — they argued that Yellowstone deserved to exist as it was, permanently and publicly, beyond the reach of private exploitation.",
+                "Moran would go on to paint the Grand Canyon, the Tetons, and much of the mountain West, always with the same mixture of precise observation and visionary amplification. He signed his paintings \"T-Y-M\" — Thomas \"Yellowstone\" Moran — a self-identification with a place that was also a principle."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Did more for American conservation than any other painter. His Yellowstone and Grand Canyon canvases helped create the national park system by making Congress believe, for the first time, that certain landscapes were irreplaceable and therefore inalienable."
+            },
+            {
+              imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/%27On_the_Cache_la_Poudre_River%2C_Colorado%27_by_Worthington_Whittredge%2C_De_Young_Museum.JPG",
+              imageAlt:     "On the Cache la Poudre River, Colorado by Worthington Whittredge",
+              imageCaption: "Worthington Whittredge, On the Cache la Poudre River, Colorado — 1871, de Young Museum, San Francisco",
+              name:         "Worthington Whittredge",
+              label:        "The Painter of the Plains",
+              paragraphs: [
+                "Worthington Whittredge (1820–1910) spent years studying in Düsseldorf before returning to America and struggling to find his footing. Europe had given him a way of seeing that did not fit the American landscape. He wrote later that he \"wandered about over the Catskills for a long time, scarcely knowing what I was looking for\" before finding, in the flatness of the Great Plains, a landscape that matched his temperament.",
+                "Where his contemporaries sought mountains and precipices, Whittredge painted the horizontal American West: the Cache la Poudre River in Colorado, the Platte River crossing, the long grassy stretches that ran unbroken to the horizon. He understood that the American sublime was not always vertical — that a flat plain under a high sky could carry as much weight as a Bierstadt peak, if you knew how to read it.",
+                "\"On the Cache la Poudre River, Colorado\" (1871) shows the river in late afternoon light, the meadow grass golden, the sky immense and cloudless. There is no drama, only openness — and the feeling, which Whittredge understood before most of his contemporaries, that this openness was itself extraordinary."
+              ],
+              footerLabel: "The Contribution",
+              footerText:  "Extended the Hudson River School to the horizontal landscape of the Great Plains, finding the sublime in flatness rather than grandeur. His work anticipates the 20th-century American tradition of painting prairie and sky as a form of philosophical inquiry."
+            }
+          ]
+        }
+      ],
+
+      coda: {
+        id:       "coda",
+        navLabel: "Coda",
+        part:     "Coda",
+        title:    "What They Left Behind",
+        intro:    "The Hudson River School ended as a movement by the 1880s, overtaken by European Impressionism and a generation that found its landscapes too earnest, too large, too morally freighted. The paintings went to storage. They came back out in the 1960s — and they have not left since.",
+        cards: [
+          {
+            title: "The Wilderness as National Identity",
+            text:  "Before the Hudson River School, Americans had no distinct visual artistic tradition. The movement gave the young republic a mythology rooted in the specific look of its wilderness: the Hudson Valley fog, the Catskill summit, the Sierra Nevada at golden hour. These painters argued that landscape was a form of patriotism — and that to paint the land was to claim it, love it, and defend it from those who would merely use it."
+          },
+          {
+            title: "The Light as Moral Subject",
+            text:  "From Durand's glades to Gifford's hazes to Heade's pre-storm stillness, the Hudson River School developed an obsessive relationship with American light — not as a technical problem to be solved but as a spiritual question to be asked. What does the quality of light on a particular October afternoon in the Catskills tell us about the nature of things? These painters treated that question as seriously as any theologian treated scripture."
+          },
+          {
+            title: "The Price of Progress",
+            text:  "The movement was born as industrialization accelerated and died as it triumphed. Cole watched the Hudson Valley railroads arrive. Bierstadt painted Yosemite as the transcontinental was being built. Moran's Yellowstone was a direct response to the threat of commercial exploitation. At its core, the Hudson River School was a movement in mourning — painting what it feared would be lost, knowing that fear was well founded, hoping the paintings might serve as evidence of what had been real."
+          }
+        ],
+        closingLine: "They were right to worry, and right to paint. The wilderness they depicted is diminished. The paintings remain."
+      }
+
+    }; // end CONFIG
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lora', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gallery: {
+                            50:  'var(--g50)',
+                            100: 'var(--g100)',
+                            200: 'var(--g200)',
+                            800: 'var(--g800)',
+                            900: 'var(--g900)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        #picker-panel button:hover { opacity: 0.8; }
+    </style>
+
+</head>
+<body class="font-sans antialiased">
+
+    <nav id="nav"></nav>
+
+    <header id="hero" class="relative h-screen flex items-center justify-center overflow-hidden"></header>
+
+    <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></main>
+
+    <footer id="footer" class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm"></footer>
+
+    <!-- Theme picker -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="theme-btn" onclick="togglePicker()"
+                class="w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-base bg-gallery-800 text-gallery-200 hover:bg-gallery-700 transition-colors">
+            &#9881;
+        </button>
+        <div id="picker-panel"
+             class="hidden absolute bottom-12 right-0 rounded shadow-xl overflow-hidden w-32 border border-gallery-800 bg-gallery-800">
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="imageModal"
+         class="fixed inset-0 z-[100] bg-black/90 hidden flex flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeModal()"
+                class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light">&times;</button>
+        <img id="modalImage" src="" alt="Enlarged view" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="modalCaption" class="text-gallery-200 mt-4 font-serif text-lg text-center"></p>
+    </div>
+
+    <script>
+    // ─── TEMPLATE (do not edit below) ────────────────────────────────────────
+
+    let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+    function applyTheme(theme) {
+        const r = document.documentElement;
+        r.style.setProperty('--g50',  theme.colors[50]);
+        r.style.setProperty('--g100', theme.colors[100]);
+        r.style.setProperty('--g200', theme.colors[200]);
+        r.style.setProperty('--g800', theme.colors[800]);
+        r.style.setProperty('--g900', theme.colors[900]);
+    }
+
+    function togglePicker() {
+        const panel = document.getElementById('picker-panel');
+        if (panel.classList.contains('hidden')) {
+            panel.innerHTML = CONFIG.themes.map(t => `
+                <button onclick="switchTheme('${t.id}')"
+                        style="display:block; width:100%; text-align:left; padding:8px 12px; font-size:0.8rem;
+                               color:${activeTheme.id === t.id ? '#f59e0b' : 'var(--g100)'}; background:none; border:none; cursor:pointer;">
+                    ${t.name}
+                </button>`).join('');
+            panel.classList.remove('hidden');
+        } else {
+            panel.classList.add('hidden');
+        }
+    }
+
+    function switchTheme(themeId) {
+        activeTheme = CONFIG.themes.find(t => t.id === themeId);
+        applyTheme(activeTheme);
+        document.getElementById('picker-panel').classList.add('hidden');
+        render();
+        document.querySelectorAll('.fade-in-section').forEach(el => el.classList.add('is-visible'));
+    }
+
+    function w(url, width) { return url + '?width=' + width; }
+
+    function chevron() {
+        return `<svg class="toggle-icon w-3 h-3 flex-shrink-0 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>`;
+    }
+
+    function renderCard(card, sIdx, cIdx, imgHeight) {
+        const paras = card.paragraphs.map(p => `<p>${p}</p>`).join('');
+        return `
+        <div class="bg-gallery-900 text-gallery-100 p-8 art-shadow">
+            <img src="${w(card.imageUrl, 800)}" loading="lazy" alt="${card.imageAlt}"
+                 class="w-full ${imgHeight} object-cover object-center mb-6 cursor-pointer"
+                 onclick="openCard(${sIdx}, ${cIdx})">
+            <h4 class="font-serif text-2xl mb-1">${card.name}</h4>
+            <span class="text-xs uppercase tracking-widest text-gallery-200 mb-3 block">${card.label}</span>
+            <button onclick="toggleAccordion(this)" class="flex items-center gap-2 text-xs uppercase tracking-widest text-amber-500 hover:text-amber-400 transition-colors mb-1">
+                ${chevron()}<span>Read more</span>
+            </button>
+            <div class="accordion-content">
+                <div class="space-y-3 text-sm pt-2">${paras}</div>
+                <div class="mt-6 pt-4 border-t border-gallery-800">
+                    <strong class="text-amber-500 block mb-1">${card.footerLabel}</strong>
+                    <p class="text-sm">${card.footerText}</p>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function renderSection(section, sIdx) {
+        const count = section.cards.length;
+        const grid  = count === 3 ? 'grid-cols-1 md:grid-cols-3 gap-8' : 'grid-cols-1 md:grid-cols-2 gap-8';
+        const imgH  = count === 2 ? 'h-64' : 'h-48';
+        const cards = section.cards.map((c, cIdx) => renderCard(c, sIdx, cIdx, imgH)).join('');
+
+        const bq = section.blockquote ? `
+        <blockquote class="border-l-4 border-amber-500 pl-6 my-12 font-serif italic text-2xl max-w-3xl mx-auto">
+            "${section.blockquote.text}"
+            <cite class="block text-sm font-normal mt-2 not-italic text-gallery-200">— ${section.blockquote.attribution}</cite>
+        </blockquote>` : '';
+
+        const closing = section.closingLine ? `
+        <p class="mt-10 text-center max-w-4xl mx-auto italic text-lg font-serif">${section.closingLine}</p>` : '';
+
+        return `
+        <section id="${section.id}" class="py-16 md:py-24 border-b border-gallery-800 fade-in-section">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${section.part}</h2>
+                <h3 class="font-serif text-4xl mb-4">${section.title}</h3>
+                <p class="text-lg">${section.intro}</p>
+            </div>
+            <div class="grid ${grid}">${cards}</div>
+            ${bq}${closing}
+        </section>`;
+    }
+
+    function renderCoda() {
+        const { coda } = CONFIG;
+        const cards = coda.cards.map(c => `
+        <div class="bg-gallery-900 text-gallery-100 p-8 art-shadow flex flex-col">
+            <h4 class="font-serif text-xl mb-3 text-amber-500">${c.title}</h4>
+            <p class="text-sm flex-grow">${c.text}</p>
+        </div>`).join('');
+
+        return `
+        <section id="${coda.id}" class="py-16 md:py-24 fade-in-section">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${coda.part}</h2>
+                <h3 class="font-serif text-4xl mb-4">${coda.title}</h3>
+                <p class="text-lg font-serif italic">${coda.intro}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">${cards}</div>
+            <p class="text-center max-w-2xl mx-auto text-lg font-serif italic text-gallery-200">${coda.closingLine}</p>
+        </section>`;
+    }
+
+    function render() {
+        const { meta, hero, sections, coda } = CONFIG;
+        const dark = activeTheme.dark;
+        const textMuted = dark ? 'text-gallery-200' : 'text-gallery-800';
+
+        document.title = meta.pageTitle;
+
+        document.body.className = `${dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800'} font-sans antialiased selection:bg-amber-700 selection:text-white`;
+
+        // Nav
+        const navEl = document.getElementById('nav');
+        navEl.className = `fixed w-full z-50 ${dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200'} backdrop-blur-md border-b`;
+        const navLinks = [
+            `<a href="#" class="hover:text-amber-500 transition-colors">⌂</a>`,
+            ...[...sections, coda].map(s =>
+                `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`)
+        ].join('');
+        navEl.innerHTML = `
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <span class="font-serif font-bold text-xl tracking-tight">${meta.shortTitle}</span>
+                <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold">${navLinks}</div>
+            </div>
+        </div>`;
+
+        // Hero
+        const heroBtn = dark
+            ? 'border-gallery-200 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900'
+            : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
+        const heroGrad = dark
+            ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900'
+            : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
+        document.getElementById('hero').innerHTML = `
+        <div class="absolute inset-0 z-0">
+            <img src="${w(hero.imageUrl, 1600)}" alt="${hero.imageAlt}"
+                 class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+            <div class="absolute inset-0 bg-gradient-to-b ${heroGrad}"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section is-visible">
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 ${dark ? 'text-gallery-50' : 'text-gallery-900'} leading-tight">${meta.heroTitle}</h1>
+            <p class="text-xl md:text-2xl ${textMuted} font-serif italic mb-8">${meta.subtitle}</p>
+            <a href="#${sections[0].id}"
+               class="inline-block border-2 ${heroBtn} px-8 py-3 uppercase tracking-widest text-sm transition-all duration-300">
+                ${hero.ctaText}
+            </a>
+        </div>`;
+
+        // Sections + Coda
+        document.getElementById('main').innerHTML =
+            sections.map((s, i) => renderSection(s, i)).join('') + renderCoda();
+
+        // Footer
+        document.getElementById('footer').innerHTML = `<p>${meta.footerText}</p>`;
+
+        // Scroll observer
+        const obs = new IntersectionObserver((entries, o) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); o.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-in-section').forEach(s => obs.observe(s));
+    }
+
+    // ─── INTERACTIONS ─────────────────────────────────────────────────────────
+
+    function openCard(sIdx, cIdx) {
+        const card = CONFIG.sections[sIdx].cards[cIdx];
+        openModal(card.imageUrl + '?width=1600', card.imageCaption);
+    }
+
+    function toggleAccordion(btn) {
+        const content = btn.nextElementSibling;
+        const icon    = btn.querySelector('.toggle-icon');
+        const label   = btn.querySelector('span');
+        const isOpen  = content.style.maxHeight && content.style.maxHeight !== '0px';
+        if (isOpen) {
+            content.style.maxHeight = '0';
+            icon.style.transform    = 'rotate(0deg)';
+            label.textContent       = 'Read more';
+        } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.style.transform    = 'rotate(180deg)';
+            label.textContent       = 'Read less';
+        }
+    }
+
+    const modal        = document.getElementById('imageModal');
+    const modalImg     = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+
+    function openModal(src, caption) {
+        modalImg.src = src; modalCaption.innerText = caption;
+        modal.classList.remove('hidden');
+        setTimeout(() => { modal.classList.remove('opacity-0'); modal.classList.add('opacity-100'); }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        modal.classList.remove('opacity-100'); modal.classList.add('opacity-0');
+        setTimeout(() => { modal.classList.add('hidden'); modalImg.src = ''; }, 300);
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+    // ─── GO ───────────────────────────────────────────────────────────────────
+    applyTheme(activeTheme);
+    render();
+    </script>
+
+</body>
+</html>
