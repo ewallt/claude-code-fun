@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Monet | The Light of Impressionism</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+
+ <script>
+   const CONFIG = {
+     meta: {
+       pageTitle:  "Monet | The Light of Impressionism",
+       heroTitle:  "Claude Monet",
+       shortTitle: "Monet",
+       subtitle:   "Architect of Impressionism and Master of Light",
+       footerText: "Dedicated to the enduring legacy of Claude Monet (1840–1926)."
+     },
+
+
+     defaultTheme: "coal",
+
+
+     themes: [
+       {
+         id:   "coal",
+         name: "Coal",
+         dark: true,
+         colors: { 50: "#fdfbf7", 100: "#f6f2e9", 200: "#e8dfcd", 800: "#2a2825", 900: "#1a1815" }
+       },
+       {
+         id:   "navy",
+         name: "Navy",
+         dark: true,
+         colors: { 50: "#f0f4fb", 100: "#dce8f5", 200: "#c7d2e8", 800: "#1a2744", 900: "#0f1729" }
+       },
+       {
+         id:   "forest",
+         name: "Forest",
+         dark: true,
+         colors: { 50: "#f0f5f1", 100: "#dceee0", 200: "#c7d8cb", 800: "#1a3a22", 900: "#0f2014" }
+       },
+       {
+         id:   "parchment",
+         name: "Parchment",
+         dark: false,
+         colors: { 50: "#fdfbf7", 100: "#f6f2e9", 200: "#e8dfcd", 800: "#2a2825", 900: "#1a1815" }
+       }
+     ],
+
+
+     hero: {
+       imageUrl: "Claude_Monet_-_Impression,_soleil_levant.jpg",
+       imageAlt: "Impression, Sunrise",
+       ctaText:  "Enter the Gallery"
+     },
+
+
+     sections: [
+       {
+         id:       "modern-gaze",
+         navLabel: "The Figure",
+         part:     "Part 1",
+         title:    "The Modern Gaze",
+         intro:    "Monet did not begin as a painter of lily ponds. His early works captured the fleeting dynamism of modern French life—the bustling energy of the railway and the spontaneous motion of the human figure outdoors.",
+         cards: [
+           {
+             imageUrl:     "Claude_Monet_-_Woman_with_a_Parasol_-_Madame_Monet_and_Her_Son_-_Google_Art_Project.jpg",
+             imageAlt:     "Woman with a parasol in a breezy field",
+             imageCaption: "Claude Monet, Woman with a Parasol, 1875, National Gallery of Art",
+             name:         "Woman with a Parasol",
+             label:        "Spontaneity",
+             paragraphs: [
+               "Painted in Argenteuil in 1875, this work captures Monet's wife Camille and their son Jean. Monet approached the painting as an informal family portrait but executed it with swift, dynamic brushwork to convey a fleeting moment.",
+               "The low vantage point silhouettes Camille against a swirling, cloud-swept sky. Sunlight filters through her parasol, illuminating her dress with reflections from the grass beneath her, demonstrating Monet's obsession with capturing the exact optical sensations of light and color."
+             ],
+             footerLabel:  "The Contribution",
+             footerText:   "Integrated the human figure seamlessly into the landscape, treating people and nature with the same atmospheric brushstrokes."
+           },
+           {
+             imageUrl:     "La_Gare_Saint-Lazare_-_Claude_Monet.jpg",
+             imageAlt:     "Steam trains inside a glass-roofed station",
+             imageCaption: "Claude Monet, La Gare Saint-Lazare, 1877, Musée d'Orsay",
+             name:         "Gare Saint-Lazare",
+             label:        "Industrial Vigor",
+             paragraphs: [
+               "In 1877, Monet rented a studio near the Gare Saint-Lazare train station in Paris. He painted twelve canvases of the station, fascinated by the interplay of light, steam, and the geometric iron architecture.",
+               "Rather than focusing on the trains as solid mechanical objects, Monet treated the billowing steam and smoke as atmospheric phenomena, similar to clouds, dissolving the heavy industrial setting into a symphony of color and movement."
+             ],
+             footerLabel:  "The Breakthrough",
+             footerText:   "Transformed a gritty, modern industrial scene into a subject worthy of high art through sheer atmospheric brilliance."
+           }
+         ],
+         blockquote: {
+           text:        "For me, a landscape does not exist in its own right, since its appearance changes at every moment; but the surrounding atmosphere brings it to life.",
+           attribution: "Claude Monet"
+         }
+       },
+       {
+         id:       "structure-of-light",
+         navLabel: "The Cathedral",
+         part:     "Part 2",
+         title:    "The Structure of Light",
+         intro:    "In the 1890s, Monet shifted his focus from modern life to a rigorous examination of light itself. He painted the facade of Rouen Cathedral over thirty times, tracking the minute shifts of sunlight and shadow across its Gothic stonework.",
+         cards: [
+           {
+             imageUrl:     "Claude_Monet_-_Rouen_Cathedral_Fa%C3%A7ade_and_Tour_d%27Albane_%28Morning_Effect%29_-_Google_Art_Project.jpg",
+             imageAlt:     "Cathedral facade in cool, blue morning light",
+             imageCaption: "Claude Monet, Rouen Cathedral (Morning Effect), 1894",
+             name:         "Morning Effect",
+             label:        "Dissolving Form",
+             paragraphs: [
+               "Painted in 1894 from a room across the square, this view of the Tour d'Albane captures the cathedral in the cool, hazy light of early morning.",
+               "Monet applied paint in thick, encrusted layers (impasto), building up a textured surface that mimics the rough stone of the facade. Yet, paradoxically, the heavy architecture seems to lose its solidity, rendered almost weightless by the surrounding atmosphere."
+             ],
+             footerLabel:  "Technique",
+             footerText:   "Used heavy impasto to physically reconstruct the play of light on textured stone."
+           },
+           {
+             imageUrl:     "Claude_Monet_-_Rouen_Cathedral,_West_Facade,_Sunlight.jpg",
+             imageAlt:     "Cathedral facade baking in warm golden sunlight",
+             imageCaption: "Claude Monet, Rouen Cathedral, West Facade, Sunlight, 1894",
+             name:         "Full Sunlight",
+             label:        "Vibrant Heat",
+             paragraphs: [
+               "As the sun rose higher, Monet switched canvases to capture the facade baking in the midday heat. The cool blues of the morning give way to blazing oranges, yellows, and warm ochres.",
+               "The cathedral series marked a turning point in Monet's career. He was no longer painting a specific object, but rather the envelope of light that surrounded the object. The subject of the painting became the atmosphere itself."
+             ],
+             footerLabel:  "Serial Art",
+             footerText:   "Proved that a single subject could yield infinite variations, laying the groundwork for serial repetition in art."
+           }
+         ],
+         blockquote: {
+           text:        "Every day I discover things I hadn't seen the day before... I am trying to do the impossible.",
+           attribution: "Claude Monet"
+         }
+       },
+       {
+         id:       "giverny",
+         navLabel: "Giverny",
+         part:     "Part 3",
+         title:    "The Final Masterpieces",
+         intro:    "In his later years, Monet retreated to his garden at Giverny. Having spent his life traveling to find landscapes, he now constructed his own motif: a sprawling water garden that would occupy his artistic vision for the rest of his life.",
+         cards: [
+           {
+             imageUrl:     "Claude_Monet_-_Water_Lilies_-_Google_Art_Project.jpg",
+             imageAlt:     "Abstracted water lilies floating on a blue and green pond",
+             imageCaption: "Claude Monet, Water Lilies, 1914–1926",
+             name:         "The Water Lilies",
+             label:        "Borderless Vision",
+             paragraphs: [
+               "In his final decades, Monet focused almost entirely on the surface of his lily pond. He eliminated the horizon line and the banks of the pond, immersing the viewer entirely in the reflection of the sky on the water.",
+               "These massive, panoramic canvases push the boundaries of Impressionism. The forms of the lilies dissolve into loose, sweeping gestures of pure color, creating immersive environments rather than traditional easel paintings."
+             ],
+             footerLabel:  "The Climax",
+             footerText:   "Pushed representational painting to the absolute brink of abstraction, leaving a profound impact on future generations."
+           }
+         ],
+         closingLine: "His garden was his ultimate creation—a living painting he tended daily before capturing it on canvas."
+       }
+     ],
+
+
+     coda: {
+       id:       "coda",
+       navLabel: "Coda",
+       part:     "Coda",
+       title:    "The Father of Abstraction",
+       intro:    "Claude Monet's relentless pursuit of optical truth ultimately dismantled the rigid academic rules of painting. By prioritizing sensation over solid form, he inadvertently paved the way for modern art.",
+       cards: [
+         {
+           title: "Dissolving Boundaries",
+           text:  "By focusing obsessively on light and atmosphere rather than solid form, Monet unwittingly pushed painting toward abstraction. His late Water Lilies are virtually devoid of perspective."
+         },
+         {
+           title: "Serial Vision",
+           text:  "His practice of painting the same subject repeatedly under different lighting conditions influenced 20th-century movements, inspiring the serial approaches of Pop Art and Minimalism."
+         },
+         {
+           title: "A World Built to Paint",
+           text:  "At Giverny, Monet became both landscaper and painter. He designed the very nature he wished to depict, controlling the motif entirely before ever lifting a brush."
+         }
+       ],
+       closingLine: "He sought to paint the air, and in doing so, changed how we see the world."
+     }
+   };
+ </script>
+
+
+ <script>
+   tailwind.config = {
+     theme: {
+       extend: {
+         fontFamily: {
+           sans: ["Lora", "serif"],
+           serif: ["Playfair Display", "serif"]
+         },
+         colors: {
+           gallery: {
+             50:  "var(--g50)",
+             100: "var(--g100)",
+             200: "var(--g200)",
+             800: "var(--g800)",
+             900: "var(--g900)"
+           }
+         }
+       }
+     }
+   }
+ </script>
+
+
+ <style>
+   :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+  
+   html { scroll-behavior: smooth; }
+  
+   .fade-in-section {
+     opacity: 0; transform: translateY(20px);
+     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+   }
+   .fade-in-section.is-visible { opacity: 1; transform: none; }
+  
+   .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+   .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  
+   .hero-bg {
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+   }
+ </style>
+</head>
+<body id="app-body" class="antialiased transition-colors duration-500">
+
+
+ <div id="app"></div>
+
+
+ <!-- Lightbox Overlay -->
+ <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/90 items-center justify-center p-4 md:p-8 backdrop-blur-sm" onclick="closeLightbox(event)">
+   <div class="relative w-full max-w-6xl max-h-full flex flex-col items-center justify-center">
+     <button onclick="closeLightbox(event)" class="absolute -top-12 right-0 text-gallery-200 hover:text-white text-4xl focus:outline-none transition-colors">&times;</button>
+     <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] object-contain shadow-2xl rounded-sm" onclick="event.stopPropagation()" alt="Enlarged view">
+     <p id="lightbox-caption" class="text-gallery-200 mt-6 font-serif italic text-center text-sm md:text-base tracking-wide"></p>
+   </div>
+ </div>
+
+
+ <script>
+   let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+   let pickerOpen = false;
+
+
+   function applyTheme(theme) {
+     const r = document.documentElement;
+     r.style.setProperty("--g50",  theme.colors[50]);
+     r.style.setProperty("--g100", theme.colors[100]);
+     r.style.setProperty("--g200", theme.colors[200]);
+     r.style.setProperty("--g800", theme.colors[800]);
+     r.style.setProperty("--g900", theme.colors[900]);
+   }
+
+
+   function switchTheme(themeId) {
+     activeTheme = CONFIG.themes.find(t => t.id === themeId);
+     applyTheme(activeTheme);
+     render();
+     setTimeout(() => {
+       document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+     }, 50);
+   }
+  
+   function togglePicker() {
+     pickerOpen = !pickerOpen;
+     const panel = document.getElementById('picker-panel');
+     if (panel) panel.style.display = pickerOpen ? 'block' : 'none';
+   }
+
+
+   function toggleAccordion(btn) {
+     const content = btn.nextElementSibling;
+     const icon = btn.querySelector('.chevron');
+     if (content.style.maxHeight) {
+       content.style.maxHeight = null;
+       icon.style.transform = 'rotate(0deg)';
+     } else {
+       content.style.maxHeight = content.scrollHeight + "px";
+       icon.style.transform = 'rotate(180deg)';
+     }
+   }
+
+
+   function getImg(filename, width=800) {
+     return `https://commons.wikimedia.org/wiki/Special:FilePath/${filename}?width=${width}`;
+   }
+
+
+   function openLightbox(url, caption) {
+     const lb = document.getElementById('lightbox');
+     document.getElementById('lightbox-img').src = url;
+     document.getElementById('lightbox-caption').textContent = caption;
+     lb.classList.remove('hidden');
+     lb.classList.add('flex');
+   }
+
+
+   function closeLightbox(e) {
+     if (e && e.target.id === 'lightbox-img') return;
+     const lb = document.getElementById('lightbox');
+     lb.classList.add('hidden');
+     lb.classList.remove('flex');
+     setTimeout(() => { document.getElementById('lightbox-img').src = ''; }, 300);
+   }
+
+
+   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+
+   function initObserver() {
+     const observer = new IntersectionObserver((entries) => {
+       entries.forEach(entry => {
+         if (entry.isIntersecting) {
+           entry.target.classList.add('is-visible');
+           observer.unobserve(entry.target);
+         }
+       });
+     }, { threshold: 0.15 });
+     document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+   }
+
+
+   function render() {
+     const dark = activeTheme.dark;
+     const appBody = document.getElementById('app-body');
+    
+     const bodyClass = dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800';
+     const navBgClass = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
+     const heroGrad = dark ? 'from-gallery-900/40 via-gallery-900/80 to-gallery-900' : 'from-gallery-50/30 via-gallery-50/80 to-gallery-50';
+     const btnClass = dark ? 'border-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 hover:bg-gallery-800 hover:text-gallery-50';
+
+
+     appBody.className = `${bodyClass} antialiased transition-colors duration-500`;
+
+
+     let html = `
+       <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md border-b ${navBgClass} transition-colors duration-500">
+         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+           <a href="#" class="font-serif font-bold text-xl tracking-wide hover:text-amber-500 transition-colors">⌂ ${CONFIG.meta.shortTitle}</a>
+           <div class="hidden md:flex space-x-8 text-xs uppercase tracking-widest font-semibold">
+             ${CONFIG.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('')}
+             <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
+           </div>
+         </div>
+       </nav>
+
+
+       <header class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+         <div class="absolute inset-0 hero-bg opacity-40 blur-sm scale-105 transition-all duration-1000" style="background-image: url('${getImg(CONFIG.hero.imageUrl, 1600)}')"></div>
+         <div class="absolute inset-0 bg-gradient-to-b ${heroGrad} transition-colors duration-500"></div>
+         <div class="relative z-10 text-center px-4 max-w-4xl fade-in-section">
+           <h1 class="font-serif text-6xl md:text-8xl font-bold mb-6 drop-shadow-lg">${CONFIG.meta.heroTitle}</h1>
+           <p class="font-serif italic text-xl md:text-3xl opacity-90 mb-12 drop-shadow">${CONFIG.meta.subtitle}</p>
+           <a href="#${CONFIG.sections[0].id}" class="inline-block px-10 py-4 border border-current ${btnClass} font-semibold uppercase tracking-widest text-sm transition-colors duration-300">${CONFIG.hero.ctaText}</a>
+         </div>
+       </header>
+      
+       <main class="max-w-7xl mx-auto px-6 py-24 space-y-32">
+     `;
+
+
+     CONFIG.sections.forEach(sec => {
+       const isSingle = sec.cards.length === 1;
+       const gridCols = isSingle ? 'md:grid-cols-1 max-w-3xl mx-auto' : (sec.cards.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3');
+       const imgHeight = isSingle ? 'h-96' : (sec.cards.length === 2 ? 'h-64' : 'h-48');
+
+
+       html += `
+         <section id="${sec.id}" class="scroll-mt-28 pt-8 border-t border-gallery-200/30">
+           <div class="max-w-3xl mb-16 fade-in-section">
+             <span class="text-amber-500 font-bold uppercase tracking-widest text-xs">${sec.part}</span>
+             <h2 class="font-serif text-4xl md:text-5xl font-bold mt-3 mb-6">${sec.title}</h2>
+             <p class="text-lg md:text-xl leading-relaxed opacity-90">${sec.intro}</p>
+           </div>
+
+
+           <div class="grid grid-cols-1 ${gridCols} gap-8 fade-in-section">
+             ${sec.cards.map(card => `
+               <div class="bg-gallery-900 text-gallery-100 rounded-xl overflow-hidden art-shadow transition-transform hover:-translate-y-1 duration-300 flex flex-col">
+                 <div class="relative w-full ${imgHeight} cursor-pointer group shrink-0" onclick="openLightbox('${getImg(card.imageUrl, 1600)}', '${card.imageCaption.replace(/'/g, "\\'")}')">
+                   <img src="${getImg(card.imageUrl, 800)}" alt="${card.imageAlt}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                   <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                     <span class="opacity-0 group-hover:opacity-100 text-white font-serif italic text-lg transition-opacity duration-300 drop-shadow-md">Expand</span>
+                   </div>
+                 </div>
+                 <div class="p-6 md:p-8 flex-1 flex flex-col">
+                   <div class="flex justify-between items-baseline mb-6">
+                     <h3 class="font-serif text-2xl font-bold">${card.name}</h3>
+                     <span class="text-amber-500 text-xs font-bold tracking-widest uppercase ml-4 text-right">${card.label}</span>
+                   </div>
+                   <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-2 mt-auto text-gallery-200 hover:text-amber-500 transition-colors focus:outline-none">
+                     <span class="font-serif italic text-lg">Read more</span>
+                     <svg class="chevron w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                   </button>
+                   <div class="accordion-content">
+                     <div class="pt-6 space-y-4 text-base md:text-sm leading-relaxed text-gallery-200">
+                       ${card.paragraphs.map(p => `<p>${p}</p>`).join('')}
+                     </div>
+                     <div class="mt-8 pt-5 border-t border-gallery-800">
+                       <h4 class="text-amber-500 text-xs font-bold uppercase tracking-widest mb-2">${card.footerLabel}</h4>
+                       <p class="text-sm md:text-xs text-gallery-200 leading-relaxed">${card.footerText}</p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             `).join('')}
+           </div>
+       `;
+
+
+       if (sec.blockquote) {
+         html += `
+           <div class="mt-24 max-w-4xl mx-auto text-center fade-in-section px-4">
+             <blockquote class="font-serif text-2xl md:text-4xl italic leading-snug mb-6 text-gallery-800 dark:text-gallery-100 opacity-90">"${sec.blockquote.text}"</blockquote>
+             <cite class="text-amber-500 font-bold uppercase tracking-widest text-sm not-italic">— ${sec.blockquote.attribution}</cite>
+           </div>
+         `;
+       }
+
+
+       if (sec.closingLine) {
+         html += `
+           <p class="mt-20 text-center text-lg font-serif italic opacity-80 fade-in-section">${sec.closingLine}</p>
+         `;
+       }
+
+
+       html += `</section>`;
+     });
+
+
+     // Coda Section
+     html += `
+       <section id="${CONFIG.coda.id}" class="scroll-mt-28 pt-8 border-t border-gallery-200/30 fade-in-section">
+         <div class="max-w-3xl mb-16">
+           <span class="text-amber-500 font-bold uppercase tracking-widest text-xs">${CONFIG.coda.part}</span>
+           <h2 class="font-serif text-4xl md:text-5xl font-bold mt-3 mb-6">${CONFIG.coda.title}</h2>
+           <p class="text-lg md:text-xl leading-relaxed opacity-90">${CONFIG.coda.intro}</p>
+         </div>
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+           ${CONFIG.coda.cards.map(card => `
+             <div class="bg-gallery-900 text-gallery-100 p-8 rounded-xl art-shadow transition-transform hover:-translate-y-1 duration-300 h-full flex flex-col border border-gallery-800">
+               <h3 class="text-amber-500 font-serif text-2xl font-bold mb-4">${card.title}</h3>
+               <p class="text-sm md:text-base leading-relaxed text-gallery-200 flex-1">${card.text}</p>
+             </div>
+           `).join('')}
+         </div>
+         ${CONFIG.coda.closingLine ? `<p class="mt-24 text-center text-xl font-serif italic opacity-90">"${CONFIG.coda.closingLine}"</p>` : ''}
+       </section>
+     </main>
+
+
+     <footer class="bg-gallery-900 text-gallery-200 py-10 text-center text-sm border-t border-gallery-800">
+       <div class="max-w-7xl mx-auto px-6 opacity-70">
+         ${CONFIG.meta.footerText}
+       </div>
+     </footer>
+
+
+     <!-- Gear Picker -->
+     <div class="fixed bottom-6 right-6 z-50">
+       <button onclick="togglePicker()" class="w-12 h-12 rounded-full bg-gallery-800 text-gallery-200 shadow-xl flex items-center justify-center hover:text-amber-500 transition-colors focus:outline-none ring-1 ring-gallery-200/20">
+         <span class="text-2xl leading-none" style="transform: translateY(-1px)">&#9881;</span>
+       </button>
+       <div id="picker-panel" class="hidden absolute bottom-16 right-0 bg-gallery-800 border border-gallery-200/10 p-4 rounded-xl shadow-2xl w-48 art-shadow origin-bottom-right">
+         <h4 class="text-xs font-bold text-gallery-200 uppercase tracking-widest mb-3 px-2">Select Theme</h4>
+         <div class="space-y-1">
+           ${CONFIG.themes.map(t => `
+             <button onclick="switchTheme('${t.id}'); togglePicker();" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-gallery-900 transition-colors text-sm ${t.id === activeTheme.id ? 'text-amber-500 font-bold bg-gallery-900/60' : 'text-gallery-100 font-medium'}">
+               ${t.name}
+             </button>
+           `).join('')}
+         </div>
+       </div>
+     </div>
+     `;
+
+
+     document.getElementById('app').innerHTML = html;
+     initObserver();
+   }
+
+
+   // Initialization
+   applyTheme(activeTheme);
+   window.onload = render;
+ </script>
+</body>
+</html>
