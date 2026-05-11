@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Green Cathedral: Forests in Western Art</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lora', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gallery: {
+                            50:  'var(--g50)',
+                            100: 'var(--g100)',
+                            200: 'var(--g200)',
+                            800: 'var(--g800)',
+                            900: 'var(--g900)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        #picker-panel button:hover { opacity: 0.8; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-amber-200 selection:text-gallery-900">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 backdrop-blur-md border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <span class="font-serif font-bold text-xl tracking-tight">The Green Cathedral</span>
+                <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold">
+                    <a href="#barbizon" class="hover:text-amber-700 transition-colors">Barbizon</a>
+                    <a href="#sublime" class="hover:text-amber-700 transition-colors">Sublime</a>
+                    <a href="#russia" class="hover:text-amber-700 transition-colors">Russia</a>
+                    <a href="#decoration" class="hover:text-amber-700 transition-colors">Decoration</a>
+                    <a href="#imagined" class="hover:text-amber-700 transition-colors">Imagined</a>
+                    <a href="#legacy" class="hover:text-amber-700 transition-colors">Legacy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shishkin%2C_Ivan_-_Morning_in_a_Pine_Forest.jpg?width=1600"
+                 alt="Morning in a Pine Forest by Ivan Shishkin"
+                 class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+            <div id="hero-overlay" class="absolute inset-0"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section is-visible">
+            <h1 id="hero-h1" class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">The Green Cathedral</h1>
+            <p id="hero-sub" class="text-xl md:text-2xl font-serif italic mb-8">How painters found in the forest a mirror of the soul</p>
+            <a id="hero-btn" href="#barbizon" class="inline-block border-2 px-8 py-3 uppercase tracking-widest text-sm hover:opacity-80 transition-opacity duration-300">Enter the Forest</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- Part 1: The Barbizon Discovery — Layout B (two contrast cards) -->
+        <section id="barbizon" class="py-16 md:py-24 border-b border-gallery-200 fade-in-section">
+            <h2 class="text-xs uppercase tracking-widest text-amber-700 mb-2 font-bold text-center">Part 1</h2>
+            <h3 class="font-serif text-4xl mb-6 text-center">The Barbizon Discovery</h3>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-4">In the 1830s, a group of French painters made a decision that would change the course of art: they left their Paris studios and went to live in the forest.</p>
+            <p class="text-base text-center max-w-3xl mx-auto mb-16 leading-relaxed">The village of Barbizon stood at the edge of the Forest of Fontainebleau, thirty miles south of Paris. For centuries, the forest had appeared in painting only as backdrop — the setting for mythological hunts, symbolic wildernesses, nymph-strewn clearings. The Barbizon painters asked a different question: what if the forest itself were the subject? What if the light falling through an oak canopy were as worthy of attention as any battle or allegory? The answer produced a revolution.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Corot — light card -->
+                <div class="bg-gallery-50 text-gallery-800 p-8 art-shadow flex flex-col h-full">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jean-Baptiste-Camille_Corot_-_Forest_of_Fontainebleau_-_Google_Art_Project.jpg?width=800"
+                         loading="lazy"
+                         alt="Forest of Fontainebleau by Corot"
+                         class="w-full h-64 object-cover object-center mb-6 cursor-pointer"
+                         onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Jean-Baptiste-Camille_Corot_-_Forest_of_Fontainebleau_-_Google_Art_Project.jpg?width=1600', 'Jean-Baptiste-Camille Corot, Forest of Fontainebleau (c. 1860) — Museum of Fine Arts, Boston')">
+                    <h4 class="font-serif text-2xl mb-1">Jean-Baptiste-Camille Corot</h4>
+                    <span class="text-xs uppercase tracking-widest text-gallery-800 mb-6 block">The Poet of Light</span>
+                    <div class="space-y-3 text-sm flex-grow">
+                        <p>Corot called light "the first thing in painting" — not the object, not the story, but the quality of illumination at a specific hour. He trained in Italy before discovering that the forests of northern France contained everything he needed: soft, filtering canopies; silver-green atmospheres; the particular quality of morning mist on standing water.</p>
+                        <p>His Fontainebleau paintings have a quality of suspended time. The light is always morning or evening, never noon; always soft, never harsh. He worked in layers, returning to the same motifs across decades, each time finding something different in the same clearing. He never joined any formal school or wrote a manifesto. But nearly every painter who came after him learned from his insistence that a mood was as real as a mountain.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gallery-100">
+                        <strong class="text-amber-700 block mb-1">The Contribution</strong>
+                        <p class="text-sm">Proved that a forest's atmosphere — its light, its silences, its seasonal shifts — was a worthy and inexhaustible subject. He freed landscape from its role as backdrop and made it protagonist.</p>
+                    </div>
+                </div>
+
+                <!-- Théodore Rousseau — dark card -->
+                <div class="bg-gallery-900 text-gallery-100 p-8 art-shadow flex flex-col h-full">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Th%C3%A9odore_Rousseau_-_Edge_of_the_Forest_at_Fontainebleau%2C_Setting_Sun_-_WGA20162.jpg?width=800"
+                         loading="lazy"
+                         alt="Edge of the Forest at Fontainebleau, Setting Sun by Théodore Rousseau"
+                         class="w-full h-64 object-cover object-center mb-6 cursor-pointer"
+                         onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Th%C3%A9odore_Rousseau_-_Edge_of_the_Forest_at_Fontainebleau%2C_Setting_Sun_-_WGA20162.jpg?width=1600', 'Théodore Rousseau, Edge of the Forest at Fontainebleau, Setting Sun')">
+                    <h4 class="font-serif text-2xl mb-1">Théodore Rousseau</h4>
+                    <span class="text-xs uppercase tracking-widest text-gallery-200 mb-6 block">The Exile of Barbizon</span>
+                    <div class="space-y-3 text-sm flex-grow">
+                        <p>Where Corot was gentle, Rousseau was obsessive. He submitted to the official Salon year after year, and year after year — from 1836 to 1849 — his work was rejected. The Académie found his landscapes too raw, too direct, insufficiently composed. He became known as "the Great Refusal."</p>
+                        <p>He responded by going deeper into the forest. He moved to Barbizon permanently and spent decades studying the same oaks, the same stands of silver birch, the same evening light at the forest's edge. His paintings have a peculiar intensity — the trees do not merely stand; they loom. The forest in his work is alive in an almost uncomfortable way.</p>
+                        <p>In 1849, the political climate shifted and the Salon opened. Rousseau submitted and was immediately accepted. He died in Barbizon in 1867, one of the most celebrated painters in France, never having left the forest that had once refused him.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gallery-800">
+                        <strong class="text-amber-500 block mb-1">The Contribution</strong>
+                        <p class="text-sm">Treated the forest as a living organism deserving of sustained, intense observation. His practice of returning to the same site across years anticipated Monet's serial paintings by decades.</p>
+                    </div>
+                </div>
+            </div>
+
+            <blockquote class="border-l-4 border-amber-500 pl-6 my-12 font-serif italic text-2xl max-w-3xl mx-auto">
+                "The real work of art is but a reflex of the light of nature."
+                <cite class="block text-sm font-normal mt-2 not-italic">— Jean-Baptiste-Camille Corot</cite>
+            </blockquote>
+        </section>
+
+        <!-- Part 2: The Romantic Sublime — Layout A -->
+        <section id="sublime" class="py-16 md:py-24 border-b border-gallery-200 fade-in-section">
+            <h2 class="text-xs uppercase tracking-widest text-amber-700 mb-2 font-bold">Part 2</h2>
+            <h3 class="font-serif text-4xl mb-10">The Romantic Sublime: Friedrich's Forest</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="space-y-4 text-lg leading-relaxed">
+                        <p>In Germany, the relationship between a people and their forests runs deeper than aesthetics. The word <em>Wald</em> — forest — carries in German a weight it does not carry in French or English. German Romanticism made the forest into a spiritual category: a place of encounter with the infinite, of withdrawal from the corrupt world of courts and cities, of communion with something older than civilization.</p>
+                        <p>Caspar David Friedrich (1774–1840) painted forests the way others painted cathedrals. In his <em>Abbey in the Oakwood</em> (1810), winter oaks stand bare against a pale sky; the ruins of a Gothic chapel sink into frozen ground; monks move in candlelit procession through the snow. The forest is not backdrop — it is the theological argument. The oaks are permanent; the abbey is rubble; the monks are brief. Against eternity, human institutions are nothing.</p>
+                        <p>Friedrich's forest paintings are never comfortable. He understood the German concept of <em>Waldeinsamkeit</em> — forest-solitude — as something to be sought and endured rather than merely enjoyed. The figure in his forest paintings (and there is almost always a figure, always small, always alone) has not come there for a walk. They have come to face something.</p>
+                    </div>
+                    <blockquote class="border-l-4 border-amber-500 pl-6 my-8 font-serif italic text-2xl">
+                        "Close your bodily eye, so that you may see your picture first with the spiritual eye."
+                        <cite class="block text-sm font-normal mt-2 not-italic">— Caspar David Friedrich</cite>
+                    </blockquote>
+                    <div class="bg-gallery-100 text-gallery-800 p-6 border-l-4 border-amber-500">
+                        <strong class="block mb-2">Der Chasseur im Walde (The Chasseur in the Forest, 1814)</strong>
+                        <p class="text-sm">Painted as Napoleon's armies retreated from Germany: a French soldier stands alone, dwarfed by towering firs, a raven perching on a stump before him. The forest does not threaten; it simply waits. Friedrich understood that the deepest fear the forest offered was not what it contained, but how small it made you feel.</p>
+                    </div>
+                </div>
+                <div class="relative cursor-pointer group"
+                     onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Caspar_David_Friedrich_-_Abtei_im_Eichwald_-_Google_Art_Project.jpg?width=1600', 'Caspar David Friedrich, Abbey in the Oakwood (1810) — Alte Nationalgalerie, Berlin')">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Caspar_David_Friedrich_-_Abtei_im_Eichwald_-_Google_Art_Project.jpg?width=800"
+                         loading="lazy"
+                         alt="Abbey in the Oakwood by Caspar David Friedrich"
+                         class="w-full h-auto art-shadow transition-transform duration-500 group-hover:scale-[1.02]">
+                    <p class="text-sm mt-4 italic text-center">Caspar David Friedrich, Abbey in the Oakwood (1810) — Alte Nationalgalerie, Berlin</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 3: The Russian Forest — Layout A reversed -->
+        <section id="russia" class="py-16 md:py-24 border-b border-gallery-200 fade-in-section">
+            <h2 class="text-xs uppercase tracking-widest text-amber-700 mb-2 font-bold">Part 3</h2>
+            <h3 class="font-serif text-4xl mb-10">The Russian Forest: Shishkin and the National Epic</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative cursor-pointer group"
+                     onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Shishkin%2C_Ivan_-_Morning_in_a_Pine_Forest.jpg?width=1600', 'Ivan Shishkin &amp; Konstantin Savitsky, Morning in a Pine Forest (1889) — State Tretyakov Gallery, Moscow')">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shishkin%2C_Ivan_-_Morning_in_a_Pine_Forest.jpg?width=800"
+                         loading="lazy"
+                         alt="Morning in a Pine Forest by Shishkin"
+                         class="w-full h-auto art-shadow transition-transform duration-500 group-hover:scale-[1.02]">
+                    <p class="text-sm mt-4 italic text-center">Ivan Shishkin &amp; Konstantin Savitsky, Morning in a Pine Forest (1889) — State Tretyakov Gallery, Moscow</p>
+                </div>
+                <div>
+                    <div class="space-y-4 text-lg leading-relaxed">
+                        <p>Ivan Shishkin (1832–1898) is to the Russian forest what Constable is to the English countryside: the painter who made a national landscape into a national consciousness. His nickname was <em>Tsar Lesa</em> — Tsar of the Forest — and it was not ironic. He painted pine and birch and oak with a documentary exactitude that was also a declaration of love.</p>
+                        <p>Shishkin trained in Düsseldorf and Munich, studying the German approach to landscape with systematic seriousness. Then he came home and spent forty years painting Russian forests — specifically, the great stands of maritime pine and silver birch that define the Russian interior as much as the steppe does.</p>
+                        <p>His forests are not spiritual in the German sense. They are physical, specific, patriarchal. The trees in his <em>Ship Pine Grove</em> are not symbols. They are trees — enormous, ancient, indifferent to human observation. That indifference is the point. The forest existed before Russia and will exist after. Painting it this precisely was an act of reverence.</p>
+                        <p><em>Morning in a Pine Forest</em>, his most famous work, was technically collaborative — the playful bear family was painted by Konstantin Savitsky. But the forest is all Shishkin: golden light filtering through enormous trunks, mist pooling in the distance, the scale of the pines making the bears, and by extension the viewer, very small.</p>
+                    </div>
+                    <div class="mt-8 bg-gallery-100 text-gallery-800 p-8 rounded-sm">
+                        <h4 class="font-serif text-xl mb-3">The Russian Birch</h4>
+                        <p class="text-sm">In Russian culture, the white-barked birch (<em>berëza</em>) is as emotionally freighted as the cherry blossom in Japan: a symbol of youth, of Russia itself, and of the particular ache of homesickness. Shishkin's repeated return to birch and pine was never merely botanical. It was an argument that these trees were who Russians were.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 4: The Decorative Forest (Klimt) — Layout E (alternating rows) -->
+        <section id="decoration" class="py-16 md:py-24 border-b border-gallery-200 fade-in-section">
+            <h2 class="text-xs uppercase tracking-widest text-amber-700 mb-2 font-bold text-center">Part 4</h2>
+            <h3 class="font-serif text-4xl mb-6 text-center">The Decorative Grove: Klimt's Radical Forest</h3>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-16">Gustav Klimt's forest landscapes represent a complete revolution in how a painter could look at trees. Where Friedrich found the infinite and Shishkin found the nation, Klimt found — a pattern.</p>
+
+            <div class="space-y-16">
+                <!-- Row 1: text left, Beech Grove right -->
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2">
+                        <h4 class="font-serif text-3xl mb-2">Beech Grove I (1902)</h4>
+                        <span class="block text-amber-700 font-bold mb-4">The Forest as Surface</span>
+                        <p class="mb-4">Klimt painted his forest landscapes as a private retreat from his public commissions — the allegorical friezes, the gold-leaf portraits, the scandal of the University paintings. He never exhibited most of them in his lifetime. In the forest, he found a different problem to solve.</p>
+                        <p class="mb-4">The most radical feature of these paintings is what they omit: sky. Klimt eliminated the horizon entirely. There is no top to his forest; it simply continues. Without sky, there is no depth. The picture plane becomes flat, and the trees become vertical stripes — pattern rather than perspective.</p>
+                        <div class="bg-gallery-100 text-gallery-800 p-6 border-l-4 border-amber-500">
+                            <strong>The "So What?":</strong>
+                            <p class="text-sm mt-1">By removing the sky and flattening the space, Klimt argued that a painting of a forest need not pretend to be a window. It could acknowledge itself as a decorated surface — as serious as mosaic, as intentional as a Japanese woodblock print. Decoration was not less than art; it was a different kind of truth.</p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gustav_Klimt_-_Beech_Grove_I_-_Google_Art_Project.jpg?width=800"
+                             loading="lazy"
+                             alt="Beech Grove I by Gustav Klimt"
+                             class="w-full art-shadow cursor-pointer transition-transform duration-500 hover:scale-[1.02]"
+                             onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Gustav_Klimt_-_Beech_Grove_I_-_Google_Art_Project.jpg?width=1600', 'Gustav Klimt, Beech Grove I (1902) — Gemäldegalerie Neue Meister, Dresden')">
+                        <p class="text-sm mt-4 italic text-center">Gustav Klimt, Beech Grove I (1902) — Gemäldegalerie Neue Meister, Dresden</p>
+                    </div>
+                </div>
+
+                <!-- Row 2: Birch Forest left, text right -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                    <div class="w-full md:w-1/2">
+                        <h4 class="font-serif text-3xl mb-2">Birch Forest (1903)</h4>
+                        <span class="block text-amber-700 font-bold mb-4">The Square Canvas</span>
+                        <p class="mb-4">Klimt's forest paintings share an unusual format: the square canvas. Landscape painting traditionally used a wide horizontal format to evoke breadth and sweep. The square refuses that convention. It equalizes height and width and insists on the frame as a frame — an object with edges — rather than a view through a window.</p>
+                        <p class="mb-4">The Birch Forest pushes the flatness further. The silver-white trunks repeat across the canvas like a minimalist score. The ground beneath them is a carpet of autumn leaves in amber and rust — Klimt's palette bleeding from his figurative work into his landscapes. The effect is of extreme stillness: not the loaded silence of Friedrich's forest, but the quiet of pure form.</p>
+                        <div class="bg-gallery-100 text-gallery-800 p-6 border-l-4 border-amber-500">
+                            <strong>Influenced by Japan:</strong>
+                            <p class="text-sm mt-1">Klimt was a devoted collector of Japanese prints, particularly Hiroshige's flat, patterned landscapes. The elimination of depth, the vertical repetition of trunks, and the square format all reflect this. His forest is a Western painting thinking in Japanese.</p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Gustav_Klimt%2C_Birch_Forest%2C_1903_-_Paul_G._Allen_Collection.jpg?width=800"
+                             loading="lazy"
+                             alt="Birch Forest by Gustav Klimt"
+                             class="w-full art-shadow cursor-pointer transition-transform duration-500 hover:scale-[1.02]"
+                             onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Gustav_Klimt%2C_Birch_Forest%2C_1903_-_Paul_G._Allen_Collection.jpg?width=1600', 'Gustav Klimt, Birch Forest (1903) — Paul G. Allen Collection')">
+                        <p class="text-sm mt-4 italic text-center">Gustav Klimt, Birch Forest (1903) — Paul G. Allen Collection</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 5: The Imagined Forest — Layout B (two contrast cards) -->
+        <section id="imagined" class="py-16 md:py-24 border-b border-gallery-200 fade-in-section">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-amber-700 mb-2 font-bold">Part 5</h2>
+                <h3 class="font-serif text-4xl mb-6">The Imagined Forest: Dream and Invention</h3>
+                <p class="text-lg">Not every painter who depicted the forest had been there. Two of the most extraordinary forest painters in history created their jungles from imagination — one because he had no choice, and one because reality had disappointed him.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Henri Rousseau — light card -->
+                <div class="bg-gallery-50 text-gallery-800 p-8 art-shadow flex flex-col h-full">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Surprised-Rousseau.jpg?width=800"
+                         loading="lazy"
+                         alt="Tiger in a Tropical Storm (Surprised!) by Henri Rousseau"
+                         class="w-full h-64 object-cover object-center mb-6 cursor-pointer"
+                         onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Surprised-Rousseau.jpg?width=1600', 'Henri Rousseau, Tiger in a Tropical Storm (Surprised!) — 1891, National Gallery, London')">
+                    <h4 class="font-serif text-2xl mb-1">Henri Rousseau</h4>
+                    <span class="text-xs uppercase tracking-widest text-gallery-800 mb-6 block">The Customs Inspector's Jungle</span>
+                    <div class="space-y-3 text-sm flex-grow">
+                        <p>Henri Rousseau (1844–1910) spent his working life as a toll collector at the gates of Paris. He taught himself to paint in middle age and began submitting work to the Salon des Indépendants in 1886. He was almost universally mocked — until Picasso gave a famous dinner in his honor in 1908, at which point the avant-garde realized they had been looking at a genius.</p>
+                        <p>Rousseau never visited the tropics. His jungle came from the Jardin des Plantes in Paris, where hothouse plants and taxidermied animals provided his flora and fauna, supplemented by illustrations from travel magazines. The result is a jungle that does not exist: perfectly lit from every direction, impossibly dense, animals of incongruous scale, each leaf observed with the same flat intensity.</p>
+                        <p>His <em>Tiger in a Tropical Storm</em> (1891) was his first jungle painting. A Bengal tiger crouches in a monsoon, lightning raking the sky. The leaves are gigantic, individual, lovingly rendered. It is both naive and terrifying — a child's dream of danger, painted with total conviction.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gallery-100">
+                        <strong class="text-amber-700 block mb-1">The Contribution</strong>
+                        <p class="text-sm">Proved that observed reality is not required for visual truth. His jungle is more intensely itself than most painted-from-life forests precisely because it came entirely from the force of imagination, unmediated by the compromises of actual observation.</p>
+                    </div>
+                </div>
+
+                <!-- Gauguin — dark card -->
+                <div class="bg-gallery-900 text-gallery-100 p-8 art-shadow flex flex-col h-full">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Paul_Gauguin_-_Arearea_-_Google_Art_Project.jpg?width=800"
+                         loading="lazy"
+                         alt="Arearea (Amusement) by Paul Gauguin"
+                         class="w-full h-64 object-cover object-center mb-6 cursor-pointer"
+                         onclick="openModal('https://commons.wikimedia.org/wiki/Special:FilePath/Paul_Gauguin_-_Arearea_-_Google_Art_Project.jpg?width=1600', 'Paul Gauguin, Arearea (Amusement) — 1892, Musée d\'Orsay, Paris')">
+                    <h4 class="font-serif text-2xl mb-1">Paul Gauguin</h4>
+                    <span class="text-xs uppercase tracking-widest text-gallery-200 mb-6 block">The Paradise He Had to Invent</span>
+                    <div class="space-y-3 text-sm flex-grow">
+                        <p>Gauguin arrived in Tahiti in 1891 expecting an untouched Polynesian paradise. He found a French colony: missionaries had converted the population, colonial administrators had dismantled the old social structures, and the paradise he had abandoned his stockbroker career to reach had, for the most part, already gone.</p>
+                        <p>He did what artists do: he invented what he couldn't find. Drawing on remnants of Polynesian visual culture, on photographs and ethnographic books he had brought with him, and on his own vivid imagination, he created a Tahiti that had never quite existed — populated by figures from ancient mythology, lit by colors no photographic plate could capture.</p>
+                        <p>His Tahitian landscape is electric: grass that glows red, trees in impossible emerald, figures hovering between myth and daily life. The red dog in <em>Arearea</em> is not an observed dog. It is a color decision, then an animal decision. Everything is subjective — emotion made visible as landscape.</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gallery-800">
+                        <strong class="text-amber-500 block mb-1">The Contribution</strong>
+                        <p class="text-sm">Established that color could be emotional and symbolic rather than descriptive — that a red dog was not wrong but necessary, if what you were painting was feeling rather than fact. This idea runs directly through to Matisse, Fauvism, and modern abstraction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-10 text-center max-w-4xl mx-auto italic text-lg font-serif">Between them, Rousseau and Gauguin established that the painted forest need not be a place you could visit — only a place you could feel.</p>
+        </section>
+
+        <!-- Part 6: Legacy — Layout F -->
+        <section id="legacy" class="py-16 md:py-24 fade-in-section">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-xs uppercase tracking-widest text-amber-700 mb-2 font-bold text-center">Part 6</h2>
+                <h3 class="font-serif text-4xl mb-8 text-center">The Forest as Mirror</h3>
+                <p class="text-xl mb-12 text-center font-serif italic">Every painter who stood before a forest was also standing before a question: what am I looking for in here?</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-gallery-50 text-gallery-800 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg">The Forest Democratized Art</h4>
+                        <p class="text-sm">No gods, no battles, no patrons' portraits — just light falling through trees. The Barbizon painters proved that the ordinary, the local, the un-heroic could sustain a serious painting. This opened a door that has never closed.</p>
+                    </div>
+                    <div class="bg-gallery-50 text-gallery-800 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg">Each Culture Sees Its Own Forest</h4>
+                        <p class="text-sm">Friedrich's oaks were German soul. Shishkin's pines were Russian identity. Corot's glades were French poetry. Rousseau's jungle was Parisian imagination. The forest doesn't change — only what the painter brings to it.</p>
+                    </div>
+                    <div class="bg-gallery-50 text-gallery-800 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg">The Flat Canvas vs. The Deep Forest</h4>
+                        <p class="text-sm">Klimt's greatest contribution was proving that a painting of a forest need not pretend to be a window. Acknowledging the tension between the flat canvas and the deep forest — rather than hiding it — opened the door to modern abstraction.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gallery-900 text-gallery-100 p-8 md:p-12 text-center art-shadow">
+                    <h4 class="font-serif text-2xl mb-6 text-amber-500">What the Forest Asked</h4>
+                    <p class="text-lg max-w-2xl mx-auto mb-8">The forest did not just become a subject. It became a manifesto. Each painter who entered it came out having answered the same question differently:</p>
+                    <ul class="text-base space-y-3 max-w-2xl mx-auto text-left list-disc list-inside">
+                        <li>Corot said the forest could replace religion as a source of transcendence.</li>
+                        <li>Friedrich said the forest revealed how small we are before eternity.</li>
+                        <li>Shishkin said the forest was a nation's autobiography.</li>
+                        <li>Klimt said a painted forest could be honest about being flat.</li>
+                        <li>Rousseau said a forest you dream is as real as one you visit.</li>
+                        <li>Gauguin said a forest could carry what a culture has lost.</li>
+                    </ul>
+                    <p class="mt-8 font-serif italic text-lg text-gallery-200">The question the forest asked — <em>what do you bring to looking?</em> — is still the question painting asks.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm">
+        <p>Artwork sourced from Wikimedia Commons — public domain. An interactive visual essay.</p>
+    </footer>
+
+    <!-- Theme picker -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="theme-btn" onclick="togglePicker()"
+                class="w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-base bg-gallery-800 text-gallery-200 hover:opacity-80 transition-opacity">
+            &#9881;
+        </button>
+        <div id="picker-panel"
+             class="hidden absolute bottom-12 right-0 rounded shadow-xl overflow-hidden w-32 border border-gallery-800 bg-gallery-800">
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] bg-black/90 hidden flex flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light">&times;</button>
+        <img id="modalImage" src="" alt="Enlarged view" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="modalCaption" class="text-gallery-200 mt-4 font-serif text-lg text-center"></p>
+    </div>
+
+    <script>
+        // ── THEMES ───────────────────────────────────────────────────────────────
+        const THEMES = [
+            { id: 'coal',      name: 'Coal',      dark: true,  colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' } },
+            { id: 'navy',      name: 'Navy',      dark: true,  colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' } },
+            { id: 'forest',    name: 'Forest',    dark: true,  colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' } },
+            { id: 'parchment', name: 'Parchment', dark: false, colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' } }
+        ];
+
+        let activeTheme = THEMES.find(t => t.id === 'navy');
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty('--g50',  theme.colors[50]);
+            r.style.setProperty('--g100', theme.colors[100]);
+            r.style.setProperty('--g200', theme.colors[200]);
+            r.style.setProperty('--g800', theme.colors[800]);
+            r.style.setProperty('--g900', theme.colors[900]);
+        }
+
+        function applyMode(dark) {
+            const body = document.body;
+            const nav  = document.getElementById('main-nav');
+            if (dark) {
+                body.style.backgroundColor = 'var(--g900)';
+                body.style.color           = 'var(--g100)';
+                nav.style.backgroundColor  = 'var(--g900)';
+                nav.style.borderColor      = 'var(--g800)';
+                document.getElementById('hero-overlay').style.background = 'linear-gradient(to bottom, transparent 20%, var(--g900) 80%)';
+                document.getElementById('hero-h1').style.color           = 'var(--g50)';
+                document.getElementById('hero-sub').style.color          = 'var(--g100)';
+                document.getElementById('hero-btn').style.cssText        = 'border-color: var(--g200); color: var(--g100);';
+            } else {
+                body.style.backgroundColor = 'var(--g50)';
+                body.style.color           = 'var(--g800)';
+                nav.style.backgroundColor  = 'var(--g50)';
+                nav.style.borderColor      = 'var(--g200)';
+                document.getElementById('hero-overlay').style.background = 'linear-gradient(to bottom, transparent 20%, var(--g50) 80%)';
+                document.getElementById('hero-h1').style.color           = 'var(--g900)';
+                document.getElementById('hero-sub').style.color          = 'var(--g800)';
+                document.getElementById('hero-btn').style.cssText        = 'border-color: var(--g800); color: var(--g800);';
+            }
+        }
+
+        function togglePicker() {
+            const panel = document.getElementById('picker-panel');
+            if (panel.classList.contains('hidden')) {
+                panel.innerHTML = THEMES.map(t => `
+                    <button onclick="switchTheme('${t.id}')"
+                            style="display:block; width:100%; text-align:left; padding:8px 12px; font-size:0.8rem;
+                                   color:${activeTheme.id === t.id ? '#f59e0b' : 'var(--g100)'}; background:none; border:none; cursor:pointer;">
+                        ${t.name}
+                    </button>`).join('');
+                panel.classList.remove('hidden');
+            } else {
+                panel.classList.add('hidden');
+            }
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = THEMES.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            applyMode(activeTheme.dark);
+            document.getElementById('picker-panel').classList.add('hidden');
+            document.querySelectorAll('.fade-in-section').forEach(el => el.classList.add('is-visible'));
+        }
+
+        // ── INIT ─────────────────────────────────────────────────────────────────
+        applyTheme(activeTheme);
+        applyMode(activeTheme.dark);
+
+        // ── SCROLL FADE-IN ───────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.15 });
+            document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+        });
+
+        // ── LIGHTBOX ─────────────────────────────────────────────────────────────
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+
+        function openModal(src, caption) {
+            modalImg.src = src;
+            modalCaption.innerText = caption;
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.classList.add('opacity-100'); }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            setTimeout(() => { modal.classList.add('hidden'); modalImg.src = ''; }, 300);
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    </script>
+</body>
+</html>
