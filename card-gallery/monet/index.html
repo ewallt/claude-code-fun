@@ -234,7 +234,7 @@
    }
  </style>
 </head>
-<body id="app-body" class="antialiased transition-colors duration-500">
+<body id="app-body" class="antialiased">
 
 
  <div id="app"></div>
@@ -343,11 +343,11 @@
      const btnClass = dark ? 'border-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 hover:bg-gallery-800 hover:text-gallery-50';
 
 
-     appBody.className = `${bodyClass} antialiased transition-colors duration-500`;
+     appBody.className = `${bodyClass} antialiased`;
 
 
      let html = `
-       <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md border-b ${navBgClass} transition-colors duration-500">
+       <nav class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md border-b ${navBgClass}">
          <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
            <a href="#" class="font-serif font-bold text-xl tracking-wide hover:text-amber-500 transition-colors">⌂ ${CONFIG.meta.shortTitle}</a>
            <div class="hidden md:flex space-x-8 text-xs uppercase tracking-widest font-semibold">
@@ -360,7 +360,7 @@
 
        <header class="relative w-full h-screen flex items-center justify-center overflow-hidden">
          <div class="absolute inset-0 hero-bg opacity-40 blur-sm scale-105 transition-all duration-1000" style="background-image: url('${getImg(CONFIG.hero.imageUrl, 1600)}')"></div>
-         <div class="absolute inset-0 bg-gradient-to-b ${heroGrad} transition-colors duration-500"></div>
+         <div class="absolute inset-0 bg-gradient-to-b ${heroGrad}"></div>
          <div class="relative z-10 text-center px-4 max-w-4xl fade-in-section">
            <h1 class="font-serif text-6xl md:text-8xl font-bold mb-6 drop-shadow-lg">${CONFIG.meta.heroTitle}</h1>
            <p class="font-serif italic text-xl md:text-3xl opacity-90 mb-12 drop-shadow">${CONFIG.meta.subtitle}</p>
