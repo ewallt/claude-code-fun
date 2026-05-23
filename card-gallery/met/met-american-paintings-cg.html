@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Paintings — The Metropolitan Museum of Art</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // ─── CONFIG ───────────────────────────────────────────────────────────────
+// Edit this object to change content and design. The rest of the file is
+// the template — leave it alone.
+
+const CONFIG = {
+
+  meta: {
+    pageTitle:  "American Paintings — The Metropolitan Museum of Art",
+    heroTitle:  "American Paintings",
+    shortTitle: "American Wing",
+    subtitle:   "From colonial portraiture to Gilded Age mastery",
+    footerText: "The Metropolitan Museum of Art, New York. American Wing Paintings. All works public domain.",
+    backHref:   "./",
+    backLabel:  "← The Met"
+  },
+
+  defaultTheme: 'coal',
+
+  themes: [
+    {
+      id:   'coal',
+      name: 'Coal',
+      dark: true,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    },
+    {
+      id:   'navy',
+      name: 'Navy',
+      dark: true,
+      colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' }
+    },
+    {
+      id:   'forest',
+      name: 'Forest',
+      dark: true,
+      colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' }
+    },
+    {
+      id:   'parchment',
+      name: 'Parchment',
+      dark: false,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    },
+  ],
+
+  hero: {
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Church_Heart_of_the_Andes.jpg",
+    imageAlt: "A vast panoramic landscape of the Ecuadorian Andes with snow-capped peaks, tropical foliage, and a waterfall, by Frederic Edwin Church, 1859",
+    ctaText:  "Explore the Collection"
+  },
+
+  sections: [
+    {
+      id:       "colonial-portraits",
+      navLabel: "Colonial",
+      part:     "Part I",
+      title:    "Founders and Federalists",
+      intro:    "In the decades surrounding the American Revolution, a handful of painters captured the faces of a new nation — merchants, scholars, and statesmen asserting their place in the world.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Joseph_Sherburne_MET_DT214418.jpg",
+          imageAlt:     "Portrait of Joseph Sherburne, a wealthy Boston merchant in a blue coat, by John Singleton Copley, c. 1767–70",
+          imageCaption: "Joseph Sherburne, John Singleton Copley, c. 1767–70. The Metropolitan Museum of Art.",
+          name:         "Joseph Sherburne",
+          label:        "John Singleton Copley, c. 1767–70",
+          paragraphs: [
+            "John Singleton Copley was the preeminent portrait painter of colonial America, and Joseph Sherburne stands among his finest achievements. Painted in the years before the Revolution, it captures a prosperous Boston merchant with startling psychological immediacy — the slightly wary gaze of a man accustomed to sizing up his surroundings.",
+            "Copley's mastery of texture is on full display: the sheen of silk, the crisp fall of lace, the soft nap of velvet. He achieved effects that European visitors found extraordinary, noting that he had developed his technique almost entirely from printed mezzotints and his own relentless practice, never having studied abroad."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 23.143. American Wing, Gallery 760."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Mrs_John_Winthrop.jpg",
+          imageAlt:     "Portrait of Mrs. John Winthrop seated in a red chair, by John Singleton Copley, 1773",
+          imageCaption: "Mrs. John Winthrop, John Singleton Copley, 1773. The Metropolitan Museum of Art.",
+          name:         "Mrs. John Winthrop",
+          label:        "John Singleton Copley, 1773",
+          paragraphs: [
+            "Hannah Fayerweather Winthrop was no passive subject. Wife of Harvard astronomer John Winthrop IV and a correspondent of Mercy Otis Warren, she was an intellectually formidable woman in revolutionary-era Boston. Copley painted her in 1773, two years before he left for London — never to return — sensing which way political winds were blowing.",
+            "The portrait is a masterclass in late colonial elegance: a gown that reads as fashionable without being ostentatious, a posture that suggests both dignity and ease. The red of the chair provides the painting's single note of warmth, anchoring a composition otherwise built on cool grays and silvery blues."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 31.109. American Wing."
+        }
+      ]
+    },
+    {
+      id:       "the-new-republic",
+      navLabel: "Republic",
+      part:     "Part II",
+      title:    "The Federal Face",
+      intro:    "After independence, the new nation needed portraits that projected authority and ambition. Gilbert Stuart answered the call — defining how Americans would see their leaders for generations.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/George_Washington_MET_ap88.18.jpg",
+          imageAlt:     "Bust-length portrait of George Washington in black coat against a dark background, by Gilbert Stuart, c. 1803",
+          imageCaption: "George Washington, Gilbert Stuart, c. 1803. The Metropolitan Museum of Art.",
+          name:         "George Washington",
+          label:        "Gilbert Stuart, c. 1803",
+          paragraphs: [
+            "Gilbert Stuart painted George Washington from life three times, and from those sittings produced well over a hundred replicas — a portrait industry that defined the visual identity of the new republic. This example, based on the Vaughan type (the head turned slightly right), dates from Stuart's Boston period around 1803 and was given to the Met by H. O. Havemeyer in 1888.",
+            "Stuart understood that Washington had become a symbol as much as a man. He worked against the heroic tradition of European state portraiture, seeking something more direct: the face itself, stripped of allegorical apparatus. The dark background concentrates attention entirely on the features — the strong jaw, the watchful eyes — that Americans recognized from currency and civic spaces."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 88.18. Gift of H. O. Havemeyer, 1888."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Matilda_Stoughton_de_Jaudenes_MET_DT2043.jpg",
+          imageAlt:     "Portrait of Matilda Stoughton de Jaudenes in a white dress with blue sash, by Gilbert Stuart, c. 1794",
+          imageCaption: "Matilda Stoughton de Jaudenes, Gilbert Stuart, c. 1794. The Metropolitan Museum of Art.",
+          name:         "Matilda Stoughton de Jaudenes",
+          label:        "Gilbert Stuart, c. 1794",
+          paragraphs: [
+            "Stuart painted Matilda Stoughton de Jaudenes around 1794 as part of a pair — she and her husband José de Jaudenes y Nebot, the Spanish diplomatic representative in Philadelphia, portrayed as a matched set. She was American-born; he was Spanish — the marriage a small emblem of the new republic's diplomatic web.",
+            "Stuart's characteristic unfinished backgrounds — hazy, indeterminate passages that seem almost Impressionist in their looseness — are fully evident here, throwing the sitter's face and dress into sharp relief. The white gown with blue sash places her firmly in the fashionable Neoclassical world of 1790s Philadelphia society."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 07.76. American Paintings and Sculpture."
+        }
+      ]
+    },
+    {
+      id:       "american-wilderness",
+      navLabel: "Wilderness",
+      part:     "Part III",
+      title:    "The American Wilderness",
+      intro:    "Between the 1820s and 1870s, American landscape painters turned the continent's vast interior into a canvas for national identity — sublime, wild, and inexhaustibly grand.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Thomas_Cole%2C_The_Oxbow.jpg",
+          imageAlt:     "A sweeping landscape of the Connecticut River oxbow under dramatic storm light, by Thomas Cole, 1836",
+          imageCaption: "The Oxbow, Thomas Cole, 1836. The Metropolitan Museum of Art.",
+          name:         "The Oxbow",
+          label:        "Thomas Cole, 1836",
+          paragraphs: [
+            "Thomas Cole was the founder of the Hudson River School, and The Oxbow is its masterwork. The canvas divides nearly in half: on the left, a storm-tossed wilderness of gnarled trees and roiling sky; on the right, the serene Connecticut River valley laid out in cultivated peace. The tension between the two halves — wildness and civilization, nature and agriculture — is the painting's central meditation.",
+            "Look carefully at the hillside in the lower center: Cole painted himself as a tiny figure with a white umbrella, seated at his easel. The artist inserting himself into the landscape invites the viewer to consider the act of looking — and what it means to call this land a wilderness when it was already being settled and farmed."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 08.228. Gallery 759, Hudson River School."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Church_Heart_of_the_Andes.jpg",
+          imageAlt:     "A vast panoramic landscape of the Ecuadorian Andes with snow-capped peaks, tropical foliage, and a waterfall, by Frederic Edwin Church, 1859",
+          imageCaption: "The Heart of the Andes, Frederic Edwin Church, 1859. The Metropolitan Museum of Art.",
+          name:         "The Heart of the Andes",
+          label:        "Frederic Edwin Church, 1859",
+          paragraphs: [
+            "Church's largest and most celebrated canvas — 66 by 119 inches — was exhibited in New York City in a darkened room as a solo show, lit to imitate natural light. Viewers paid admission and used opera glasses to study the botanical detail: every leaf, every waterfall, every cloud formation painted with scientific exactitude from Church's expeditions to Ecuador.",
+            "Sold in 1859 for $10,000 — the highest price ever paid for a work by a living American artist at the time — the painting was understood as a statement about the scope of American ambition. Church was following the program of his teacher Alexander von Humboldt, who believed that landscape painting could reveal the unity of all natural phenomena."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 09.95. Gallery 760."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Albert_Bierstadt_-_The_Rocky_Mountains%2C_Lander%27s_Peak.jpg",
+          imageAlt:     "A luminous landscape of the Wind River Range with a Shoshone encampment in the foreground, by Albert Bierstadt, 1863",
+          imageCaption: "The Rocky Mountains, Lander's Peak, Albert Bierstadt, 1863. The Metropolitan Museum of Art.",
+          name:         "The Rocky Mountains, Lander's Peak",
+          label:        "Albert Bierstadt, 1863",
+          paragraphs: [
+            "Albert Bierstadt traveled west with Frederick Lander's government survey expedition in 1859, filling sketchbooks with studies of the Wind River Range in present-day Wyoming. From those drawings he constructed this six-by-ten-foot canvas — a theater of light and atmosphere in which the Rocky Mountains appear almost Himalayan in their grandeur.",
+            "In the foreground, a Shoshone encampment is rendered in meticulous ethnographic detail: tipis, horses, figures going about their daily life. The juxtaposition of the Native village and the sublime peaks invites a pointed reading — Bierstadt was painting an Eden already threatened by the very expansion his patrons celebrated. Sold in 1865 for $25,000, setting another record for an American work."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 07.123. Gallery 760."
+        }
+      ],
+      closingLine: "Cole, Church, and Bierstadt made the American landscape a subject worthy of the highest ambitions of painting — and set a standard their successors would spend decades measuring themselves against."
+    },
+    {
+      id:       "civil-war",
+      navLabel: "Civil War",
+      part:     "Part IV",
+      title:    "The Civil War and Its Aftermath",
+      intro:    "Winslow Homer covered the Civil War for Harper's Weekly, and its aftermath shaped everything he painted — images that refused easy consolation.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Winslow_Homer_-_The_Veteran_in_a_New_Field.jpg",
+          imageAlt:     "A Union Army veteran in uniform jacket harvesting wheat alone in a vast golden field, by Winslow Homer, 1865",
+          imageCaption: "The Veteran in a New Field, Winslow Homer, 1865. The Metropolitan Museum of Art.",
+          name:         "The Veteran in a New Field",
+          label:        "Winslow Homer, 1865",
+          paragraphs: [
+            "Homer painted this in the weeks after Lee's surrender at Appomattox. A Union soldier — his discarded canteen and haversack visible in the lower right — swings a scythe through a sea of golden wheat. The image is simultaneously a scene of peaceful return and a meditation on mass death: the single-blade scythe, not the modern cradle scythe that would have been used, deliberately invokes the classical figure of Death as the Grim Reaper.",
+            "Homer repainted the scythe shortly after completion, replacing a more modern multi-bladed cradle version with this single blade to sharpen the allegorical reading. The field stretches to the horizon with no other figures — there are no neighbors to help with the harvest, because so many young men did not come home."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 67.187.131. Gallery 762."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Winslow_Homer_-_Prisoners_from_the_Front.jpg",
+          imageAlt:     "A Union officer faces three Confederate prisoners of war in an open field, by Winslow Homer, 1866",
+          imageCaption: "Prisoners from the Front, Winslow Homer, 1866. The Metropolitan Museum of Art.",
+          name:         "Prisoners from the Front",
+          label:        "Winslow Homer, 1866",
+          paragraphs: [
+            "Homer's breakthrough painting showed at the National Academy of Design in 1866 and then at the Paris Exposition Universelle — his first major international exposure. A composed Union officer faces three Confederate prisoners who represent three distinct Southern types: an old man, a teenage boy, and a defiant cavalier who meets the officer's gaze with unbroken pride.",
+            "The painting became an emblem of Reconstruction-era America — the question of who these men were to each other now, and who they would become. The officer's restraint and the cavalier's dignity leave the confrontation unresolved. Homer refused the easy narrative of victory and defeat, preferring the harder truth of aftermath."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 22.207. Gallery 762."
+        }
+      ]
+    },
+    {
+      id:       "the-open-sea",
+      navLabel: "The Sea",
+      part:     "Part V",
+      title:    "The Open Sea",
+      intro:    "In the final decades of his life, Homer retreated to Prout's Neck on the Maine coast and painted the sea with an intensity that bordered on the elemental — storm, isolation, and the indifference of nature.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Winslow_Homer_-_The_Gulf_Stream.jpg",
+          imageAlt:     "A Black sailor lies on a disabled dismasted sloop surrounded by sharks in a churning turquoise sea, by Winslow Homer, 1899",
+          imageCaption: "The Gulf Stream, Winslow Homer, 1899 (reworked 1906). The Metropolitan Museum of Art.",
+          name:         "The Gulf Stream",
+          label:        "Winslow Homer, 1899 (reworked 1906)",
+          paragraphs: [
+            "Homer reworked and darkened this composition in 1906, years after its initial completion, before it entered the Met's collection. A Black sailor lies adrift on a disabled, dismasted sloop in the Florida Straits; the turquoise water churns with sharks; a waterspout approaches on the horizon. On the far right, barely visible, a ship sails away — or toward — the scene, ambiguous rescue or indifference.",
+            "The subject was controversial at the time of acquisition. Homer's refusal to clarify the narrative — no rescue, no resolution — disturbed viewers who expected either tragedy or salvation. He reportedly responded to questions about the subject with characteristic terseness: \"The boat is in the Gulf Stream.\" That was all. The rest was the viewer's business."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art. Gallery 767, Marine Paintings."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Northeaster_by_Winslow_Homer_1895.jpg",
+          imageAlt:     "Massive storm waves crash against granite rocks on the Maine coast under a grey sky, by Winslow Homer, 1895",
+          imageCaption: "Northeaster, Winslow Homer, 1895 (reworked 1901). The Metropolitan Museum of Art.",
+          name:         "Northeaster",
+          label:        "Winslow Homer, 1895 (reworked 1901)",
+          paragraphs: [
+            "Painted at Prout's Neck, Maine, and reworked in 1901, Northeaster is Homer at his most austere. The original painting included two figures standing on the rocks; Homer removed them entirely in the revision, stripping the composition down to stone, water, and sky. The result is nearly abstract in its power — the wave cresting at the upper left feels inevitable, immovable.",
+            "Gift of George A. Hearn in 1910, the year Homer died. Homer had settled at Prout's Neck in 1884, converting a carriage house into a studio. The Maine coast gave him what he needed: an adversary worthy of sustained attention, a force that did not care to be observed."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 10.64.5. Gift of George A. Hearn, 1910. Gallery 767."
+        }
+      ]
+    },
+    {
+      id:       "gilded-age",
+      navLabel: "Gilded Age",
+      part:     "Part VI",
+      title:    "Masters of the Gilded Age",
+      intro:    "By the 1870s and 1880s, American painters were training in Paris and Munich, bringing new technical ambitions home to a country awash in post-war wealth — and producing work that could measure itself against any European contemporary.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/The_Champion_Single_Sculls_%28Max_Schmitt_in_a_Single_Scull%29_MET_DT86.jpg",
+          imageAlt:     "A sculler rests on the Schuylkill River in autumn light while another rower pulls away in the distance, by Thomas Eakins, 1871",
+          imageCaption: "The Champion Single Sculls (Max Schmitt in a Single Scull), Thomas Eakins, 1871. The Metropolitan Museum of Art.",
+          name:         "The Champion Single Sculls",
+          label:        "Thomas Eakins, 1871",
+          paragraphs: [
+            "Thomas Eakins's first major oil painting is a portrait within a portrait: the resting sculler in the foreground is his friend and rowing champion Max Schmitt; the smaller figure pulling away toward the bridge is Eakins himself, self-signed in light on the water. Eakins used perspective grids, photographs, and mathematical calculation to achieve the painting's radical geometric precision — the Schuylkill River in autumn light rendered with the rigor of an engineering drawing.",
+            "Eakins had trained in Paris under Jean-Léon Gérôme and returned to Philadelphia with a commitment to anatomical and scientific accuracy that put him at odds with the taste of his time. He was eventually fired from the Pennsylvania Academy of the Fine Arts for his insistence on fully nude models in mixed life-drawing classes — a scandal that isolated him professionally while cementing his reputation as the most uncompromising realist of his generation."
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 34.92."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Sargent_MadameX.jpeg",
+          imageAlt:     "Full-length portrait of Madame Gautreau in a low-cut black evening gown against a brown background, by John Singer Sargent, 1884",
+          imageCaption: "Madame X (Madame Pierre Gautreau), John Singer Sargent, 1884. The Metropolitan Museum of Art.",
+          name:         "Madame X",
+          label:        "John Singer Sargent, 1884",
+          paragraphs: [
+            "When Sargent exhibited Madame X at the 1884 Paris Salon, the scandal was immediate. The original canvas showed the right strap of Madame Gautreau's gown fallen from her shoulder — a detail that read as deliberately provocative. Within days, Sargent repainted the strap into its proper position, but the damage was done. He left Paris for London, his French career in ruins.",
+            "Virginie Amélie Avegno Gautreau — whose identity was not publicly disclosed until after her death — was an American-born Louisiana Creole who had become one of the most celebrated beauties in Parisian society. Sargent sold the painting to the Met himself in 1916, calling it \"the best thing I have done.\""
+          ],
+          footerLabel: "In the Collection",
+          footerText:  "The Metropolitan Museum of Art, accession 16.53. Gallery 771, Gilded Age Portraiture."
+        }
+      ]
+    }
+  ],
+
+  coda: {
+    id:       "coda",
+    navLabel: "About",
+    part:     "Context",
+    title:    "The American Wing",
+    intro:    "The Metropolitan Museum's American Wing opened in 1924 — the first major museum wing devoted exclusively to the art of the United States, from colonial times through the early twentieth century.",
+    cards: [
+      { title: "A Century of Collection", text: "The American Wing was established in 1924 with a gift from Robert W. de Forest and his wife Emily Johnston de Forest. Its opening was a statement: that the art of the United States was worthy of the same institutional seriousness as that of Europe. Today it holds more than 20,000 works spanning three centuries of American creative life." },
+      { title: "The Hudson River School", text: "Thomas Cole founded the Hudson River School in the 1820s, gathering a generation of painters around the proposition that the American landscape — the Catskill Mountains, the Hudson Valley, the White Mountains — was a subject of moral and spiritual significance. Church, Bierstadt, and their contemporaries expanded that vision westward and southward, painting an empire of light." },
+      { title: "Realism and Its Legacy", text: "Homer and Eakins represent the American realist tradition at its most demanding — both committed to the observable world, both suspicious of sentimentality, both underappreciated in their lifetimes. Their influence on twentieth-century American painting, from the Ashcan School through Edward Hopper, was profound and lasting." }
+    ],
+    closingLine: "From Copley's colonial Boston to Sargent's Paris scandal, these works trace the arc of a nation learning to see itself."
+  }
+
+}; // end CONFIG
+
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ["Lora", "serif"],
+                serif: ["Playfair Display", "serif"]
+              },
+              colors: {
+                gallery: {
+                  50:  "var(--g50)",
+                  100: "var(--g100)",
+                  200: "var(--g200)",
+                  800: "var(--g800)",
+                  900: "var(--g900)"
+                }
+              }
+            }
+          }
+        };
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .fade-in-section {
+          opacity: 0; transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    </style>
+</head>
+<body id="body" class="antialiased selection:bg-amber-700 selection:text-white">
+
+    <div id="app"></div>
+
+    <!-- Gear Picker -->
+    <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;" class="relative">
+        <button id="theme-btn" onclick="togglePicker()" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105" aria-label="Change Theme">&#9881;</button>
+        <div id="picker-panel" class="absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300">
+            <!-- populated by js -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-gallery-200 mt-4 font-serif text-lg text-center max-w-3xl"></p>
+    </div>
+
+    <script>
+        let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty("--g50",  theme.colors[50]);
+            r.style.setProperty("--g100", theme.colors[100]);
+            r.style.setProperty("--g200", theme.colors[200]);
+            r.style.setProperty("--g800", theme.colors[800]);
+            r.style.setProperty("--g900", theme.colors[900]);
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = CONFIG.themes.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            render();
+            document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+            updatePickerUI();
+        }
+
+        function togglePicker() {
+            const panel = document.getElementById("picker-panel");
+            panel.classList.toggle("hidden");
+        }
+
+        function updatePickerUI() {
+            const btn = document.getElementById("theme-btn");
+            const panel = document.getElementById("picker-panel");
+
+            btn.className = `w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105 bg-gallery-800 text-gallery-200`;
+            panel.className = `absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300 bg-gallery-800`;
+
+            let html = '<div class="py-2">';
+            CONFIG.themes.forEach(t => {
+                const isActive = t.id === activeTheme.id;
+                const textClass = isActive ? "text-amber-500 font-bold" : "text-gallery-100 hover:text-gallery-200";
+                html += `<button onclick="switchTheme('${t.id}')" class="w-full text-left px-4 py-2 text-sm transition-colors ${textClass}">${t.name}</button>`;
+            });
+            html += '</div>';
+            panel.innerHTML = html;
+        }
+
+        function openLightbox(url, caption) {
+            const lb = document.getElementById("lightbox");
+            document.getElementById("lightbox-img").src = url;
+            document.getElementById("lightbox-caption").innerText = caption;
+            lb.classList.remove("hidden");
+            lb.classList.add("flex");
+            setTimeout(() => { lb.classList.remove("opacity-0"); lb.classList.add("opacity-100"); }, 10);
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById("lightbox");
+            lb.classList.remove("opacity-100");
+            lb.classList.add("opacity-0");
+            setTimeout(() => {
+                lb.classList.add("hidden");
+                lb.classList.remove("flex");
+                document.getElementById("lightbox-img").src = "";
+            }, 300);
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('lightbox').classList.contains('hidden')) closeLightbox();
+        });
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.chevron');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function render() {
+            const dark = activeTheme.dark;
+
+            const body = document.getElementById("body");
+            body.className = `antialiased selection:bg-amber-700 selection:text-white font-sans ${dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800'}`;
+
+            const navClasses = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
+            const navLinks = CONFIG.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+            const backLink = CONFIG.meta.backHref
+                ? `<a href="${CONFIG.meta.backHref}" class="hover:text-amber-500 transition-colors">${CONFIG.meta.backLabel || '← Back'}</a>`
+                : '';
+
+            const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
+            const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
+
+            let html = `
+                <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b ${navClasses}">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between h-16 items-center">
+                            <a href="#" class="font-serif font-bold text-xl tracking-tight flex items-center hover:text-amber-500 transition-colors">${CONFIG.meta.shortTitle}</a>
+                            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
+                                <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${backLink}
+                                ${navLinks}
+                                <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <header class="relative h-screen flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 z-0">
+                        <img src="${CONFIG.hero.imageUrl}?width=1600" alt="${CONFIG.hero.imageAlt}" class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-b ${heroGradient}"></div>
+                    </div>
+                    <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section">
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">${CONFIG.meta.heroTitle}</h1>
+                        <p class="text-xl md:text-2xl font-serif italic mb-8 ${dark ? 'text-gallery-200' : 'text-gallery-800'}">${CONFIG.meta.subtitle}</p>
+                        <a href="#${CONFIG.sections[0].id}" class="inline-block border-2 px-8 py-3 uppercase tracking-widest text-sm transition-all duration-300 ${btnClasses}">${CONFIG.hero.ctaText}</a>
+                    </div>
+                </header>
+
+                <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            `;
+
+            CONFIG.sections.forEach(sec => {
+                const gridCols = sec.cards.length === 2 ? 'md:grid-cols-2' : (sec.cards.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-1 max-w-3xl mx-auto');
+                const imgHeight = sec.cards.length === 2 ? 'h-64' : 'h-48';
+
+                html += `
+                    <section id="${sec.id}" class="py-16 md:py-24 border-b ${dark ? 'border-gallery-800' : 'border-gallery-200'} fade-in-section">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${sec.part}</h2>
+                            <h3 class="font-serif text-4xl mb-6">${sec.title}</h3>
+                            <p class="text-lg">${sec.intro}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 ${gridCols} gap-8">
+                `;
+
+                sec.cards.forEach((card) => {
+                    const ps = card.paragraphs.map(p => `<p>${p}</p>`).join('');
+                    const pos = card.imagePosition || 'object-center';
+                    html += `
+                        <div class="bg-gallery-900 text-gallery-100 p-6 md:p-8 art-shadow flex flex-col h-full border-t-4 border-gallery-800">
+                            <img src="${card.imageUrl}?width=800" loading="lazy" alt="${card.imageAlt}" class="w-full ${imgHeight} object-cover ${pos} mb-6 cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('${card.imageUrl}?width=1600', '${card.imageCaption.replace(/'/g, "\\'")}')">
+                            <h4 class="font-serif text-2xl mb-1">${card.name}</h4>
+                            <span class="text-xs uppercase tracking-widest text-amber-500 mb-6 block">${card.label}</span>
+
+                            <button class="w-full flex justify-between items-center py-2 text-sm font-bold uppercase tracking-wider text-gallery-200 hover:text-amber-500 transition-colors border-t border-gallery-800 focus:outline-none" onclick="toggleAccordion(this)">
+                                Read More
+                                <svg class="chevron w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 space-y-4 text-sm flex-grow">
+                                    ${ps}
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gallery-800">
+                                    <strong class="text-amber-500 block mb-1">${card.footerLabel}</strong>
+                                    <p class="text-sm">${card.footerText}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+
+                if (sec.blockquote) {
+                    html += `
+                        <blockquote class="border-l-4 border-amber-500 pl-6 my-16 max-w-4xl mx-auto font-serif italic text-2xl ${dark ? 'text-gallery-200' : 'text-gallery-800'}">
+                            "${sec.blockquote.text}"
+                            <footer class="text-sm uppercase tracking-widest mt-4 font-sans not-italic text-amber-500">— ${sec.blockquote.attribution}</footer>
+                        </blockquote>
+                    `;
+                }
+
+                if (sec.closingLine) {
+                    html += `<p class="mt-12 text-center max-w-4xl mx-auto italic">${sec.closingLine}</p>`;
+                }
+
+                html += `</section>`;
+            });
+
+            html += `
+                <section id="${CONFIG.coda.id}" class="py-16 md:py-24 fade-in-section">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold text-center">${CONFIG.coda.part}</h2>
+                        <h3 class="font-serif text-4xl mb-8 text-center">${CONFIG.coda.title}</h3>
+                        <p class="text-xl mb-12 text-center font-serif">${CONFIG.coda.intro}</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            `;
+
+            CONFIG.coda.cards.forEach(card => {
+                html += `
+                    <div class="bg-gallery-900 text-gallery-100 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg text-amber-500">${card.title}</h4>
+                        <p class="text-sm">${card.text}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                        </div>
+            `;
+            if (CONFIG.coda.closingLine) {
+                html += `<div class="bg-gallery-900 text-gallery-100 p-8 md:p-12 text-center art-shadow">
+                            <h4 class="font-serif text-2xl text-amber-500 italic">${CONFIG.coda.closingLine}</h4>
+                         </div>`;
+            }
+            html += `
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm">
+                <p>${CONFIG.meta.footerText}</p>
+            </footer>
+            `;
+
+            document.getElementById("app").innerHTML = html;
+        }
+
+        applyTheme(activeTheme);
+        render();
+        updatePickerUI();
+
+        setTimeout(() => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        }, 100);
+
+    </script>
+</body>
+</html>
