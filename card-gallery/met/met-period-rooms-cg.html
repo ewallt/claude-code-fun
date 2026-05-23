@@ -22,7 +22,9 @@ const CONFIG = {
     heroTitle:  "Rooms Through the Ages",
     shortTitle: "Period Rooms",
     subtitle:   "Eleven complete interiors from ancient Rome to Frank Lloyd Wright",
-    footerText: "The Metropolitan Museum of Art, New York. Images: MET Open Access (CC0) except Astor Court (CC BY-SA 3.0) and the Frank Lloyd Wright room (CC BY-SA 4.0)."
+    footerText: "The Metropolitan Museum of Art, New York. Images: MET Open Access (CC0) except Astor Court (CC BY-SA 3.0) and the Frank Lloyd Wright room (CC BY-SA 4.0).",
+    backHref:   "./",
+    backLabel:  "← The Met"
   },
 
   defaultTheme: 'coal',
@@ -408,6 +410,9 @@ const CONFIG = {
 
             const navClasses = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
             const navLinks = CONFIG.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+            const backLink = CONFIG.meta.backHref
+                ? `<a href="${CONFIG.meta.backHref}" class="hover:text-amber-500 transition-colors">${CONFIG.meta.backLabel || '← Back'}</a>`
+                : '';
 
             const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
             const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
@@ -419,6 +424,7 @@ const CONFIG = {
                             <a href="#" class="font-serif font-bold text-xl tracking-tight flex items-center hover:text-amber-500 transition-colors">${CONFIG.meta.shortTitle}</a>
                             <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
                                 <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${backLink}
                                 ${navLinks}
                                 <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
                             </div>
