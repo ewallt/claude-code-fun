@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Metropolitan Museum of Art</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const CONFIG = {
+          meta: {
+            pageTitle:  "The Metropolitan Museum of Art",
+            heroTitle:  "The Metropolitan Museum of Art",
+            shortTitle: "The Met",
+            subtitle:   "Explore the collection",
+            footerText: "The Metropolitan Museum of Art, New York. Select a gallery to explore."
+          },
+          defaultTheme: 'coal',
+          themes: [
+            { id: 'coal',      name: 'Coal',      dark: true,  colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' } },
+            { id: 'navy',      name: 'Navy',      dark: true,  colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' } },
+            { id: 'forest',    name: 'Forest',    dark: true,  colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' } },
+            { id: 'parchment', name: 'Parchment', dark: false, colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' } }
+          ],
+          apps: [
+            {
+              title:       "Rooms Through the Ages",
+              tagline:     "Eleven complete interiors from ancient Rome to Frank Lloyd Wright",
+              description: "Eleven complete room interiors spanning 2,000 years of domestic life — from a Roman bedroom buried at Boscoreale to a French Romanesque chapel, an Ottoman Damascus reception room, English Georgian drawing rooms, and Frank Lloyd Wright's Prairie-style living room.",
+              href:        "met-period-rooms-cg.html",
+              imageUrl:    "https://commons.wikimedia.org/wiki/Special:FilePath/Damascus_Room_MET_DP239312.jpg",
+              imageAlt:    "Ornate Ottoman reception room from Damascus, 1707, at the Met"
+            },
+            {
+              title:       "The Hunt of the Unicorn",
+              tagline:     "Seven medieval tapestries at The Met Cloisters",
+              description: "All seven panels of the Unicorn Tapestries — Flemish masterworks from c. 1495–1505, tracing a complete narrative from the hunt's first morning through battle, mystic capture, death, and the unicorn's mysterious resurrection in a millefleurs garden.",
+              href:        "unicorn-tapestries-cg.html",
+              imageUrl:    "https://commons.wikimedia.org/wiki/Special:FilePath/The_Unicorn_in_Captivity_%28from_the_Unicorn_Tapestries%29_MET_DP101251.jpg",
+              imageAlt:    "Tapestry 7 — the resurrected unicorn rests in a millefleurs garden, c. 1495–1505"
+            }
+          ]
+        };
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans:  ["Lora", "serif"],
+                        serif: ["Playfair Display", "serif"]
+                    },
+                    colors: {
+                        gallery: {
+                            50:  "var(--g50)",
+                            100: "var(--g100)",
+                            200: "var(--g200)",
+                            800: "var(--g800)",
+                            900: "var(--g900)"
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body id="body" class="antialiased selection:bg-amber-700 selection:text-white font-sans">
+
+    <div id="app"></div>
+
+    <!-- Gear Picker -->
+    <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;" class="relative">
+        <button id="theme-btn" onclick="togglePicker()" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow focus:outline-none hover:scale-105" aria-label="Change Theme">&#9881;</button>
+        <div id="picker-panel" class="absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden"></div>
+    </div>
+
+    <script>
+        let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty("--g50",  theme.colors[50]);
+            r.style.setProperty("--g100", theme.colors[100]);
+            r.style.setProperty("--g200", theme.colors[200]);
+            r.style.setProperty("--g800", theme.colors[800]);
+            r.style.setProperty("--g900", theme.colors[900]);
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = CONFIG.themes.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            render();
+            updatePickerUI();
+        }
+
+        function togglePicker() {
+            document.getElementById("picker-panel").classList.toggle("hidden");
+        }
+
+        function updatePickerUI() {
+            const btn   = document.getElementById("theme-btn");
+            const panel = document.getElementById("picker-panel");
+            btn.className   = "w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow focus:outline-none hover:scale-105 bg-gallery-800 text-gallery-200";
+            panel.className = "absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden bg-gallery-800";
+            let html = '<div class="py-2">';
+            CONFIG.themes.forEach(t => {
+                const active = t.id === activeTheme.id;
+                const cls    = active ? "text-amber-500 font-bold" : "text-gallery-100 hover:text-gallery-200";
+                html += `<button onclick="switchTheme('${t.id}')" class="w-full text-left px-4 py-2 text-sm ${cls}">${t.name}</button>`;
+            });
+            html += '</div>';
+            panel.innerHTML = html;
+        }
+
+        function render() {
+            const dark = activeTheme.dark;
+            document.getElementById("body").className =
+                `antialiased selection:bg-amber-700 selection:text-white font-sans ${dark ? "bg-gallery-900 text-gallery-100" : "bg-gallery-50 text-gallery-800"}`;
+
+            const navBg   = dark ? "bg-gallery-900/95 border-gallery-800" : "bg-gallery-50/90 border-gallery-200";
+            const headSub = dark ? "text-gallery-200" : "text-gallery-800";
+
+            let cards = "";
+            CONFIG.apps.forEach(app => {
+                cards += `
+                    <a href="${app.href}" class="block bg-gallery-900 text-gallery-100 art-shadow hover:opacity-90 transition-opacity group">
+                        <div class="bg-black/20 p-2">
+                            <img src="${app.imageUrl}?width=800" loading="lazy" alt="${app.imageAlt}" class="w-full h-72 object-contain">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h2 class="font-serif text-2xl font-bold mb-1">${app.title}</h2>
+                            <p class="text-xs uppercase tracking-widest text-amber-500 mb-4">${app.tagline}</p>
+                            <p class="text-sm leading-relaxed text-gallery-200">${app.description}</p>
+                            <span class="mt-5 inline-block text-amber-400 font-semibold text-sm group-hover:underline">Explore &#8594;</span>
+                        </div>
+                    </a>`;
+            });
+
+            document.getElementById("app").innerHTML = `
+                <nav class="sticky top-0 z-50 backdrop-blur-md border-b ${navBg}">
+                    <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+                        <span class="font-serif font-bold text-xl">${CONFIG.meta.shortTitle}</span>
+                    </div>
+                </nav>
+
+                <header class="py-20 text-center px-6">
+                    <h1 class="font-serif text-5xl md:text-6xl font-bold mb-4">${CONFIG.meta.heroTitle}</h1>
+                    <p class="text-xl font-serif italic ${headSub}">${CONFIG.meta.subtitle}</p>
+                </header>
+
+                <main class="max-w-5xl mx-auto px-6 pb-24">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        ${cards}
+                    </div>
+                </main>
+
+                <footer class="border-t border-gallery-800 py-8 text-center text-sm text-gallery-200">
+                    <p>${CONFIG.meta.footerText}</p>
+                </footer>`;
+        }
+
+        applyTheme(activeTheme);
+        render();
+        updatePickerUI();
+    </script>
+</body>
+</html>

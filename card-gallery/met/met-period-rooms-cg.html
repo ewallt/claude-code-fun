@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Met's Period Rooms</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // ─── CONFIG ───────────────────────────────────────────────────────────────
+// Edit this object to change content and design. The rest of the file is
+// the template — leave it alone.
+
+const CONFIG = {
+
+  meta: {
+    pageTitle:  "The Met's Period Rooms",
+    heroTitle:  "Rooms Through the Ages",
+    shortTitle: "Period Rooms",
+    subtitle:   "Eleven complete interiors from ancient Rome to Frank Lloyd Wright",
+    footerText: "The Metropolitan Museum of Art, New York. Images: MET Open Access (CC0) except Astor Court (CC BY-SA 3.0) and the Frank Lloyd Wright room (CC BY-SA 4.0)."
+  },
+
+  defaultTheme: 'coal',
+
+  themes: [
+    {
+      id:   'coal',
+      name: 'Coal',
+      dark: true,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    },
+    {
+      id:   'navy',
+      name: 'Navy',
+      dark: true,
+      colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' }
+    },
+    {
+      id:   'forest',
+      name: 'Forest',
+      dark: true,
+      colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' }
+    },
+    {
+      id:   'parchment',
+      name: 'Parchment',
+      dark: false,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    }
+  ],
+
+  hero: {
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Damascus_Room_MET_DP239312.jpg",
+    imageAlt: "Ornate Ottoman reception room from Damascus, 1707, at the Met",
+    ctaText:  "Enter the Rooms"
+  },
+
+  sections: [
+    {
+      id:       "ancient-medieval",
+      navLabel: "Ancient & Medieval",
+      part:     "Part I",
+      title:    "Before the Renaissance",
+      intro:    "Two rooms separated by a thousand years — one buried by a volcano, one dismantled from a French abbey — share the same fate: survival against all odds and a new life on Fifth Avenue.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Cubiculum_%28bedroom%29_from_the_Villa_of_P._Fannius_Synistor_at_Boscoreale_MET_DP143704.jpg",
+          imageAlt:     "Roman cubiculum with trompe-l'oeil frescoes from Boscoreale, at the Met",
+          imageCaption: "Cubiculum from the Villa of P. Fannius Synistor, Boscoreale. Roman, c. 40–30 BCE. The Metropolitan Museum of Art.",
+          name:         "Cubiculum from Boscoreale",
+          label:        "Roman, c. 40–30 BCE",
+          paragraphs: [
+            "In 79 CE, when Vesuvius buried the Villa of P. Fannius Synistor near Pompeii, it sealed intact one of antiquity's most dazzling interiors. The walls of this bedroom were covered floor to ceiling in illusionistic frescoes — painted columns, porticoes, and vistas that dissolve the solid walls into imaginary architecture. The technique is Second Style Roman painting at its most ambitious.",
+            "The room was excavated in 1900 and its frescoes purchased by the Metropolitan in 1903. Each wall section arrived as a massive fragment and was reassembled over years of painstaking conservation. The original room measured roughly 8 by 10 feet — intimate by modern standards, intended for a privileged guest. Two thousand years after it was sealed, the colors remain astonishingly vivid."
+          ],
+          footerLabel: "Gallery 165",
+          footerText:  "At the Met since 1903. Excavated from Pompeii's volcanic deposits, 1900."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Chapter_House_from_Notre-Dame-de-Pontaut_MET_DP102882.jpg",
+          imageAlt:     "Romanesque chapter house with rib vaults from Notre-Dame-de-Pontaut, at The Met Cloisters",
+          imageCaption: "Chapter House from Notre-Dame-de-Pontaut, France. Romanesque, c. 1115–1150. The Met Cloisters.",
+          name:         "Chapter House from Notre-Dame-de-Pontaut",
+          label:        "French Romanesque, c. 1115–1150",
+          paragraphs: [
+            "This chapter house — the room where Benedictine monks gathered daily to hear a chapter of the Rule of Saint Benedict read aloud — comes from an abbey in the Landes region of southwest France. Its round arches and heavy rib vaulting are the hallmarks of Romanesque architecture: gravity made tangible, stone deployed to press down as much as to soar.",
+            "It stands today at The Met Cloisters in Fort Tryon Park, reassembled from its original stones alongside other medieval architectural elements acquired by George Grey Barnard and later by John D. Rockefeller Jr. The small round-arched windows look out over the Hudson River, much as the original ones faced the abbey's cloister garden. The Cloisters is itself a kind of period room: a medieval monastery built from salvaged medieval parts."
+          ],
+          footerLabel: "The Met Cloisters, Gallery 06",
+          footerText:  "Note: The Cloisters is a separate building in Fort Tryon Park, not the 5th Ave building."
+        }
+      ]
+    },
+    {
+      id:       "renaissance-baroque-ottoman",
+      navLabel: "Renaissance–Ottoman",
+      part:     "Part II",
+      title:    "Three Worlds, Three Workshops",
+      intro:    "An Italian Renaissance duke's private library, a Venetian nobleman's rococo bedroom, and an Ottoman merchant's reception hall — all built within three centuries of each other, all expressing a different vision of how power and culture should look.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Studiolo_from_the_Ducal_Palace_in_Gubbio_MET_DT213911.jpg",
+          imageAlt:     "Intarsia-paneled studiolo of Federico da Montefeltro from the Ducal Palace, Gubbio, at the Met",
+          imageCaption: "Studiolo from the Ducal Palace, Gubbio. Italian Renaissance, c. 1478–82. The Metropolitan Museum of Art.",
+          name:         "Studiolo from the Ducal Palace, Gubbio",
+          label:        "Italian Renaissance, c. 1478–82",
+          paragraphs: [
+            "Federico da Montefeltro, Duke of Urbino, commissioned this private study as a monument to humanist learning. Its walls are entirely covered in intarsia — wood inlay of extraordinary illusionistic precision, depicting half-open cupboard doors, hanging musical instruments, scientific tools, books, and armor. Every depicted object is a symbol of the ideal Renaissance prince: warrior, scholar, musician, ruler.",
+            "The intarsia was designed by Francesco di Giorgio Martini and executed by Giuliano da Maiano using dozens of species of tinted and natural wood. It is a masterwork of perspective art — predating photography by four centuries yet achieving a photographic quality of depth and surface. The room, measuring roughly 16 by 12 feet, entered the Met's collection in 1939 and was reinstalled to its original splendor in 1996."
+          ],
+          footerLabel: "Acquired 1939; reinstalled 1996",
+          footerText:  "Designed by Francesco di Giorgio Martini; intarsia by Giuliano da Maiano."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Bedroom_from_the_Sagredo_Palace_MET_DT11665.jpg",
+          imageAlt:     "Rococo bedroom from Palazzo Sagredo, Venice, with painted and gilded woodwork, at the Met",
+          imageCaption: "Bedroom from Palazzo Sagredo, Venice. Venetian Rococo, c. 1718–25. The Metropolitan Museum of Art.",
+          name:         "Bedroom from Palazzo Sagredo, Venice",
+          label:        "Venetian Rococo, c. 1718–25",
+          paragraphs: [
+            "In the early 18th century the Sagredo family redecorated their Grand Canal palace in the Rococo style — a revolt against the heavy symmetry of the Baroque, substituting lightness, asymmetry, and ornamental exuberance. This bedroom showcases the results: gilded and painted woodwork, pastel-toned plasterwork, and an integrated bedstead that turns the room itself into a theatrical frame.",
+            "Acquired by the Metropolitan in 1906, this was the museum's first period room installation. Its exuberant carved decoration includes figures derived from Gian Antonio Guardi's ceiling paintings. The full room installation — with its original paneling, ceiling, and bedstead — gives a sense of Venetian patrician life that no individual object could convey alone."
+          ],
+          footerLabel: "Gallery 507; accession 06.1335",
+          footerText:  "The Met's first period room installation, acquired 1906."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Damascus_Room_MET_DP239312.jpg",
+          imageAlt:     "Ornate Ottoman reception room from Damascus, 1707, with wood paneling, tile, and nacre inlay, at the Met",
+          imageCaption: "Reception Room (Qa'a) from Damascus, Syria. Ottoman, 1707 CE. The Metropolitan Museum of Art.",
+          name:         "Reception Room from Damascus",
+          label:        "Syrian Ottoman, 1707 CE",
+          paragraphs: [
+            "The qa'a — the formal reception room of a prosperous Syrian household — was where guests were received, business conducted, and social rank made visible. This one, built in 1707 (1119 AH) for a Damascus merchant family, deploys every material Levantine craftsmen had mastered: carved and gilded wood, Iznik-style tile, mother-of-pearl inlay, mirror glass, painted woodwork, stucco, and brass. The effect is one of profound sensory richness within a precisely ordered geometry.",
+            "The room follows a traditional layout: a lower stone entry area (ataba) opens onto the raised reception floor (tazar), where guests sat according to rank. Donated to the Metropolitan in 1970 by the collector Hagop Kevorkian, it required years of disassembly, transport, and reinstallation. One of the great rooms in any American museum, it remains a living demonstration of what Syrian craft could achieve."
+          ],
+          footerLabel: "Gallery 461; accession 1970.170",
+          footerText:  "Donated by Hagop Kevorkian, 1970. Materials: wood, gold, nacre, marble, glass, ceramic, iron, brass."
+        }
+      ]
+    },
+    {
+      id:       "georgian-england",
+      navLabel: "Georgian England",
+      part:     "Part III",
+      title:    "The Georgian Country House",
+      intro:    "Three rooms from three English houses — all designed between 1742 and 1768, all now at the Met — trace the arc from exuberant English Rococo to Robert Adam's disciplined Neoclassicism, and show what wealth looked like in 18th-century Britain.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Dining_room_from_Kirtlington_Park_MET_DP252997.jpg",
+          imageAlt:     "Rococo plasterwork dining room from Kirtlington Park, Oxfordshire, at the Met",
+          imageCaption: "Dining Room from Kirtlington Park, Oxfordshire. English Georgian, c. 1742–48. The Metropolitan Museum of Art.",
+          name:         "Dining Room from Kirtlington Park",
+          label:        "English Georgian, c. 1742–48",
+          paragraphs: [
+            "Built for Sir James Dashwood in the mid-18th century, Kirtlington Park in Oxfordshire was a quintessential English country house. This dining room reflects the Georgian love of plasterwork as an art form — the ceiling is an explosion of Rococo flourishes, garlands, and cartouches that would have required a master craftsman years to complete.",
+            "English Rococo is rarer and more exuberant than its French counterpart, working the same language of asymmetry and naturalistic ornament into plaster rather than carved wood. The room's proportions and ornament capture the confidence of mid-Georgian England at the height of its domestic architecture — confident enough to commission a ceiling that is essentially a piece of large-scale sculpture."
+          ],
+          footerLabel: "Acquired from Kirtlington Park, Oxfordshire",
+          footerText:  "Also in Met collection: Kirtlington Park chimneypiece and furniture from the same commission."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Tapestry_Room_from_Croome_Court_MET_DP341242.jpg",
+          imageAlt:     "Neoclassical tapestry room from Croome Court with Boucher-designed Gobelins tapestries, at the Met",
+          imageCaption: "Tapestry Room from Croome Court, Worcestershire. English Neoclassical, c. 1758–67. The Metropolitan Museum of Art.",
+          name:         "Tapestry Room from Croome Court",
+          label:        "English Neoclassical, c. 1758–67",
+          paragraphs: [
+            "Robert Adam — the architect who transformed English interior decoration in the second half of the 18th century — designed this room for the 6th Earl of Coventry at Croome Court, Worcestershire. Adam's innovation was the total interior: he designed not just the architecture but the furniture, carpets, and textiles as a single unified composition.",
+            "The tapestries were woven at the Gobelins manufactory in Paris to designs by François Boucher, depicting allegorical mythological scenes. Ordered in 1763 and installed by 1771, this commission crossed national boundaries at a moment of intense Anglo-French rivalry. The Met acquired the room with its tapestries and furniture intact — one of the rare cases where a room's full furnishing scheme survives together."
+          ],
+          footerLabel: "39 images in Commons category",
+          footerText:  "Tapestries designed by François Boucher; woven at Gobelins, 1763–71."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Dining_room_from_Lansdowne_House_MET_DP246147.jpg",
+          imageAlt:     "Neoclassical dining room from Lansdowne House, London, designed by Robert Adam, at the Met",
+          imageCaption: "Dining Room from Lansdowne House, London. English Neoclassical, c. 1765–68. The Metropolitan Museum of Art.",
+          name:         "Dining Room from Lansdowne House",
+          label:        "English Neoclassical, c. 1765–68",
+          paragraphs: [
+            "Robert Adam designed this dining room for the Marquess of Lansdowne's London townhouse — one of the most important private residences in 18th-century England. The room represents Adam's mature Neoclassical style: cool, elegant, symmetrical, derived from ancient Roman precedents but translated into a refined English idiom of apsed ends, niched sculpture, and delicate arabesque plasterwork.",
+            "Placed alongside the Croome Court room, these two Adam interiors — designed within a decade of each other — reveal his range: where Croome Court is warm with Boucher's tapestries, Lansdowne House is cool and architectural. Lansdowne House itself was demolished in 1930; the room's survival at the Met is one of preservation's happier accidents, rescued from the wrecker's ball at the last moment."
+          ],
+          footerLabel: "Designed by Robert Adam for the Marquess of Lansdowne",
+          footerText:  "Lansdowne House was demolished 1930. Room salvaged and acquired by the Met."
+        }
+      ]
+    },
+    {
+      id:       "france-china-america",
+      navLabel: "France–China–America",
+      part:     "Part IV",
+      title:    "Three Paths to Modernity",
+      intro:    "A Parisian salon on the eve of revolution, a Chinese garden built by Suzhou craftsmen during the Cold War's thaw, and Frank Lloyd Wright's declaration of independence from European history — three rooms that each mark a turning point.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Grand_Salon_from_the_H%C3%B4tel_de_Tess%C3%A9%2C_Paris_MET_DP214172.jpg",
+          imageAlt:     "Louis XVI grand salon from the Hôtel de Tessé, Paris, with boiserie and gilt ornament, at the Met",
+          imageCaption: "Grand Salon from the Hôtel de Tessé, Paris. French Neoclassical, c. 1768–72. The Metropolitan Museum of Art.",
+          name:         "Grand Salon from the Hôtel de Tessé",
+          label:        "French Neoclassical, c. 1768–72",
+          paragraphs: [
+            "By the 1760s Parisian taste was pivoting from Rococo to Neoclassicism — from asymmetry and whimsy to rational geometry and ancient precedent. The Countess de Tessé's grand salon exemplifies this transition: the boiserie (wood paneling) still carries the delicate scale of the Louis XV style, but the ornament has become vertical and symmetrical, organized by pilasters and classical medallions.",
+            "The room was completed shortly before the Revolution that overturned everything it represents. The Countess de Tessé was a close friend of Thomas Jefferson — this salon hosted Enlightenment conversation in pre-Revolutionary Paris. It came to the Met through the dealers Arnold Seligmann and Sons in the 1950s, one generation removed from its original destruction."
+          ],
+          footerLabel: "French Neoclassical, c. 1768–72",
+          footerText:  "The Countess de Tessé was a close friend of Thomas Jefferson."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Astor_court_moon_gate.jpg",
+          imageAlt:     "Moon gate in the Astor Court Chinese garden, at the Met",
+          imageCaption: "Astor Court, Chinese Garden in the Style of the Ming Dynasty. Completed 1981. The Metropolitan Museum of Art. Photo CC BY-SA 3.0.",
+          name:         "Astor Court — Chinese Garden",
+          label:        "Chinese, completed 1981",
+          paragraphs: [
+            "The Astor Court is not a salvaged historical room but a new construction built by 26 craftsmen from Suzhou, China — the first cultural exchange project between the US and China after normalization of diplomatic relations. The craftsmen arrived with their own tools and materials and recreated a courtyard garden in the tradition of Suzhou's classical designs, modeled closely on the Wangshi Yuan (Master of the Nets Garden).",
+            "The design principle is spatial compression: a small enclosed garden that creates an illusion of greater space through asymmetry, framed views, and the contrast of light and shadow. The moon gate, scholar's rocks, pavilion, and plantings all follow the classical Chinese garden vocabulary. Unlike every other room in the collection, this one is not a salvaged artifact — it is a living tradition transferred in full."
+          ],
+          footerLabel: "Douglas Dillon Galleries for Chinese Art",
+          footerText:  "Photo CC BY-SA 3.0 — attribution required. Built 1981 by craftsmen from Suzhou."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Metropo%C3%B6litan_Museum%2C_FLW_room.jpg",
+          imageAlt:     "Frank Lloyd Wright's Prairie-style living room from the Little House, Wayzata, Minnesota, at the Met",
+          imageCaption: "Living Room from the Francis W. Little House, Wayzata, Minnesota. Frank Lloyd Wright, 1912–14. The Metropolitan Museum of Art. Photo CC BY-SA 4.0.",
+          name:         "Living Room from the Francis W. Little House",
+          label:        "Frank Lloyd Wright, 1912–14",
+          paragraphs: [
+            "When the Francis W. Little House in Wayzata, Minnesota, was threatened with demolition in 1972, the Metropolitan salvaged its living room — one of Wright's most complete Prairie period interiors. The room stretches 46 feet and rises to over 13 feet, with bands of art-glass windows that dissolve the boundary between interior and landscape. Every detail, from the built-in furniture to the geometric patterns, is Wright's design.",
+            "The Prairie style was Wright's declaration of independence from European historicism: no columns, no moldings, no historical references — only horizontal lines, natural materials, and organic unity. This room sits inside a museum filled with the historical styles Wright explicitly rejected, making it both anomalous and essential. The low compressed entry, rising into the soaring main space, is pure Wright theatrics."
+          ],
+          footerLabel: "American Wing; accession 1972.60.1",
+          footerText:  "Photo CC BY-SA 4.0 — attribution required. Salvaged from demolition, 1972."
+        }
+      ]
+    }
+  ],
+
+  coda: {
+    id:       "coda",
+    navLabel: "About",
+    part:     "The Met's Method",
+    title:    "Inside the Installation",
+    intro:    "Moving a Damascus reception room, an English country house dining room, and a Frank Lloyd Wright prairie interior into a single building on Fifth Avenue required generations of scholarship, conservation, and institutional will.",
+    cards: [
+      {
+        title: "How They Get Here",
+        text:  "Period rooms arrive through purchase, donation, and salvage — often rescued from demolition. The Boscoreale frescoes were bought in 1903 after excavation; the Damascus Room was donated in 1970; the Wright room was saved from the wrecking ball in 1972. Each acquisition required negotiating export permits, finding funding, and persuading owners that a museum was the right destination."
+      },
+      {
+        title: "The Installation Challenge",
+        text:  "Reassembling a room means reconciling original dimensions with a new building, replacing missing elements, and deciding how much modern infrastructure (lighting, climate control, security) can intrude. The Met's conservators document every stone, plank, and tile before disassembly and reconstruct from those records — a process that can take years."
+      },
+      {
+        title: "Why Complete Rooms?",
+        text:  "A single object tells part of the story. A complete room — with its proportions, materials, light sources, and furnishings — tells the full context: how people moved through space, how wealth was displayed, how different cultures understood beauty, comfort, and social ritual. The period rooms are among the most immersive experiences the museum offers."
+      }
+    ],
+    closingLine: "Eleven rooms. Two thousand years. One museum block. The Met's period rooms make the impossible possible — walk through history, not past it."
+  }
+
+}; // end CONFIG
+
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ["Lora", "serif"],
+                serif: ["Playfair Display", "serif"]
+              },
+              colors: {
+                gallery: {
+                  50:  "var(--g50)",
+                  100: "var(--g100)",
+                  200: "var(--g200)",
+                  800: "var(--g800)",
+                  900: "var(--g900)"
+                }
+              }
+            }
+          }
+        };
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .fade-in-section {
+          opacity: 0; transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    </style>
+</head>
+<body id="body" class="antialiased selection:bg-amber-700 selection:text-white">
+
+    <div id="app"></div>
+
+    <!-- Gear Picker -->
+    <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;" class="relative">
+        <button id="theme-btn" onclick="togglePicker()" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105" aria-label="Change Theme">&#9881;</button>
+        <div id="picker-panel" class="absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300">
+            <!-- populated by js -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-gallery-200 mt-4 font-serif text-lg text-center max-w-3xl"></p>
+    </div>
+
+    <script>
+        let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty("--g50",  theme.colors[50]);
+            r.style.setProperty("--g100", theme.colors[100]);
+            r.style.setProperty("--g200", theme.colors[200]);
+            r.style.setProperty("--g800", theme.colors[800]);
+            r.style.setProperty("--g900", theme.colors[900]);
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = CONFIG.themes.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            render();
+            document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+            updatePickerUI();
+        }
+
+        function togglePicker() {
+            const panel = document.getElementById("picker-panel");
+            panel.classList.toggle("hidden");
+        }
+
+        function updatePickerUI() {
+            const btn = document.getElementById("theme-btn");
+            const panel = document.getElementById("picker-panel");
+
+            btn.className = `w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105 bg-gallery-800 text-gallery-200`;
+            panel.className = `absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300 bg-gallery-800`;
+
+            let html = '<div class="py-2">';
+            CONFIG.themes.forEach(t => {
+                const isActive = t.id === activeTheme.id;
+                const textClass = isActive ? "text-amber-500 font-bold" : "text-gallery-100 hover:text-gallery-200";
+                html += `<button onclick="switchTheme('${t.id}')" class="w-full text-left px-4 py-2 text-sm transition-colors ${textClass}">${t.name}</button>`;
+            });
+            html += '</div>';
+            panel.innerHTML = html;
+        }
+
+        function openLightbox(url, caption) {
+            const lb = document.getElementById("lightbox");
+            document.getElementById("lightbox-img").src = url;
+            document.getElementById("lightbox-caption").innerText = caption;
+            lb.classList.remove("hidden");
+            lb.classList.add("flex");
+            setTimeout(() => { lb.classList.remove("opacity-0"); lb.classList.add("opacity-100"); }, 10);
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById("lightbox");
+            lb.classList.remove("opacity-100");
+            lb.classList.add("opacity-0");
+            setTimeout(() => {
+                lb.classList.add("hidden");
+                lb.classList.remove("flex");
+                document.getElementById("lightbox-img").src = "";
+            }, 300);
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('lightbox').classList.contains('hidden')) closeLightbox();
+        });
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.chevron');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function render() {
+            const dark = activeTheme.dark;
+
+            const body = document.getElementById("body");
+            body.className = `antialiased selection:bg-amber-700 selection:text-white font-sans ${dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800'}`;
+
+            const navClasses = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
+            const navLinks = CONFIG.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+
+            const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
+            const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
+
+            let html = `
+                <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b ${navClasses}">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between h-16 items-center">
+                            <a href="#" class="font-serif font-bold text-xl tracking-tight flex items-center hover:text-amber-500 transition-colors">${CONFIG.meta.shortTitle}</a>
+                            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
+                                <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${navLinks}
+                                <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <header class="relative h-screen flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 z-0">
+                        <img src="${CONFIG.hero.imageUrl}?width=1600" alt="${CONFIG.hero.imageAlt}" class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-b ${heroGradient}"></div>
+                    </div>
+                    <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section">
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">${CONFIG.meta.heroTitle}</h1>
+                        <p class="text-xl md:text-2xl font-serif italic mb-8 ${dark ? 'text-gallery-200' : 'text-gallery-800'}">${CONFIG.meta.subtitle}</p>
+                        <a href="#${CONFIG.sections[0].id}" class="inline-block border-2 px-8 py-3 uppercase tracking-widest text-sm transition-all duration-300 ${btnClasses}">${CONFIG.hero.ctaText}</a>
+                    </div>
+                </header>
+
+                <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            `;
+
+            CONFIG.sections.forEach(sec => {
+                const gridCols = sec.cards.length === 2 ? 'md:grid-cols-2' : (sec.cards.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-1 max-w-3xl mx-auto');
+                const imgHeight = sec.cards.length === 2 ? 'h-64' : 'h-48';
+
+                html += `
+                    <section id="${sec.id}" class="py-16 md:py-24 border-b ${dark ? 'border-gallery-800' : 'border-gallery-200'} fade-in-section">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${sec.part}</h2>
+                            <h3 class="font-serif text-4xl mb-6">${sec.title}</h3>
+                            <p class="text-lg">${sec.intro}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 ${gridCols} gap-8">
+                `;
+
+                sec.cards.forEach((card) => {
+                    const ps = card.paragraphs.map(p => `<p>${p}</p>`).join('');
+                    const pos = card.imagePosition || 'object-center';
+                    html += `
+                        <div class="bg-gallery-900 text-gallery-100 p-6 md:p-8 art-shadow flex flex-col h-full border-t-4 border-gallery-800">
+                            <img src="${card.imageUrl}?width=800" loading="lazy" alt="${card.imageAlt}" class="w-full ${imgHeight} object-cover ${pos} mb-6 cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('${card.imageUrl}?width=1600', '${card.imageCaption.replace(/'/g, "\\'")}')">
+                            <h4 class="font-serif text-2xl mb-1">${card.name}</h4>
+                            <span class="text-xs uppercase tracking-widest text-amber-500 mb-6 block">${card.label}</span>
+
+                            <button class="w-full flex justify-between items-center py-2 text-sm font-bold uppercase tracking-wider text-gallery-200 hover:text-amber-500 transition-colors border-t border-gallery-800 focus:outline-none" onclick="toggleAccordion(this)">
+                                Read More
+                                <svg class="chevron w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 space-y-4 text-sm flex-grow">
+                                    ${ps}
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gallery-800">
+                                    <strong class="text-amber-500 block mb-1">${card.footerLabel}</strong>
+                                    <p class="text-sm">${card.footerText}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+
+                if (sec.blockquote) {
+                    html += `
+                        <blockquote class="border-l-4 border-amber-500 pl-6 my-16 max-w-4xl mx-auto font-serif italic text-2xl ${dark ? 'text-gallery-200' : 'text-gallery-800'}">
+                            "${sec.blockquote.text}"
+                            <footer class="text-sm uppercase tracking-widest mt-4 font-sans not-italic text-amber-500">— ${sec.blockquote.attribution}</footer>
+                        </blockquote>
+                    `;
+                }
+
+                if (sec.closingLine) {
+                    html += `<p class="mt-12 text-center max-w-4xl mx-auto italic">${sec.closingLine}</p>`;
+                }
+
+                html += `</section>`;
+            });
+
+            html += `
+                <section id="${CONFIG.coda.id}" class="py-16 md:py-24 fade-in-section">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold text-center">${CONFIG.coda.part}</h2>
+                        <h3 class="font-serif text-4xl mb-8 text-center">${CONFIG.coda.title}</h3>
+                        <p class="text-xl mb-12 text-center font-serif">${CONFIG.coda.intro}</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            `;
+
+            CONFIG.coda.cards.forEach(card => {
+                html += `
+                    <div class="bg-gallery-900 text-gallery-100 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg text-amber-500">${card.title}</h4>
+                        <p class="text-sm">${card.text}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                        </div>
+            `;
+            if (CONFIG.coda.closingLine) {
+                html += `<div class="bg-gallery-900 text-gallery-100 p-8 md:p-12 text-center art-shadow">
+                            <h4 class="font-serif text-2xl text-amber-500 italic">${CONFIG.coda.closingLine}</h4>
+                         </div>`;
+            }
+            html += `
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm">
+                <p>${CONFIG.meta.footerText}</p>
+            </footer>
+            `;
+
+            document.getElementById("app").innerHTML = html;
+        }
+
+        applyTheme(activeTheme);
+        render();
+        updatePickerUI();
+
+        setTimeout(() => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        }, 100);
+
+    </script>
+</body>
+</html>
