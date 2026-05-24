@@ -17,7 +17,9 @@
             heroTitle:  "Paris: The Arrondissements",
             shortTitle: "Paris",
             subtitle:   "A visual journey through the diverse neighborhoods of the French capital",
-            footerText: "Created as an interactive gallery exploring the iconic districts of Paris."
+            footerText: "Created as an interactive gallery exploring the iconic districts of Paris.",
+            backHref:   "../paris-hub/",
+            backLabel:  "← Paris"
           },
 
           defaultTheme: "navy",
@@ -432,6 +434,9 @@
             
             // Generate Right Side Anchor Links based on active tab sections
             const navLinks = activeTab.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+            const backLink = CONFIG.meta.backHref
+                ? `<a href="${CONFIG.meta.backHref}" class="hover:text-amber-500 transition-colors">${CONFIG.meta.backLabel || '← Back'}</a>`
+                : '';
             
             const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
             const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
@@ -447,7 +452,7 @@
                                 </div>
                             </div>
                             <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
-                                <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${backLink}
                                 ${navLinks}
                                 <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
                             </div>
