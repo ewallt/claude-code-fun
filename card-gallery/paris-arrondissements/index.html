@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris: The Arrondissements</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const CONFIG = {
+          meta: {
+            pageTitle:  "Paris: The Arrondissements",
+            heroTitle:  "Paris: The Arrondissements",
+            shortTitle: "Paris",
+            subtitle:   "A visual journey through the diverse neighborhoods of the French capital",
+            footerText: "Created as an interactive gallery exploring the iconic districts of Paris."
+          },
+
+          defaultTheme: "navy",
+
+          themes: [
+            { id: "coal", name: "Coal", dark: true, colors: { 50: "#fdfbf7", 100: "#f6f2e9", 200: "#e8dfcd", 800: "#2a2825", 900: "#1a1815" } },
+            { id: "navy", name: "Navy", dark: true, colors: { 50: "#f0f4fb", 100: "#dce8f5", 200: "#c7d2e8", 800: "#1a2744", 900: "#0f1729" } },
+            { id: "forest", name: "Forest", dark: true, colors: { 50: "#f0f5f1", 100: "#dceee0", 200: "#c7d8cb", 800: "#1a3a22", 900: "#0f2014" } },
+            { id: "parchment", name: "Parchment", dark: false, colors: { 50: "#fdfbf7", 100: "#f6f2e9", 200: "#e8dfcd", 800: "#2a2825", 900: "#1a1815" } }
+          ],
+
+          hero: {
+            imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Corot_-_Vue_du_Panth%C3%A9on_%C3%A0_Paris_%28%27View_of_the_Pantheon%2C_Paris%27%29.jpg",
+            imageAlt: "Paris Cityscape Painting",
+            ctaText:  "Begin the Tour"
+          },
+
+          tabs: [
+            {
+              id: "right-bank",
+              label: "Right Bank",
+              sections: [
+                {
+                  id: "core",
+                  navLabel: "The Core",
+                  part: "Section 1",
+                  title: "The Historic & Modern",
+                  intro: "The Right Bank (La Rive Droite) is defined by its sweeping grand boulevards and preserved aristocratic squares.",
+                  cards: [
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Georges_Dufrenoy_-_La_Place_des_Vosges%2C_1928_-_1945P52_Birmingham_Museums_Trust.jpg",
+                      imageAlt:     "La Place des Vosges by Georges Dufrenoy",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Georges Dufrenoy, La Place des Vosges, 1928",
+                      name:         "Le Marais",
+                      label:        "The Aristocratic District",
+                      paragraphs:   [
+                        "Le Marais is one of the few districts in Paris that largely escaped Baron Haussmann's 19th-century renovations. Its narrow, winding medieval streets are lined with magnificent 17th-century hôtels particuliers (private mansions) built by the French nobility.",
+                        "The crowning jewel of the district is the Place des Vosges, the oldest planned square in Paris, commissioned by Henri IV in 1605. Today, Le Marais is a vibrant hub of art galleries, boutiques, and café culture."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "A seamless blend of preserved royal history and modern Parisian lifestyle."
+                    },
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Camille_Pissarro_-_Boulevard_Montmartre%2C_Spring_-_Google_Art_Project.jpg",
+                      imageAlt:     "Boulevard Montmartre, Spring by Camille Pissarro",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Camille Pissarro, Boulevard Montmartre, Spring, 1897",
+                      name:         "The Grand Boulevards",
+                      label:        "The Belle Époque",
+                      paragraphs:   [
+                        "Under Napoleon III, Baron Haussmann completely redesigned Paris, replacing narrow, dark medieval streets with sweeping, tree-lined boulevards designed to bring light, air, and order to the city.",
+                        "These grand avenues became the center of modern Parisian life and were obsessively painted by the Impressionists. Painters like Camille Pissarro and Gustave Caillebotte famously rented hotel rooms looking down over the boulevards to capture the bustling crowds and changing weather."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The sweeping arteries of modern Paris that defined the Belle Époque."
+                    }
+                  ]
+                },
+                {
+                  id: "heights",
+                  navLabel: "The Heights",
+                  part: "Section 2",
+                  title: "The Bohemian Village",
+                  intro: "Rising above the city limits, Montmartre offers dramatic views and stark contrasts to the modern city below.",
+                  cards: [
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Rue_du_Mont-Cenis_%C3%A0_Montmartre%2C_1914_-_Maurice_Utrillo.jpg",
+                      imageAlt:     "Rue du Mont-Cenis à Montmartre by Maurice Utrillo",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Maurice Utrillo, Rue du Mont-Cenis à Montmartre, 1914",
+                      name:         "Montmartre",
+                      label:        "The Bohemian Village",
+                      paragraphs:   [
+                        "Perched on a large hill in the 18th arrondissement, Montmartre retained a distinct village atmosphere long after being annexed by Paris. During the Belle Époque, cheap rents and a tax-free status drew struggling artists like Renoir, Picasso, and Modigliani.",
+                        "Crowned by the brilliant white domes of the Sacré-Cœur basilica, the neighborhood is a maze of steep, winding cobblestone streets, hidden vineyards, and the remnants of its infamous cabaret history at venues like the Moulin Rouge."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The birthplace of modern art and the romantic ideal of the starving artist."
+                    }
+                  ]
+                },
+                {
+                  id: "industry",
+                  navLabel: "Trains & Parks",
+                  part: "Section 3",
+                  title: "Industry & Leisure",
+                  intro: "The Right Bank was the epicenter of Baron Haussmann's modernization and the industrial revolution.",
+                  cards: [
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Claude_Monet_-_The_Saint-Lazare_Station_-_Google_Art_Project.jpg",
+                      imageAlt:     "The Saint-Lazare Station by Claude Monet",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Claude Monet, The Saint-Lazare Station, 1877",
+                      name:         "Gare Saint-Lazare",
+                      label:        "The Industrial Gateway",
+                      paragraphs:   [
+                        "The Gare Saint-Lazare was the largest and busiest train station in Paris during the late 19th century. It served as the primary gateway between the city and the suburban towns along the Seine where many artists lived and worked.",
+                        "Claude Monet was so fascinated by the station that he rented a studio nearby and painted a series of 12 canvases depicting the immense glass-and-iron sheds, the roaring steam engines, and the modern travelers."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The beating, steam-powered heart of Paris's industrial revolution."
+                    },
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Camille_Pissarro%2C_The_Garden_of_the_Tuileries_on_a_Spring_Morning%2C_1899.jpg",
+                      imageAlt:     "The Garden of the Tuileries on a Spring Morning by Camille Pissarro",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Camille Pissarro, The Garden of the Tuileries on a Spring Morning, 1899",
+                      name:         "The Tuileries Gardens",
+                      label:        "The Royal Promenade",
+                      paragraphs:   [
+                        "Created by Catherine de' Medici as the garden of the Tuileries Palace in 1564, it was eventually opened to the public after the French Revolution. The palace itself was burned down in 1871, but the stunning gardens remain.",
+                        "The meticulously landscaped promenades, fountains, and statues stretch gracefully from the Louvre to the Place de la Concorde, offering an elegant refuge for both tourists and locals."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The meticulously sculpted green lung of central Paris."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              id: "left-bank",
+              label: "Left Bank",
+              sections: [
+                {
+                  id: "scholars",
+                  navLabel: "Scholars",
+                  part: "Section 1",
+                  title: "The Intellectual Soul",
+                  intro: "Historically the domain of scholars, artists, and philosophers, the Left Bank has been the intellectual engine of Paris for nearly a thousand years.",
+                  cards: [
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Corot_-_Vue_du_Panth%C3%A9on_%C3%A0_Paris_%28%27View_of_the_Pantheon%2C_Paris%27%29.jpg",
+                      imageAlt:     "View of the Pantheon by Corot",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Jean-Baptiste-Camille Corot, Vue du Panthéon à Paris",
+                      name:         "The Latin Quarter",
+                      label:        "The Scholarly Hub",
+                      paragraphs:   [
+                        "Taking its name from the Latin language that was spoken in the university during the Middle Ages, the Latin Quarter remains the intellectual heart of Paris, home to the Sorbonne and numerous other prestigious educational institutions.",
+                        "Atop the Montagne Sainte-Geneviève sits the Panthéon, originally built as a church but repurposed during the French Revolution into a secular mausoleum containing the remains of distinguished French citizens like Voltaire, Rousseau, and Victor Hugo."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The historic center of French academia, philosophy, and intellectual revolution."
+                    },
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Eug%C3%A8ne_Galien-Laloue_Paris_Eglise_de_St-Germain-des-Pr%C3%A9s.jpg",
+                      imageAlt:     "Eglise de St-Germain-des-Prés by Eugène Galien-Laloue",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Eugène Galien-Laloue, Eglise de St-Germain-des-Prés",
+                      name:         "Saint-Germain-des-Prés",
+                      label:        "The Literary Enclave",
+                      paragraphs:   [
+                        "Centered around the oldest abbey in Paris, Saint-Germain-des-Prés became world-famous in the mid-20th century as the epicenter of the existentialist movement and American jazz in Europe.",
+                        "Cafés like Les Deux Magots and Café de Flore served as the living rooms for writers and thinkers such as Jean-Paul Sartre, Simone de Beauvoir, and Ernest Hemingway. Today, it retains its upscale, literary charm."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The glamorous crossroad where literature, existential philosophy, and post-war jazz collided."
+                    }
+                  ]
+                },
+                {
+                  id: "seine",
+                  navLabel: "The Seine",
+                  part: "Section 2",
+                  title: "The River & Gardens",
+                  intro: "The historical edge where the Left Bank meets the medieval islands of the Seine, bordered by sprawling aristocratic gardens.",
+                  cards: [
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Maximilien_Luce_-_The_Quai_Saint-Michel_and_Notre-Dame_-_Google_Art_Project.jpg",
+                      imageAlt:     "The Quai Saint-Michel and Notre-Dame by Maximilien Luce",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Maximilien Luce, The Quai Saint-Michel and Notre-Dame, 1901",
+                      name:         "Quai Saint-Michel",
+                      label:        "The River Edge",
+                      paragraphs:   [
+                        "Stretching along the Left Bank of the Seine, the Quai Saint-Michel provides one of the most iconic, direct views of the Île de la Cité and the magnificent Gothic facade of Notre-Dame Cathedral.",
+                        "The quais of Paris are famous for their *bouquinistes*—the iconic dark green boxes of the booksellers that line the river, offering a treasure trove of antique books, posters, and postcards."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The historical edge where the Left Bank meets the medieval islands of the Seine."
+                    },
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Charles_Courtney_Curran_-_Dans_le_Jardin_du_Luxembourg_%281889%29.jpg",
+                      imageAlt:     "Dans le Jardin du Luxembourg by Charles Courtney Curran",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Charles Courtney Curran, Dans le Jardin du Luxembourg, 1889",
+                      name:         "Jardin du Luxembourg",
+                      label:        "The Senate Gardens",
+                      paragraphs:   [
+                        "Bordering the Latin Quarter, these magnificent gardens were created in 1612 by Marie de' Medici to accompany her new Luxembourg Palace, which now houses the French Senate.",
+                        "Famous for its lawns, tree-lined promenades, and the romantic Medici Fountain, the garden is a beloved gathering space for students taking a break from their studies at the nearby Sorbonne."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The sprawling, leisurely sanctuary of the Left Bank."
+                    }
+                  ]
+                },
+                {
+                  id: "montparnasse",
+                  navLabel: "Montparnasse",
+                  part: "Section 3",
+                  title: "The Roaring Twenties",
+                  intro: "Following World War I, the bohemian center of Paris shifted from Montmartre across the river to Montparnasse.",
+                  cards: [
+                    {
+                      imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/The_Gare_Montparnasse_Albert_Marquet_%281912%29.jpg",
+                      imageAlt:     "The Gare Montparnasse by Albert Marquet",
+                      imagePosition: "object-[50%_50%]",
+                      imageCaption: "Albert Marquet, The Gare Montparnasse, 1912",
+                      name:         "Montparnasse",
+                      label:        "The Bohemians",
+                      paragraphs:   [
+                        "Following World War I, the bohemian center of Paris shifted from Montmartre across the river to Montparnasse. The neighborhood exploded with creative energy during the *Années Folles* (Crazy Years).",
+                        "Artists, writers, and expatriates—including Picasso, Hemingway, F. Scott Fitzgerald, and Marc Chagall—congregated in legendary brasseries like La Coupole, Le Dôme, and La Closerie des Lilas."
+                      ],
+                      footerLabel:  "The Identity",
+                      footerText:   "The legendary gathering ground of the Lost Generation."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+
+          coda: {
+            id:       "coda",
+            navLabel: "Legacy",
+            part:     "Conclusion",
+            title:    "A Tapestry of Neighborhoods",
+            intro:    "The true magic of Paris lies not just in its grand monuments, but in the distinct, fiercely independent character of its many quarters.",
+            cards: [
+              { title: "The Urban Fabric", text: "Paris is composed of 20 distinct arrondissements spiraling outward like a snail shell from the center of the Seine, each functioning almost like a separate village with its own unique history." },
+              { title: "Preservation", text: "Unlike many major capital cities, Paris has aggressively protected its historical core, burying its modern skyscrapers out of sight in La Défense to maintain the 19th-century skyline." },
+              { title: "The Living Museum", text: "To walk through the neighborhoods of Paris is to walk through time, from the Roman ruins of the Latin Quarter to the high-tech facade of the Centre Pompidou." }
+            ],
+            closingLine: "“A walk about Paris will provide lessons in history, beauty, and in the point of Life.” — Thomas Jefferson"
+          }
+        };
+
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ["Lora", "serif"],
+                serif: ["Playfair Display", "serif"]
+              },
+              colors: {
+                gallery: {
+                  50:  "var(--g50)",
+                  100: "var(--g100)",
+                  200: "var(--g200)",
+                  800: "var(--g800)",
+                  900: "var(--g900)"
+                }
+              }
+            }
+          }
+        };
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .fade-in-section {
+          opacity: 0; transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    </style>
+</head>
+<body id="body" class="antialiased selection:bg-amber-700 selection:text-white">
+
+    <div id="app"></div>
+
+    <!-- Gear Picker -->
+    <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;" class="relative">
+        <button id="theme-btn" onclick="togglePicker()" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105" aria-label="Change Theme">&#9881;</button>
+        <div id="picker-panel" class="absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300">
+            <!-- populated by js -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-gallery-200 mt-4 font-serif text-lg text-center max-w-3xl"></p>
+    </div>
+
+    <script>
+        // Flip the array so Left Bank renders on the left
+        CONFIG.tabs.reverse();
+        
+        let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+        let activeTabId = CONFIG.tabs[0].id;
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty("--g50",  theme.colors[50]);
+            r.style.setProperty("--g100", theme.colors[100]);
+            r.style.setProperty("--g200", theme.colors[200]);
+            r.style.setProperty("--g800", theme.colors[800]);
+            r.style.setProperty("--g900", theme.colors[900]);
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = CONFIG.themes.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            render();
+            document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+            updatePickerUI();
+        }
+
+        function switchTab(tabId) {
+            activeTabId = tabId;
+            render();
+            document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+            
+            // Re-apply observer for new elements
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section:not(.is-visible)').forEach(section => observer.observe(section));
+        }
+
+        function togglePicker() {
+            const panel = document.getElementById("picker-panel");
+            panel.classList.toggle("hidden");
+        }
+
+        function updatePickerUI() {
+            const btn = document.getElementById("theme-btn");
+            const panel = document.getElementById("picker-panel");
+            
+            btn.className = `w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105 bg-gallery-800 text-gallery-200`;
+            panel.className = `absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300 bg-gallery-800`;
+            
+            let html = '<div class="py-2">';
+            CONFIG.themes.forEach(t => {
+                const isActive = t.id === activeTheme.id;
+                const textClass = isActive ? "text-amber-500 font-bold" : "text-gallery-100 hover:text-gallery-200";
+                html += `<button onclick="switchTheme('${t.id}')" class="w-full text-left px-4 py-2 text-sm transition-colors ${textClass}">${t.name}</button>`;
+            });
+            html += '</div>';
+            panel.innerHTML = html;
+        }
+
+        function openLightbox(url, caption) {
+            const lb = document.getElementById("lightbox");
+            document.getElementById("lightbox-img").src = url;
+            document.getElementById("lightbox-caption").innerText = caption;
+            lb.classList.remove("hidden");
+            lb.classList.add("flex");
+            setTimeout(() => { lb.classList.remove("opacity-0"); lb.classList.add("opacity-100"); }, 10);
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById("lightbox");
+            lb.classList.remove("opacity-100");
+            lb.classList.add("opacity-0");
+            setTimeout(() => { 
+                lb.classList.add("hidden"); 
+                lb.classList.remove("flex");
+                document.getElementById("lightbox-img").src = ""; 
+            }, 300);
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('lightbox').classList.contains('hidden')) closeLightbox();
+        });
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.chevron');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function render() {
+            const dark = activeTheme.dark;
+            const activeTab = CONFIG.tabs.find(t => t.id === activeTabId);
+            
+            const body = document.getElementById("body");
+            body.className = `antialiased selection:bg-amber-700 selection:text-white font-sans ${dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800'}`;
+
+            const navClasses = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
+            
+            // Generate Navbar Tabs (Left under Logo)
+            const tabLinks = CONFIG.tabs.map(t => {
+                const isTabActive = t.id === activeTabId;
+                const tabClass = isTabActive ? "text-amber-500 font-bold border-b border-amber-500 pb-0.5" : "text-gallery-400 hover:text-amber-500 transition-colors cursor-pointer";
+                return `<button onclick="switchTab('${t.id}')" class="${tabClass} text-xs uppercase tracking-widest focus:outline-none">${t.label}</button>`;
+            }).join('<span class="mx-3 opacity-30 text-xs">|</span>');
+            
+            // Generate Right Side Anchor Links based on active tab sections
+            const navLinks = activeTab.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+            
+            const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
+            const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
+
+            let html = `
+                <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b py-2 ${navClasses}">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between items-center h-14">
+                            <div class="flex flex-col justify-center">
+                                <a href="#" class="font-serif font-bold text-2xl tracking-tight flex items-center hover:text-amber-500 transition-colors mb-1">${CONFIG.meta.shortTitle}</a>
+                                <div class="flex items-center mt-0.5">
+                                    ${tabLinks}
+                                </div>
+                            </div>
+                            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
+                                <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${navLinks}
+                                <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <header class="relative h-screen flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 z-0">
+                        <img src="${CONFIG.hero.imageUrl}?width=1600" alt="${CONFIG.hero.imageAlt}" class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-b ${heroGradient}"></div>
+                    </div>
+                    <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section">
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">${CONFIG.meta.heroTitle}</h1>
+                        <p class="text-xl md:text-2xl font-serif italic mb-8 ${dark ? 'text-gallery-200' : 'text-gallery-800'}">${CONFIG.meta.subtitle}</p>
+                        <a href="#${activeTab.sections[0].id}" class="inline-block border-2 px-8 py-3 uppercase tracking-widest text-sm transition-all duration-300 ${btnClasses}">${CONFIG.hero.ctaText}</a>
+                    </div>
+                </header>
+
+                <main id="gallery-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            `;
+
+            // Render Active Tab Content via nested sections
+            activeTab.sections.forEach(sec => {
+                const gridCols = sec.cards.length === 2 ? 'md:grid-cols-2' : (sec.cards.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-1 max-w-3xl mx-auto');
+                const imgHeight = sec.cards.length === 2 ? 'h-64' : 'h-48';
+                
+                html += `
+                    <section id="${sec.id}" class="py-16 md:py-24 border-b ${dark ? 'border-gallery-800' : 'border-gallery-200'} fade-in-section">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${sec.part}</h2>
+                            <h3 class="font-serif text-4xl mb-6">${sec.title}</h3>
+                            <p class="text-lg">${sec.intro}</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 ${gridCols} gap-8">
+                `;
+
+                sec.cards.forEach((card) => {
+                    const ps = card.paragraphs.map(p => `<p>${p}</p>`).join('');
+                    const pos = card.imagePosition || 'object-center';
+                    html += `
+                        <div class="bg-gallery-900 text-gallery-100 p-6 md:p-8 art-shadow flex flex-col h-full border-t-4 border-gallery-800">
+                            <img src="${card.imageUrl}?width=800" loading="lazy" alt="${card.imageAlt}" class="w-full ${imgHeight} object-contain object-center bg-black/20 p-2 mb-6 cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('${card.imageUrl}?width=1600', '${card.imageCaption.replace(/'/g, "\\'")}')">
+                            <h4 class="font-serif text-2xl mb-1">${card.name}</h4>
+                            <span class="text-xs uppercase tracking-widest text-amber-500 mb-6 block">${card.label}</span>
+                            
+                            <button class="w-full flex justify-between items-center py-2 text-sm font-bold uppercase tracking-wider text-gallery-200 hover:text-amber-500 transition-colors border-t border-gallery-800 focus:outline-none" onclick="toggleAccordion(this)">
+                                Read More
+                                <svg class="chevron w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 space-y-4 text-sm flex-grow">
+                                    ${ps}
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gallery-800">
+                                    <strong class="text-amber-500 block mb-1">${card.footerLabel}</strong>
+                                    <p class="text-sm">${card.footerText}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></section>`;
+            });
+
+            // Coda
+            html += `
+                <section id="${CONFIG.coda.id}" class="py-16 md:py-24 fade-in-section">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold text-center">${CONFIG.coda.part}</h2>
+                        <h3 class="font-serif text-4xl mb-8 text-center">${CONFIG.coda.title}</h3>
+                        <p class="text-xl mb-12 text-center font-serif">${CONFIG.coda.intro}</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            `;
+
+            CONFIG.coda.cards.forEach(card => {
+                html += `
+                    <div class="bg-gallery-900 text-gallery-100 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg text-amber-500">${card.title}</h4>
+                        <p class="text-sm">${card.text}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                        </div>
+            `;
+            if (CONFIG.coda.closingLine) {
+                html += `<div class="bg-gallery-900 text-gallery-100 p-8 md:p-12 text-center art-shadow">
+                            <h4 class="font-serif text-2xl text-amber-500 italic">${CONFIG.coda.closingLine}</h4>
+                         </div>`;
+            }
+            html += `
+                    </div>
+                </section>
+            </main>
+            
+            <footer class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm">
+                <p>${CONFIG.meta.footerText}</p>
+            </footer>
+            `;
+
+            document.getElementById("app").innerHTML = html;
+        }
+
+        applyTheme(activeTheme);
+        render();
+        updatePickerUI();
+
+        setTimeout(() => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        }, 100);
+
+    </script>
+</body>
+</html>
