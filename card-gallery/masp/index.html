@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting the World: The MASP Collection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // ─── CONFIG ───────────────────────────────────────────────────────────────
+// Edit this object to change content and design. The rest of the file is
+// the template — leave it alone.
+
+const CONFIG = {
+
+  meta: {
+    pageTitle:  "Painting the World: The MASP Collection",
+    heroTitle:  "Painting the World",
+    shortTitle: "MASP",
+    subtitle:   "Five centuries of painting at the Museu de Arte de São Paulo",
+    footerText: "Painting the World: The MASP Collection. Artwork sourced from Wikimedia Commons (public domain). MASP — Museu de Arte de São Paulo Assis Chateaubriand.",
+    backHref:   "../sao-paulo/",
+    backLabel:  "São Paulo"
+  },
+
+  defaultTheme: 'coal',
+
+  themes: [
+    {
+      id:   'coal',
+      name: 'Coal',
+      dark: true,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    },
+    {
+      id:   'navy',
+      name: 'Navy',
+      dark: true,
+      colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' }
+    },
+    {
+      id:   'forest',
+      name: 'Forest',
+      dark: true,
+      colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' }
+    },
+    {
+      id:   'parchment',
+      name: 'Parchment',
+      dark: false,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    }
+  ],
+
+  hero: {
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/The_Arlesienne_by_Vincent_van_Gogh%2C_1890%2C_oil_on_canvas_-_Museu_de_Arte_de_S%C3%A3o_Paulo_-_DSC07384.jpg",
+    imageAlt: "L'Arlesienne (Madame Ginoux) by Vincent van Gogh, 1890, at MASP",
+    ctaText:  "Enter the Collection"
+  },
+
+  sections: [
+    {
+      id:       "old-masters",
+      navLabel: "Old Masters",
+      part:     "Part 1",
+      title:    "Masters of the Old World",
+      intro:    "Before MASP had a building, it had a mission: to assemble a collection that Latin America had never seen. Pietro Maria Bardi and Assis Chateaubriand traveled Europe in the late 1940s acquiring works that European institutions were willing to sell. The result included some of the rarest paintings of the Renaissance and Mannerist tradition outside of Europe.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/MASP_-_Raffaello_Sanzio_01.jpg",
+          imageAlt:     "Resurrection of Christ by Raphael, c.1499-1502",
+          imageCaption: "Raphael (Raffaello Sanzio), Resurrection of Christ — c.1499–1502, oil on panel, 52 × 44 cm, MASP",
+          name:         "Raphael",
+          label:        "Resurrection of Christ, c.1499–1502",
+          paragraphs: [
+            "Painted when Raffaello Sanzio was still a teenager apprenticed in the workshop of Pietro Perugino, the Resurrection of Christ is among the earliest confirmed works in Raphael's hand. The composition shows Christ rising from the tomb in a blaze of divine light, soldiers collapsing in astonishment below — a format that Raphael inherited from Perugino but infused with a clarity and emotional directness that would define his mature style.",
+            "The small panel — barely the size of a sheet of paper — belies its ambition. Raphael treats the resurrection not as theological abstraction but as physical event: the soldiers' bodies are foreshortened with precision, Christ's anatomy is rendered with the scientific curiosity that would later produce the great figures of the Vatican Stanze. The pale gold of the dawn sky anticipates a lifetime of compositional thinking about light.",
+            "MASP acquired the painting in 1952 under inventory number MASP.00017. Its presence in São Paulo is partly a consequence of postwar displacement in the European art market, partly a testament to the ambition and speed with which Bardi assembled the collection. That a Raphael panel from the 1490s ends up in a mid-century Brazilian institution is itself a kind of miracle."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "One of the earliest works by Raphael's hand outside of Italy, and a rare early Renaissance panel in the Southern Hemisphere. It documents the young Raphael before he became the Raphael of the Vatican — when he was still learning to see."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/El_greco%2C_annunciazione%2C_1600_ca._01.JPG",
+          imageAlt:     "The Annunciation by El Greco, c.1600",
+          imageCaption: "El Greco (Domenikos Theotokopoulos), The Annunciation — c.1600, oil on canvas, 72.5 × 106.5 cm, MASP",
+          name:         "El Greco",
+          label:        "The Annunciation, c.1600",
+          paragraphs: [
+            "By the time El Greco painted this Annunciation around 1600, he had long abandoned the realism of his Venetian training under Titian and invented a style entirely his own: elongated figures that seem to dematerialize at the edges, colors that flicker between earth tones and luminous greens and yellows, compositions that substitute spiritual intensity for spatial coherence. The Annunciation at MASP shows the angel Gabriel descending to the Virgin in a blaze of celestial light — the dove of the Holy Spirit visible above, the Virgin's hands crossed in submission and wonder.",
+            "El Greco's mature style was considered bizarre in his own time and largely forgotten for three centuries after his death. It was the Symbolists and then the Expressionists of the early 20th century who rediscovered him — finding in his distorted, burning figures a precursor to the emotional intensity they were themselves pursuing. By the time MASP acquired the painting in 1952 (MASP.00166), El Greco had been understood as one of the great originals in Western painting history.",
+            "The work relates closely to an earlier version of the same composition in the Toledo Museum of Art, demonstrating El Greco's practice of developing and refining subjects across multiple canvases. The MASP version is generally considered the more resolved: looser in execution, more atmospheric, with the heavenly light more fully integrated into the picture's space."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "El Greco's late work anticipates the emotional temperature of Expressionism by three centuries. This Annunciation is a concentrated instance of that quality — a painting in which orthodox subject matter becomes a vehicle for something stranger and more urgent."
+        }
+      ],
+      blockquote: {
+        text:        "I paint because the spirits whisper madly inside my head.",
+        attribution: "El Greco"
+      }
+    },
+    {
+      id:       "french-school",
+      navLabel: "French School",
+      part:     "Part 2",
+      title:    "The French School",
+      intro:    "The French works at MASP span seven decades of the 19th century's most consequential artistic revolution. Delacroix's mythological cycles give way to Manet's cool, dispassionate modernity, and Renoir's interest in surfaces charged with light. Together they trace the arc from Romanticism through Impressionism — the sequence that changed the direction of Western art.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Eug%C3%A8ne_Delacroix_-_Four_Seasons%2C_Spring_-_Eurydice_bitten_by_a_serpent_while_picking_flowers_(MASP).jpg",
+          imageAlt:     "Four Seasons: Spring (Eurydice bitten by a serpent) by Eugène Delacroix",
+          imageCaption: "Eugène Delacroix, Four Seasons: Spring — Eurydice bitten by a serpent while picking flowers, oil on canvas, MASP",
+          name:         "Eugène Delacroix",
+          label:        "Four Seasons: Spring, c.1856–63",
+          paragraphs: [
+            "MASP holds all four panels of Delacroix's final great decorative cycle — the Four Seasons, each depicting a mythological subject from Ovid set against the rhythms of the natural year. Spring shows Eurydice in the moment of her fatal snakebite: she stumbles in a meadow in full bloom, her companions unaware. The lushness of the setting heightens the tragedy — this is the world at its most beautiful at the moment it becomes lethal.",
+            "Delacroix was in his sixties when he painted these panels, and they represent a summation of everything he had learned about color as emotional force. The greens and yellows of the Spring scene are almost violently bright; the brushwork is loose and calligraphic. Cézanne would later say that Delacroix showed him that color alone could carry structure — that drawing and painting could be the same act.",
+            "The Four Seasons were likely intended as a decorative ensemble; having all four panels in a single collection is unusual. Their presence at MASP makes the museum one of the best places in the world to understand Delacroix's late style — and one of the only places where the cycle can be experienced as he intended."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "The Four Seasons represent Delacroix's final synthesis — Romanticism arriving at something close to pure chromatic expression. That all four panels are at MASP is exceptional; most major museums have one, if that."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/The_Amazon%2C_Portrait_of_Marie_Lefebure%2C_by_Edouard_Manet%2C_1870-1875%2C_oil_on_canvas_-_Museu_de_Arte_de_S%C3%A3o_Paulo_-_DSC07170.jpg",
+          imageAlt:     "The Amazon, Portrait of Marie Lefebure by Édouard Manet, 1870-1875",
+          imageCaption: "Édouard Manet, The Amazon (Portrait of Marie Lefebure) — c.1870–75, oil on canvas, MASP",
+          name:         "Édouard Manet",
+          label:        "The Amazon, c.1870–75",
+          paragraphs: [
+            "Manet painted equestrian portraits as a commentary on a tradition he found both compelling and exhausted. The Amazon shows a woman in riding costume on horseback, seen from below, at a scale that makes the canvas feel monumental. The treatment is characteristically Manet: the figure is rendered with directness and confidence, the background handled summarily, the whole image built around a few decisive contrasts of dark and light.",
+            "Manet spent his career performing a kind of criticism from within. He painted the subjects that the French Academy considered serious — history, mythology, portraiture — but drained them of the rhetorical grandeur the Academy required. His Amazon is less heroic than coolly observed: a woman, a horse, a particular quality of outdoor light. The paint records looking rather than performing.",
+            "The painting belongs to a period in Manet's career when he was simultaneously the most controversial figure in French art and deeply invested in winning the official recognition he never fully received. His break with academic convention was not ideological — he genuinely wanted to paint the Salon — but the paintings kept scandalizing the juries. The Amazon is relatively restrained by his standards, which may be why it survived those judgments."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "Manet is the pivot point between the academic tradition and Impressionism — the painter who made it impossible to pretend that grand subjects required grand execution. The Amazon shows this tension at its most productive."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait_of_Claude_Renoir%2C_by_Pierre-Auguste_Renoir%2C_c._1908%2C_oil_on_canvas_-_Museu_de_Arte_de_S%C3%A3o_Paulo_-_DSC07269.jpg",
+          imageAlt:     "Portrait of Claude Renoir by Pierre-Auguste Renoir, c.1908",
+          imageCaption: "Pierre-Auguste Renoir, Portrait of Claude Renoir — c.1908, oil on canvas, MASP",
+          name:         "Pierre-Auguste Renoir",
+          label:        "Portrait of Claude Renoir, c.1908",
+          paragraphs: [
+            "Renoir painted his youngest son Claude — known in the family as \"Coco\" — repeatedly in his final years. These are among the most intimate works of Renoir's late period: small paintings of a child's face, executed with the loosened, almost boneless brushwork of an artist whose hands were crippled by arthritis but whose eye had lost none of its precision. The paint is applied in warm reds, oranges, and pinks — Renoir's skin tones always read as heated, alive, slightly flushed.",
+            "By 1908 Renoir was in his late sixties and living at Cagnes-sur-Mer in the south of France. His work from this period is sometimes criticized as soft — the surfaces too creamy, the figures too rounded. But these late portraits of Claude operate on a different register: they are records of observation rather than idealization, documents of a specific child at a specific moment, made by a man who knew he would not always be able to see.",
+            "The Impressionists are generally associated with landscape and leisure, but portraiture was central to Renoir's practice throughout his career. He was the movement's great portraitist, and the best of these — the Charpentier commission, the Bérard children, the Claude Renoir series — show an intimacy and directness that his large figure compositions, for all their beauty, often lack."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "A late Renoir of concentrated humanity — not the public Renoir of luminous leisure but the private Renoir of fatherhood and failing health, still looking with everything he had."
+        }
+      ],
+      closingLine: "From Delacroix's mythological passion to Manet's cool realism to Renoir's intimate warmth, these three canvases trace the seventy years in which French painting reinvented itself — and, in doing so, reinvented art."
+    },
+    {
+      id:       "post-impressionism",
+      navLabel: "Post-Impressionism",
+      part:     "Part 3",
+      title:    "The Post-Impressionists",
+      intro:    "The painters who came after Impressionism shared little beyond the conviction that the Impressionist breakthrough was not an end point but a beginning. Van Gogh wanted emotional intensity. Gauguin wanted mythic resonance. Toulouse-Lautrec wanted the unsentimental truth of Parisian low life. MASP holds a painting by each of them — three very different answers to the same question about what art was for.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/The_Schoolboy_(The_Postman%27s_Son)%2C_by_Vincent_van_Gogh%2C_1888%2C_oil_on_canvas_-_Museu_de_Arte_de_S%C3%A3o_Paulo_-_DSC07369.jpg",
+          imageAlt:     "The Schoolboy (Camille Roulin) by Vincent van Gogh, 1888",
+          imageCaption: "Vincent van Gogh, The Schoolboy (The Postman's Son, Camille Roulin) — 1888, oil on canvas, 63.5 × 54 cm, MASP",
+          name:         "Vincent van Gogh",
+          label:        "The Schoolboy (Camille Roulin), 1888",
+          paragraphs: [
+            "Van Gogh painted this portrait in Arles in December 1888, during the most productive and most dangerous period of his life — the eighteen months in Provence that produced hundreds of paintings and ended with the severing of his ear and his voluntary admission to the asylum at Saint-Rémy. Camille Roulin was the twelve-year-old son of Joseph Roulin, the postman who became one of Van Gogh's closest friends and one of his most important subjects.",
+            "The painting shows Camille in school uniform: blue cap with gold braid, white collar, the slight self-consciousness of a child asked to sit still. The background is a flat yellow-green that pushes the figure forward and charges the surface with warmth. Van Gogh's brushwork here is relatively controlled compared to the swirling canvases of his late period — the boy's face is built up in short parallel strokes, the expression watchful and a little solemn.",
+            "Van Gogh painted several portraits of the Roulin family, driven by a belief that portraiture was the form of painting most worth pursuing — that capturing the character of a person in paint was a more serious act than painting flowers or fields. \"I would like to paint portraits that a hundred years from now would seem like apparitions to the people then living,\" he wrote to his sister. The Schoolboy is exactly that."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "One of Van Gogh's great human portraits — a painting of watchful, ordinary childhood by a man who saw in ordinary things the possibility of something transcendent. The yellow-green background alone is a lesson in how color creates presence."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Self_portrait_(Near_Golgotha)_by_Paul_Gauguin%2C_1896%2C_oil_on_canvas_-_Museu_de_Arte_de_S%C3%A3o_Paulo_-_DSC07379.jpg",
+          imageAlt:     "Self-Portrait near Golgotha by Paul Gauguin, 1896",
+          imageCaption: "Paul Gauguin, Self-Portrait near Golgotha — 1896, oil on canvas, 76 × 64 cm, MASP",
+          name:         "Paul Gauguin",
+          label:        "Self-Portrait near Golgotha, 1896",
+          paragraphs: [
+            "Gauguin painted this self-portrait in Tahiti in 1896, a year into his second and final stay in the Pacific. He was forty-eight, ill, nearly broke, and suffused with a grandiosity that was both symptom and survival mechanism. The painting shows him in three-quarter view, his expression severe and inward, the background divided between a warm ochre and a dark blue-green. In the upper right corner, barely visible, are two small figures near a cross — the reference to Golgotha that gives the painting its title and its implicit claim.",
+            "The identification with Christ was a recurring element in Gauguin's self-presentation: he saw himself as a martyr to beauty, misunderstood by a society that valued money over vision. It was self-dramatizing, and Gauguin knew it, and painted it anyway. The self-portrait is neither purely confessional nor purely ironic — it occupies the uncomfortable space between those positions, which is where his most interesting work lives.",
+            "By the time MASP acquired this painting, Gauguin's reputation had been settled for decades: one of the five or six painters who had broken most decisively with the Impressionist legacy and pointed toward the century ahead. The flat planes of color, the symbolic rather than perspectival use of space, the insistence on personal mythology as legitimate subject — all of it would become the grammar of modern art."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "A self-portrait as theological statement — Gauguin as martyr, artist, and half-ironic messiah, painted in Tahiti with the darkness of the period fully visible in his face."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Henri_de_toulouse-laurtrec%2C_il_divano%2C_1893_ca._01.JPG",
+          imageAlt:     "At the Salon, the Divan by Henri de Toulouse-Lautrec, c.1893",
+          imageCaption: "Henri de Toulouse-Lautrec, At the Salon, the Divan — c.1893, oil on cardboard, Museu de Arte de São Paulo",
+          name:         "Henri de Toulouse-Lautrec",
+          label:        "At the Salon, the Divan, c.1893",
+          paragraphs: [
+            "Toulouse-Lautrec painted the interiors of Parisian brothels with a matter-of-fact directness that scandalized his contemporaries and has not fully lost its capacity to unsettle. He was not interested in titillation or judgment. He was interested in the specific postures and expressions of women waiting — waiting for clients, waiting for the evening to end, waiting with the professional patience of people whose labor is their body.",
+            "\"At the Salon, the Divan\" shows a woman on a low sofa, her weight settled into the cushions, her face closed and private. The paint is applied quickly on cardboard — Lautrec preferred cardboard's absorbent surface, which gave his marks a dry, graphic quality closer to his poster work than to conventional oil painting. The composition is cropped and flat, like a Japanese woodblock print or a frame from a film not yet invented.",
+            "Lautrec is sometimes grouped with the Impressionists, but he belongs more precisely to the generation that used Impressionism's loosened technique in the service of subjects Impressionism could not accommodate. Monet painted water lilies; Lautrec painted the Moulin Rouge and the maisons closes of Montmartre. Both were looking directly at their world. They saw very different things."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "A picture of labor, waiting, and the unsentimental reality of Parisian night life — painted with the economy and graphic intelligence of an artist who saw clarity as the only honest response to a world that preferred decoration."
+        }
+      ],
+      blockquote: {
+        text:        "I paint things as they are. I don't comment.",
+        attribution: "Henri de Toulouse-Lautrec"
+      }
+    },
+    {
+      id:       "turn-of-century",
+      navLabel: "Modernity",
+      part:     "Part 4",
+      title:    "The Turn of the Century",
+      intro:    "The years around 1890–1920 were a moment of fracture in Western art — the accumulated weight of the Renaissance perspective system finally gave way, and painters began exploring the possibilities of flatness, distortion, and pure color. MASP holds works from either side of that fracture: Monet's late luminism, still anchored in observed nature; and Modigliani's elongated portraiture, already in a different century.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/The_Canoe_on_the_Epte%2C_by_Claude_Monet%2C_c._1890%2C_oil_on_canvas_-_Museu_de_Arte_de_S%C3%A3o_Paulo_-_DSC07345.jpg",
+          imageAlt:     "The Canoe on the Epte by Claude Monet, c.1890",
+          imageCaption: "Claude Monet, The Canoe on the Epte — c.1890, oil on canvas, 133 × 145 cm, MASP",
+          name:         "Claude Monet",
+          label:        "The Canoe on the Epte, c.1890",
+          paragraphs: [
+            "Monet painted a series of views of his daughters and stepdaughter in a flat-bottomed boat on the River Epte, near Giverny, around 1890. The series represents a transitional moment in his work: the figures are still present, but they are barely more than an excuse to study the river's surface — the way sunlight filters through overhanging trees, the way reflections multiply and distort forms, the way water turns green, then gold, then dark brown in the space of a few meters.",
+            "The MASP canvas is one of the most abstract of the group. The two women in the boat are reduced to pale shapes against the dense green of the reflected trees; the surface of the water is treated with a complexity that anticipates the Water Lilies series Monet would begin later that decade. There is no sky, no shore — only water and its reflections, a self-contained world in which form has become almost entirely color.",
+            "Monet is often discussed as if his career had a single direction — toward greater abstraction, toward the liberation of color from subject. The Canoe on the Epte supports that narrative, but it also shows the cost: the two women in the boat are increasingly difficult to see as people. They are light-effects. It would take Monet another decade, and the abandonment of figures entirely, to work out what this meant."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "One of the pivotal moments in the development of Monet's late style — the point at which the river's surface becomes more important than the people on it, and painting turns irrevocably toward abstraction."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Amedeo_modigliani%2C_ritratto_di_leopold_zborowski%2C_1916-19%2C_01.JPG",
+          imageAlt:     "Portrait of Léopold Zborowski by Amedeo Modigliani, 1916-1919",
+          imageCaption: "Amedeo Modigliani, Portrait of Léopold Zborowski — 1916–19, oil on canvas, 65 × 100 cm, MASP",
+          name:         "Amedeo Modigliani",
+          label:        "Portrait of Léopold Zborowski, 1916–19",
+          paragraphs: [
+            "Léopold Zborowski was a Polish poet who became Modigliani's dealer and, more importantly, his friend — one of the few people who supported the painter financially during the years of poverty and tuberculosis that killed him at thirty-five. Modigliani painted Zborowski more than a dozen times, and the best of these portraits have a tenderness rare in his work. This is one of them: the face elongated in Modigliani's characteristic manner, the eyes rendered as blanks — unseeing or inward-looking — the expression serious and gentle.",
+            "Modigliani's style was formed from an unlikely synthesis: African masks, Cézanne's structural approach, the Italian Primitive tradition of elongated saints and Madonnas, and the influence of his sculptural practice — he carved stone heads with the same quality of simplified, frontal presence that appears in his paintings. The result was a way of rendering human faces that was immediately recognizable and entirely his own.",
+            "He died in January 1920; Zborowski paid for his funeral. He left behind a body of work that was almost entirely portraits and nudes — he had almost no interest in landscape, history, or mythology. His subject was the human face, and more particularly, the quality of a person's interiority as it can be read, or misread, in their features."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "A portrait by an artist who found a new way to see the human face — one that owed nothing to Renaissance naturalism and everything to a century of seeing faces as psychological and spiritual documents."
+        }
+      ],
+      closingLine: "Between Monet's dissolution of form into light and Modigliani's compression of personality into line, these two paintings mark the passage into a century that would never again agree on what a painting was supposed to do."
+    },
+    {
+      id:       "brazil",
+      navLabel: "Brazil",
+      part:     "Part 5",
+      title:    "The Brazilian Soul",
+      intro:    "MASP was founded as a Brazilian institution with a European collection — but from its earliest years it also acquired and championed Brazilian art. The works of Victor Meirelles and Cândido Portinari represent two very different visions of Brazil: one painted in 19th-century Paris, the other in the 20th-century Northeast. Both ask what it means to see Brazil as a subject worthy of paint.",
+      cards: [
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Victor_Meirelles_-_Moema.jpg",
+          imageAlt:     "Moema by Victor Meirelles, 1866",
+          imageCaption: "Victor Meirelles, Moema — 1866, oil on canvas, 129 × 190 cm, MASP",
+          name:         "Victor Meirelles",
+          label:        "Moema, 1866",
+          paragraphs: [
+            "Victor Meirelles painted Moema in Paris while studying at the École des Beaux-Arts, and exhibited it at the Paris Salon of 1866, where it was received with considerable attention. The subject comes from the 17th-century Portuguese epic poem Caramuru by Frei José de Santa Rita Durão: Moema was a Tupinambá woman who loved the Portuguese explorer Diogo Álvares and, after he sailed back to Portugal with another woman, threw herself into the sea and drowned. Meirelles shows her washed up on the beach, her body surrendered to the surf.",
+            "The painting belongs to the tradition of the Academic nude — the figure is idealized, the composition carefully arranged, the technique impeccable. But Meirelles introduces something that European Academic painting of the period rarely accommodated: a Brazilian subject treated with the same gravity and formal ambition as classical mythology. Moema is not exotic curiosity — she is a protagonist in a tragedy.",
+            "When Meirelles brought the painting back to Brazil, it was received as a founding document of Brazilian national painting. It remains one of the most reproduced images in Brazilian art history — the Tupinambá princess who drowned for love, rendered by a Brazilian painter in Paris, exhibited to the world, and eventually returned to São Paulo."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "The painting that argued, at the Salon of 1866, that Brazilian subjects deserved the same artistic seriousness as European ones. Its presence at MASP closes a long circle — from Rio to Paris and back, to the museum that defines what Brazilian painting can be."
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Candido_Portinari_-_Retirantes_(MASP).jpg",
+          imageAlt:     "Retirantes by Cândido Portinari, 1944",
+          imageCaption: "Cândido Portinari, Retirantes — 1944, oil on canvas, 190 × 180 cm, MASP (Photo: Priscila Bruder, CC0)",
+          name:         "Cândido Portinari",
+          label:        "Retirantes, 1944",
+          paragraphs: [
+            "Portinari painted the Retirantes series in Petrópolis in 1944, responding to the mass displacement of peasants from the drought-stricken Brazilian Northeast — people who abandoned their land for the cities in a migration that had been ongoing for decades and had never been depicted in Brazilian painting with anything like this force. The canvas shows a family on the road: gaunt adults and skeletal children, their bodies warped by hunger, their faces carrying the specific exhaustion of people who have walked too far and lost too much.",
+            "Portinari had been developing his social realist vision since the 1930s, influenced by the Mexican muralists — Rivera, Orozco, Siqueiros — but increasingly by his own experience of poverty. He grew up in Brodósqui, São Paulo, the son of Italian immigrant coffee workers, and understood hunger and displacement from the inside. The Retirantes is not sympathy from a distance; it is recognition.",
+            "Pietro Bardi saw the Retirantes series in Portinari's studio in 1948 and immediately understood their significance. He convinced Assis Chateaubriand to acquire three of them for MASP, making the museum the custodian of what would become the most iconic images in Brazilian social art. They are paintings that cannot be looked at without difficulty — which was always the point."
+          ],
+          footerLabel: "Why It Matters",
+          footerText:  "Portinari's Retirantes forced Brazilian painting to look at Brazil — not the idealized Brazil of Meirelles' Academy training but the Brazil of the sertão, the drought, the families walking toward a city that may not save them."
+        }
+      ],
+      closingLine: "From Meirelles' Tupinambá princess to Portinari's displaced families, these two paintings span the century in which Brazil began to paint itself honestly — and in which a museum in São Paulo decided that honesty was worth keeping."
+    }
+  ],
+
+  coda: {
+    id:       "coda",
+    navLabel: "Coda",
+    part:     "Coda",
+    title:    "What MASP Is For",
+    intro:    "MASP opened in 1947 in a rented space on Rua Sete de Abril, two years before its building existed. It was the idea of Assis Chateaubriand — the most powerful media magnate in Brazil — and Pietro Maria Bardi, an Italian critic and dealer who became its director for nearly four decades. Together they assembled a collection of extraordinary range and depth in a period of less than five years, buying works from cash-hungry European families in the aftermath of the war. The building came later: Lina Bo Bardi's red-beamed concrete box, suspended over Paulista Avenue on four pilotis, opened in 1968 and became one of the most recognized buildings in South America.",
+    cards: [
+      {
+        title: "The Glass Easels",
+        text:  "Pietro Bardi and Lina Bo Bardi disagreed about many things, but they agreed that paintings should be seen in conditions that allowed comparison and discussion rather than reverence. Lina Bo Bardi's original installation presented the works on glass and concrete easels — transparent supports that let you see the back of the canvas as well as the front, that gathered works from different centuries and traditions side by side without hierarchical hanging. The arrangement changed constantly; the point was that paintings could talk to each other if you let them."
+      },
+      {
+        title: "The Bardi Vision",
+        text:  "Pietro Maria Bardi arrived in Brazil in 1946 as a political exile — his past as an intellectual supporter of Italian Fascism made Europe uncomfortable. He reinvented himself as a museum director and became, over forty years, one of the most important figures in Brazilian cultural life. His acquisitions for MASP were shaped by a belief that Brazil deserved to encounter the Western tradition at its highest level — not reproductions, not second-tier works, but the real thing, in the same room."
+      },
+      {
+        title: "Five Centuries Under One Roof",
+        text:  "MASP now holds roughly 10,000 works spanning five centuries and every major tradition in Western painting, plus substantial holdings in African, Asian, and pre-Columbian art. It is the largest art museum in Latin America by collection size and arguably its most important by the quality of what it holds. The building on Paulista Avenue — suspended over the street, open to the city below — remains one of the great acts of architectural confidence: a museum that looks outward rather than inward, that treats the street as its context and the city as its audience."
+      }
+    ],
+    closingLine: "The collection Bardi and Chateaubriand assembled in a few extraordinary years still hangs in the building Lina Bo Bardi made for it — an argument, in paint and concrete, that beauty belongs to everyone."
+  }
+
+}; // end CONFIG
+
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ["Lora", "serif"],
+                serif: ["Playfair Display", "serif"]
+              },
+              colors: {
+                gallery: {
+                  50:  "var(--g50)",
+                  100: "var(--g100)",
+                  200: "var(--g200)",
+                  800: "var(--g800)",
+                  900: "var(--g900)"
+                }
+              }
+            }
+          }
+        };
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .fade-in-section {
+          opacity: 0; transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    </style>
+</head>
+<body id="body" class="antialiased selection:bg-amber-700 selection:text-white">
+
+    <div id="app"></div>
+
+    <!-- Gear Picker -->
+    <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;" class="relative">
+        <button id="theme-btn" onclick="togglePicker()" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105" aria-label="Change Theme">&#9881;</button>
+        <div id="picker-panel" class="absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300 bg-gallery-800">
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-gallery-200 mt-4 font-serif text-lg text-center max-w-3xl"></p>
+    </div>
+
+    <script>
+        let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty("--g50",  theme.colors[50]);
+            r.style.setProperty("--g100", theme.colors[100]);
+            r.style.setProperty("--g200", theme.colors[200]);
+            r.style.setProperty("--g800", theme.colors[800]);
+            r.style.setProperty("--g900", theme.colors[900]);
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = CONFIG.themes.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            render();
+            document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+            updatePickerUI();
+        }
+
+        function togglePicker() {
+            const panel = document.getElementById("picker-panel");
+            panel.classList.toggle("hidden");
+        }
+
+        function updatePickerUI() {
+            const btn = document.getElementById("theme-btn");
+            const panel = document.getElementById("picker-panel");
+            btn.className = `w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow focus:outline-none hover:scale-105 bg-gallery-800 text-gallery-200`;
+            panel.className = `absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden bg-gallery-800`;
+            let html = '<div class="py-2">';
+            CONFIG.themes.forEach(t => {
+                const isActive = t.id === activeTheme.id;
+                const textClass = isActive ? "text-amber-500 font-bold" : "text-gallery-100 hover:text-gallery-200";
+                html += `<button onclick="switchTheme('${t.id}')" class="w-full text-left px-4 py-2 text-sm ${textClass}">${t.name}</button>`;
+            });
+            html += '</div>';
+            panel.innerHTML = html;
+        }
+
+        function openLightbox(url, caption) {
+            const lb = document.getElementById("lightbox");
+            document.getElementById("lightbox-img").src = url;
+            document.getElementById("lightbox-caption").innerText = caption;
+            lb.classList.remove("hidden");
+            lb.classList.add("flex");
+            setTimeout(() => { lb.classList.remove("opacity-0"); lb.classList.add("opacity-100"); }, 10);
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById("lightbox");
+            lb.classList.remove("opacity-100");
+            lb.classList.add("opacity-0");
+            setTimeout(() => {
+                lb.classList.add("hidden");
+                lb.classList.remove("flex");
+                document.getElementById("lightbox-img").src = "";
+            }, 300);
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('lightbox').classList.contains('hidden')) closeLightbox();
+        });
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.chevron');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function render() {
+            const dark = activeTheme.dark;
+
+            const body = document.getElementById("body");
+            body.className = `antialiased selection:bg-amber-700 selection:text-white font-sans ${dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800'}`;
+
+            const navClasses = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
+            const navLinks = CONFIG.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+
+            const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
+            const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
+
+            let html = `
+                <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b ${navClasses}">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between h-16 items-center">
+                            <a href="#" class="font-serif font-bold text-xl tracking-tight flex items-center hover:text-amber-500 transition-colors">${CONFIG.meta.shortTitle}</a>
+                            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
+                                <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${navLinks}
+                                <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <header class="relative h-screen flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 z-0">
+                        <img src="${CONFIG.hero.imageUrl}?width=1600" alt="${CONFIG.hero.imageAlt}" class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-b ${heroGradient}"></div>
+                    </div>
+                    <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section">
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">${CONFIG.meta.heroTitle}</h1>
+                        <p class="text-xl md:text-2xl font-serif italic mb-8 ${dark ? 'text-gallery-200' : 'text-gallery-800'}">${CONFIG.meta.subtitle}</p>
+                        <a href="#${CONFIG.sections[0].id}" class="inline-block border-2 px-8 py-3 uppercase tracking-widest text-sm transition-all duration-300 ${btnClasses}">${CONFIG.hero.ctaText}</a>
+                    </div>
+                </header>
+
+                <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            `;
+
+            CONFIG.sections.forEach(sec => {
+                const cardCount = sec.cards.length;
+                const gridCols = cardCount === 2 ? 'md:grid-cols-2' : (cardCount === 3 ? 'md:grid-cols-3' : 'md:grid-cols-1 max-w-3xl mx-auto');
+                const imgHeight = cardCount === 2 ? 'h-72' : 'h-56';
+
+                html += `
+                    <section id="${sec.id}" class="py-16 md:py-24 border-b ${dark ? 'border-gallery-800' : 'border-gallery-200'} fade-in-section">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${sec.part}</h2>
+                            <h3 class="font-serif text-4xl mb-6">${sec.title}</h3>
+                            <p class="text-lg">${sec.intro}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 ${gridCols} gap-8">
+                `;
+
+                sec.cards.forEach((card) => {
+                    const ps = card.paragraphs.map(p => `<p>${p}</p>`).join('');
+                    const captionEscaped = card.imageCaption.replace(/'/g, "\\'");
+                    html += `
+                        <div class="bg-gallery-900 text-gallery-100 p-6 md:p-8 art-shadow flex flex-col h-full border-t-4 border-gallery-800">
+                            <div class="bg-black/20 p-2 mb-6 cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('${card.imageUrl}?width=1600', '${captionEscaped}')">
+                                <img src="${card.imageUrl}?width=800" loading="lazy" alt="${card.imageAlt}" class="w-full ${imgHeight} object-contain">
+                            </div>
+                            <h4 class="font-serif text-2xl mb-1">${card.name}</h4>
+                            <span class="text-xs uppercase tracking-widest text-amber-500 mb-6 block">${card.label}</span>
+
+                            <button class="w-full flex justify-between items-center py-2 text-sm font-bold uppercase tracking-wider text-gallery-200 hover:text-amber-500 transition-colors border-t border-gallery-800 focus:outline-none" onclick="toggleAccordion(this)">
+                                Read More
+                                <svg class="chevron w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 space-y-4 text-sm flex-grow">
+                                    ${ps}
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gallery-800">
+                                    <strong class="text-amber-500 block mb-1">${card.footerLabel}</strong>
+                                    <p class="text-sm">${card.footerText}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+
+                if (sec.blockquote) {
+                    html += `
+                        <blockquote class="border-l-4 border-amber-500 pl-6 my-16 max-w-4xl mx-auto font-serif italic text-2xl ${dark ? 'text-gallery-200' : 'text-gallery-800'}">
+                            "${sec.blockquote.text}"
+                            <footer class="text-sm uppercase tracking-widest mt-4 font-sans not-italic text-amber-500">— ${sec.blockquote.attribution}</footer>
+                        </blockquote>
+                    `;
+                }
+
+                if (sec.closingLine) {
+                    html += `<p class="mt-12 text-center max-w-4xl mx-auto italic">${sec.closingLine}</p>`;
+                }
+
+                html += `</section>`;
+            });
+
+            html += `
+                <section id="${CONFIG.coda.id}" class="py-16 md:py-24 fade-in-section">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold text-center">${CONFIG.coda.part}</h2>
+                        <h3 class="font-serif text-4xl mb-8 text-center">${CONFIG.coda.title}</h3>
+                        <p class="text-xl mb-12 text-center font-serif">${CONFIG.coda.intro}</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            `;
+
+            CONFIG.coda.cards.forEach(card => {
+                html += `
+                    <div class="bg-gallery-900 text-gallery-100 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg text-amber-500">${card.title}</h4>
+                        <p class="text-sm">${card.text}</p>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+
+            if (CONFIG.coda.closingLine) {
+                html += `
+                    <div class="bg-gallery-900 text-gallery-100 p-8 md:p-12 text-center art-shadow">
+                        <h4 class="font-serif text-2xl text-amber-500 italic">${CONFIG.coda.closingLine}</h4>
+                    </div>
+                `;
+            }
+
+            html += `
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm">
+                <p>${CONFIG.meta.footerText}</p>
+            </footer>
+            `;
+
+            document.getElementById("app").innerHTML = html;
+        }
+
+        applyTheme(activeTheme);
+        render();
+        updatePickerUI();
+
+        setTimeout(() => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        }, 100);
+    </script>
+</body>
+</html>

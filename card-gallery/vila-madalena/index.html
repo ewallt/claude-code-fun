@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat Vila Madalena · São Paulo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // ─── CONFIG ───────────────────────────────────────────────────────────────
+// Edit this object to change content and design. The rest of the file is
+// the template — leave it alone.
+
+const CONFIG = {
+
+  meta: {
+    pageTitle:  "Eat Vila Madalena · São Paulo",
+    heroTitle:  "Eat Vila Madalena",
+    shortTitle: "Vila Madalena",
+    subtitle:   "Bohemian tables, immigrant kitchens, and the specialty coffee that woke up São Paulo",
+    footerText: "Vila Madalena Food Guide · São Paulo, Brasil",
+    backHref:   "../sao-paulo/",
+    backLabel:  "São Paulo"
+  },
+
+  defaultTheme: 'coal',
+
+  themes: [
+    {
+      id:   'coal',
+      name: 'Coal',
+      dark: true,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    },
+    {
+      id:   'navy',
+      name: 'Navy',
+      dark: true,
+      colors: { 50: '#f0f4fb', 100: '#dce8f5', 200: '#c7d2e8', 800: '#1a2744', 900: '#0f1729' }
+    },
+    {
+      id:   'forest',
+      name: 'Forest',
+      dark: true,
+      colors: { 50: '#f0f5f1', 100: '#dceee0', 200: '#c7d8cb', 800: '#1a3a22', 900: '#0f2014' }
+    },
+    {
+      id:   'parchment',
+      name: 'Parchment',
+      dark: false,
+      colors: { 50: '#fdfbf7', 100: '#f6f2e9', 200: '#e8dfcd', 800: '#2a2825', 900: '#1a1815' }
+    },
+  ],
+
+  hero: {
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Cezanne%2C_Still_life_witth_a_Ginger_Jar_and_Eggplants.jpg",
+    imageAlt: "Still life with purple eggplants, a ginger jar, pears, and lemons on a draped table, oil painting by Paul Cézanne, c.1890–94",
+    ctaText:  "Explore the Neighbourhood"
+  },
+
+  sections: [
+    {
+      id:       "roots",
+      navLabel: "Roots",
+      part:     "Section I",
+      title:    "Roots & Recipes",
+      intro:    "Vila Madalena built its food identity on the kitchens that arrived with its immigrant communities — Argentine exiles who came in the 1970s, Armenian and Middle Eastern families who have been here for generations, and the vegetarian restaurant that opened in 1983 before vegetarian was fashionable anywhere in Brazil.",
+      cards: [
+        {
+          imageUrl:     "https://images.unsplash.com/photo-1624128082323-beb6b8b508db",
+          imageAlt:     "Golden baked Argentine empanadas arranged on a gray ceramic plate",
+          imageCaption: "Argentine empanadas — golden baked, Martín Fierro, Vila Madalena",
+          name:         "Martín Fierro",
+          label:        "Argentine · Since 1980",
+          paragraphs: [
+            "Vila Madalena absorbed its first Argentine community in the 1970s and 1980s, when political exiles arrived in São Paulo in significant numbers. They brought their food culture with them — empanadas, chimichurri, locro, the rich tradition of the Argentine kitchen that draws on Spanish and Italian immigration while maintaining something entirely its own. The neighborhood's bohemian politics made it a natural home for exiles who needed to be somewhere that understood them.",
+            "Martín Fierro on Rua Wisard has been feeding Vila Madalena since 1980, which in this neighborhood is long enough to qualify as an institution. The empanadas — baked golden, filled with spiced beef, chicken, or corn — are the entry point; the rest of the menu explores the Argentine kitchen in depth: locro stew in winter, facturas for breakfast, dulce de leche in everything that can accommodate it. Named for the gaucho epic poem, it carries the sense of a culture expressed through food."
+          ],
+          footerLabel: "The Institution",
+          footerText:  "Martín Fierro · R. Wisard · Vila Madalena · empanadas, locro, open since 1980"
+        },
+        {
+          imageUrl:     "https://images.unsplash.com/photo-1768812910769-d037b90aee77",
+          imageAlt:     "Falafel with hummus, fresh salad, olives, pickles, and pita bread on a white platter",
+          imageCaption: "Middle Eastern mezze — falafel, hummus, olives, pita",
+          name:         "Beit Beirute",
+          label:        "Middle Eastern · Armenian",
+          paragraphs: [
+            "The Armenian presence in São Paulo dates to the early twentieth century, when refugees from the genocide of 1915 found their way to Brazil via Lebanon and Syria. They brought their kitchen with them — the mezze tradition of small shared plates, lavash and pita, the herb-heavy cooking of the Caucasus and Levant that links Armenian, Lebanese, and Syrian food cultures in a shared culinary vocabulary. Vila Madalena's Middle Eastern tables carry that layered history faithfully.",
+            "Beit Beirute is the neighborhood's gathering point for this tradition: falafel fried to order, hummus ground from dried chickpeas, tabbouleh with the correct ratio of parsley to bulgur, pickled turnips and olives, kibbeh served two ways. The kitchen is vegetarian-friendly by nature — the Middle Eastern tradition has always built its finest food from pulses, herbs, and bread — and the neighborhood's sensibility welcomes food that is simultaneously ancient, intensely flavored, and meatless."
+          ],
+          footerLabel: "Must Try",
+          footerText:  "Beit Beirute · Vila Madalena · falafel, hummus, kibbeh, tabbouleh"
+        },
+        {
+          imageUrl:     "https://commons.wikimedia.org/wiki/Special:FilePath/Cezanne%2C_Still_life_witth_a_Ginger_Jar_and_Eggplants.jpg",
+          imageAlt:     "Still life with purple eggplants, a ginger jar, pears, and lemons on a draped table, oil painting by Paul Cézanne, c.1890–94",
+          imageCaption: "Still Life with Ginger Jar and Eggplants — Paul Cézanne, c.1890–94. Metropolitan Museum of Art, New York.",
+          name:         "Banana Verde",
+          label:        "Vegetarian · Since 1983",
+          paragraphs: [
+            "Cézanne returned obsessively to the still life because he saw in ordinary objects — an eggplant, a ginger jar, a draped cloth — the same structural problems he was solving in landscape: volume, weight, the relationship between forms in space. His still lifes are not decorative; they are investigations. The eggplant in the Metropolitan Museum canvas has more presence than most painted human figures, and it achieves this through attention, not drama.",
+            "Banana Verde opened on Rua Wisard in 1983 — before vegetarian restaurants were fashionable in Brazil, before \"plant-based\" existed as a category, before any of the cultural apparatus that now surrounds the idea of eating without meat. It opened because its founders believed in it, and it has stayed because the food is excellent: kibe, coxinha, and moqueca all made without meat, using Cézanne's logic applied to the Brazilian kitchen — that the ingredients you have, taken seriously, are sufficient for anything."
+          ],
+          footerLabel: "The Pioneer",
+          footerText:  "Banana Verde · R. Wisard · Vila Madalena · vegetarian Brazilian kitchen · open since 1983"
+        }
+      ]
+    },
+    {
+      id:       "creative",
+      navLabel: "Creative",
+      part:     "Section II",
+      title:    "The Creative Side",
+      intro:    "Alongside its immigrant kitchens, Vila Madalena gave Brazil something else: the specialty coffee movement, pioneered on Rua Fradique Coutinho by a roaster who changed how São Paulo thinks about the cup, and a new wave of creative Brazilian cooking that has made the neighbourhood a destination for serious eaters across the city.",
+      cards: [
+        {
+          imageUrl:     "https://images.unsplash.com/photo-1761271046396-97d231b59dd7",
+          imageAlt:     "Barista pouring delicate latte art into a ceramic coffee cup",
+          imageCaption: "Latte art — Coffee Lab, Rua Fradique Coutinho 1340",
+          name:         "Coffee Lab",
+          label:        "Specialty Coffee · Roastery",
+          paragraphs: [
+            "Brazil is the world's largest coffee producer, but for most of the twentieth century Brazilians drank industrial coffee — strong, dark, and cheap, brewed in a moka pot or filtered through a cloth sock. The specialty coffee movement arrived in São Paulo in the 2000s, and Vila Madalena was its natural home: a neighbourhood already organized around independent culture, small producers, and the conviction that quality was worth taking seriously.",
+            "Coffee Lab on Rua Fradique Coutinho 1340 is credited with pioneering specialty coffee in São Paulo. The founder, Isabela Raposeiras, trained internationally and brought the vocabulary of third-wave coffee — single-origin beans, pour-over, precise extraction — to a city that had never thought about coffee that carefully. The roastery is on-site, the menu covers every preparation method, and the clientele has been educated one cup at a time for fifteen years. It is the kind of place that changes a city's habits."
+          ],
+          footerLabel: "The Address",
+          footerText:  "Coffee Lab · R. Fradique Coutinho 1340 · Vila Madalena · specialty roastery and café"
+        },
+        {
+          imageUrl:     "https://images.unsplash.com/photo-1499715217757-2aa48ed7e593",
+          imageAlt:     "Artistic fine dining plate on dark ceramic with multiple elegant components and microgreens",
+          imageCaption: "Creative plant-forward fine dining — Vila Madalena",
+          name:         "Corrutela",
+          label:        "Brazilian · Creative",
+          paragraphs: [
+            "The creative cooking of the last decade in São Paulo has been defined by a generation of chefs who trained in Europe and came home to cook Brazilian — using Amazonian ingredients, Afro-Brazilian techniques, the fruit and fish of a country with extraordinary biodiversity. The results have placed São Paulo firmly among the world's major food cities, and Vila Madalena has been one of the key addresses in that story.",
+            "Corrutela on Rua Purpurina is the neighbourhood's finest expression of this movement: creative, plant-forward (though not exclusively vegetarian), deeply rooted in Brazilian produce. The menu changes frequently — whatever the market offers becomes whatever the kitchen produces — and the cooking is ambitious without being aggressive. The neighbourhood's bohemian spirit and the restaurant's intellectual approach are a natural match. Dinner here is a conversation about what Brazilian food is becoming."
+          ],
+          footerLabel: "The Address",
+          footerText:  "Corrutela · R. Purpurina · Vila Madalena · creative Brazilian · reservations recommended"
+        }
+      ]
+    }
+  ],
+
+  coda: {
+    id:       "coda",
+    navLabel: "Coda",
+    part:     "Coda",
+    title:    "The Vila Madalena Table",
+    intro:    "Vila Madalena doesn't choose between its identities — bohemian and bourgeois, immigrant and contemporary, neighbourhood bar and destination restaurant. It is all of them at once, and the table is where they meet.",
+    cards: [
+      {
+        title: "A Bohemian Neighbourhood",
+        text:  "Vila Madalena built its identity through art, music, and politics — a neighbourhood that sheltered dissidents during the military dictatorship and emerged after redemocratization as São Paulo's creative district. Its food scene reflects that character: independent, vegetarian-friendly, globally influenced, built on conviction rather than fashion. The restaurants here tend to have been open for twenty or thirty years, which in São Paulo means they are doing something right."
+      },
+      {
+        title: "The Immigrant Kitchen",
+        text:  "Argentine exiles, Armenian descendants, Lebanese families, a broader Middle Eastern community — Vila Madalena's immigrant kitchens were established by communities that arrived for reasons other than food but stayed because the neighbourhood welcomed them. Martín Fierro opened in 1980; Banana Verde in 1983. These are not trend restaurants. They are institutions that have fed the neighbourhood through every change the city has undergone."
+      },
+      {
+        title: "The Specialty Mile",
+        text:  "Rua Fradique Coutinho is the backbone of Vila Madalena's food scene: specialty coffee at Coffee Lab, creative cooking at Corrutela and its neighbours, wine bars and natural wine producers, vegetarian restaurants that predate the category. A single walk down this street covers more culinary ground than most cities can manage in an entire district. The next discovery is always a few metres further down."
+      }
+    ],
+    closingLine: "In Vila Madalena, the best meal is the one the neighbourhood has been making for forty years — and the one the chef invented this morning."
+  }
+
+}; // end CONFIG
+
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ["Lora", "serif"],
+                serif: ["Playfair Display", "serif"]
+              },
+              colors: {
+                gallery: {
+                  50:  "var(--g50)",
+                  100: "var(--g100)",
+                  200: "var(--g200)",
+                  800: "var(--g800)",
+                  900: "var(--g900)"
+                }
+              }
+            }
+          }
+        };
+    </script>
+    <style>
+        :root { --g50: #000; --g100: #000; --g200: #000; --g800: #000; --g900: #000; }
+        .fade-in-section {
+          opacity: 0; transform: translateY(20px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        .art-shadow { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    </style>
+</head>
+<body id="body" class="antialiased selection:bg-amber-700 selection:text-white">
+
+    <div id="app"></div>
+
+    <!-- Gear Picker -->
+    <div style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;" class="relative">
+        <button id="theme-btn" onclick="togglePicker()" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105" aria-label="Change Theme">&#9881;</button>
+        <div id="picker-panel" class="absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300">
+            <!-- populated by js -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-amber-500 text-4xl font-light focus:outline-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain shadow-2xl">
+        <p id="lightbox-caption" class="text-gallery-200 mt-4 font-serif text-lg text-center max-w-3xl"></p>
+    </div>
+
+    <script>
+        function makeImgUrl(url, size) {
+            if (url.includes('unsplash.com')) {
+                return url + '?w=' + size + '&auto=format&fit=crop';
+            }
+            return url + '?width=' + size;
+        }
+
+        let activeTheme = CONFIG.themes.find(t => t.id === CONFIG.defaultTheme) || CONFIG.themes[0];
+
+        function applyTheme(theme) {
+            const r = document.documentElement;
+            r.style.setProperty("--g50",  theme.colors[50]);
+            r.style.setProperty("--g100", theme.colors[100]);
+            r.style.setProperty("--g200", theme.colors[200]);
+            r.style.setProperty("--g800", theme.colors[800]);
+            r.style.setProperty("--g900", theme.colors[900]);
+        }
+
+        function switchTheme(themeId) {
+            activeTheme = CONFIG.themes.find(t => t.id === themeId);
+            applyTheme(activeTheme);
+            render();
+            document.querySelectorAll(".fade-in-section").forEach(el => el.classList.add("is-visible"));
+            updatePickerUI();
+        }
+
+        function togglePicker() {
+            const panel = document.getElementById("picker-panel");
+            panel.classList.toggle("hidden");
+        }
+
+        function updatePickerUI() {
+            const btn = document.getElementById("theme-btn");
+            const panel = document.getElementById("picker-panel");
+
+            btn.className = `w-12 h-12 rounded-full flex items-center justify-center text-2xl art-shadow transition-colors duration-300 focus:outline-none hover:scale-105 bg-gallery-800 text-gallery-200`;
+            panel.className = `absolute bottom-16 right-0 w-48 rounded-lg art-shadow overflow-hidden hidden transition-colors duration-300 bg-gallery-800`;
+
+            let html = '<div class="py-2">';
+            CONFIG.themes.forEach(t => {
+                const isActive = t.id === activeTheme.id;
+                const textClass = isActive ? "text-amber-500 font-bold" : "text-gallery-100 hover:text-gallery-200";
+                html += `<button onclick="switchTheme('${t.id}')" class="w-full text-left px-4 py-2 text-sm transition-colors ${textClass}">${t.name}</button>`;
+            });
+            html += '</div>';
+            panel.innerHTML = html;
+        }
+
+        function openLightbox(url, caption) {
+            const lb = document.getElementById("lightbox");
+            document.getElementById("lightbox-img").src = url;
+            document.getElementById("lightbox-caption").innerText = caption;
+            lb.classList.remove("hidden");
+            lb.classList.add("flex");
+            setTimeout(() => { lb.classList.remove("opacity-0"); lb.classList.add("opacity-100"); }, 10);
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById("lightbox");
+            lb.classList.remove("opacity-100");
+            lb.classList.add("opacity-0");
+            setTimeout(() => {
+                lb.classList.add("hidden");
+                lb.classList.remove("flex");
+                document.getElementById("lightbox-img").src = "";
+            }, 300);
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('lightbox').classList.contains('hidden')) closeLightbox();
+        });
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.chevron');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        function render() {
+            const dark = activeTheme.dark;
+
+            const body = document.getElementById("body");
+            body.className = `antialiased selection:bg-amber-700 selection:text-white font-sans ${dark ? 'bg-gallery-900 text-gallery-100' : 'bg-gallery-50 text-gallery-800'}`;
+
+            const navClasses = dark ? 'bg-gallery-900/95 border-gallery-800' : 'bg-gallery-50/90 border-gallery-200';
+            const navLinks = CONFIG.sections.map(s => `<a href="#${s.id}" class="hover:text-amber-500 transition-colors">${s.navLabel}</a>`).join('');
+            const backLink = CONFIG.meta.backHref
+                ? `<a href="${CONFIG.meta.backHref}" class="hover:text-amber-500 transition-colors">${CONFIG.meta.backLabel || '← Back'}</a>`
+                : '';
+
+            const heroGradient = dark ? 'from-gallery-900/30 via-gallery-900/70 to-gallery-900' : 'from-gallery-50/50 via-gallery-50/80 to-gallery-50';
+            const btnClasses = dark ? 'border-gallery-100 text-gallery-100 hover:bg-gallery-100 hover:text-gallery-900' : 'border-gallery-800 text-gallery-800 hover:bg-gallery-800 hover:text-white';
+
+            let html = `
+                <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b ${navClasses}">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between h-16 items-center">
+                            <a href="#" class="font-serif font-bold text-xl tracking-tight flex items-center hover:text-amber-500 transition-colors">${CONFIG.meta.shortTitle}</a>
+                            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-semibold items-center">
+                                <a href="#" class="text-xl leading-none hover:text-amber-500 transition-colors" title="Home">&#8962;</a>
+                                ${backLink}
+                                ${navLinks}
+                                <a href="#${CONFIG.coda.id}" class="hover:text-amber-500 transition-colors">${CONFIG.coda.navLabel}</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <header class="relative h-screen flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 z-0">
+                        <img src="${makeImgUrl(CONFIG.hero.imageUrl, 1600)}" alt="${CONFIG.hero.imageAlt}" class="w-full h-full object-cover opacity-30 filter blur-sm transform scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-b ${heroGradient}"></div>
+                    </div>
+                    <div class="relative z-10 text-center max-w-4xl px-4 fade-in-section">
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">${CONFIG.meta.heroTitle}</h1>
+                        <p class="text-xl md:text-2xl font-serif italic mb-8 ${dark ? 'text-gallery-200' : 'text-gallery-800'}">${CONFIG.meta.subtitle}</p>
+                        <a href="#${CONFIG.sections[0].id}" class="inline-block border-2 px-8 py-3 uppercase tracking-widest text-sm transition-all duration-300 ${btnClasses}">${CONFIG.hero.ctaText}</a>
+                    </div>
+                </header>
+
+                <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            `;
+
+            CONFIG.sections.forEach(sec => {
+                const gridCols = sec.cards.length === 2 ? 'md:grid-cols-2' : (sec.cards.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-1 max-w-3xl mx-auto');
+                const imgHeight = sec.cards.length === 2 ? 'h-64' : 'h-48';
+
+                html += `
+                    <section id="${sec.id}" class="py-16 md:py-24 border-b ${dark ? 'border-gallery-800' : 'border-gallery-200'} fade-in-section">
+                        <div class="text-center max-w-3xl mx-auto mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold">${sec.part}</h2>
+                            <h3 class="font-serif text-4xl mb-6">${sec.title}</h3>
+                            <p class="text-lg">${sec.intro}</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 ${gridCols} gap-8">
+                `;
+
+                sec.cards.forEach((card) => {
+                    const ps = card.paragraphs.map(p => `<p>${p}</p>`).join('');
+                    const pos = card.imagePosition || 'object-center';
+                    html += `
+                        <div class="bg-gallery-900 text-gallery-100 p-6 md:p-8 art-shadow flex flex-col h-full border-t-4 border-gallery-800">
+                            <img src="${makeImgUrl(card.imageUrl, 800)}" loading="lazy" alt="${card.imageAlt}" class="w-full ${imgHeight} object-cover ${pos} mb-6 cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('${makeImgUrl(card.imageUrl, 1600)}', '${card.imageCaption.replace(/'/g, "\\'")}')">
+                            <h4 class="font-serif text-2xl mb-1">${card.name}</h4>
+                            <span class="text-xs uppercase tracking-widest text-amber-500 mb-6 block">${card.label}</span>
+
+                            <button class="w-full flex justify-between items-center py-2 text-sm font-bold uppercase tracking-wider text-gallery-200 hover:text-amber-500 transition-colors border-t border-gallery-800 focus:outline-none" onclick="toggleAccordion(this)">
+                                Read More
+                                <svg class="chevron w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 space-y-4 text-sm flex-grow">
+                                    ${ps}
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-gallery-800">
+                                    <strong class="text-amber-500 block mb-1">${card.footerLabel}</strong>
+                                    <p class="text-sm">${card.footerText}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+
+                if (sec.blockquote) {
+                    html += `
+                        <blockquote class="border-l-4 border-amber-500 pl-6 my-16 max-w-4xl mx-auto font-serif italic text-2xl ${dark ? 'text-gallery-200' : 'text-gallery-800'}">
+                            "${sec.blockquote.text}"
+                            <footer class="text-sm uppercase tracking-widest mt-4 font-sans not-italic text-amber-500">— ${sec.blockquote.attribution}</footer>
+                        </blockquote>
+                    `;
+                }
+
+                if (sec.closingLine) {
+                    html += `<p class="mt-12 text-center max-w-4xl mx-auto italic">${sec.closingLine}</p>`;
+                }
+
+                html += `</section>`;
+            });
+
+            html += `
+                <section id="${CONFIG.coda.id}" class="py-16 md:py-24 fade-in-section">
+                    <div class="max-w-4xl mx-auto">
+                        <h2 class="text-xs uppercase tracking-widest text-amber-500 mb-2 font-bold text-center">${CONFIG.coda.part}</h2>
+                        <h3 class="font-serif text-4xl mb-8 text-center">${CONFIG.coda.title}</h3>
+                        <p class="text-xl mb-12 text-center font-serif">${CONFIG.coda.intro}</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            `;
+
+            CONFIG.coda.cards.forEach(card => {
+                html += `
+                    <div class="bg-gallery-900 text-gallery-100 p-6 art-shadow border-t-4 border-gallery-800">
+                        <h4 class="font-bold mb-3 text-lg text-amber-500">${card.title}</h4>
+                        <p class="text-sm">${card.text}</p>
+                    </div>
+                `;
+            });
+
+            html += `
+                        </div>
+            `;
+            if (CONFIG.coda.closingLine) {
+                html += `<div class="bg-gallery-900 text-gallery-100 p-8 md:p-12 text-center art-shadow">
+                            <h4 class="font-serif text-2xl text-amber-500 italic">${CONFIG.coda.closingLine}</h4>
+                         </div>`;
+            }
+            html += `
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-gallery-900 text-gallery-200 py-8 text-center text-sm">
+                <p>${CONFIG.meta.footerText}</p>
+            </footer>
+            `;
+
+            document.getElementById("app").innerHTML = html;
+        }
+
+        applyTheme(activeTheme);
+        render();
+        updatePickerUI();
+
+        setTimeout(() => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+        }, 100);
+
+    </script>
+</body>
+</html>
