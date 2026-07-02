@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelfand Duality — Two Points</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e1320; --panel:#151c2c; --panel2:#1a2338; --line:#28334e;
+  --text:#e9e7de; --mut:#8b93a8;
+  --alg:#eeb45c; --spc:#6fc6e8;
+  --alg-dim:rgba(238,180,92,.12); --spc-dim:rgba(111,198,232,.12);
+}
+html,body{background:var(--ink);color:var(--text);font-family:'IBM Plex Sans',sans-serif}
+.math{font-family:'STIX Two Text',serif;font-style:italic}
+.math sub{font-style:italic;font-size:.55em}
+.upright{font-style:normal}
+.eyebrow{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.cue{display:inline-flex;align-items:center;gap:.6rem;background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--mut);border-radius:10px;padding:.5rem .9rem;font-weight:600}
+.cue.alg{border-left-color:var(--alg)}
+.cue.spc{border-left-color:var(--spc)}
+.cue.both{border-left-color:var(--alg);box-shadow:inset 0 -3px 0 -1px var(--spc)}
+.chip{display:inline-block;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:.25rem .8rem;font-size:.95rem}
+.tok{transition:color .25s, box-shadow .25s}
+.role-fn-a{color:var(--alg);box-shadow:0 5px 0 -2px var(--alg)}
+.role-fn-b{color:var(--spc);box-shadow:0 5px 0 -2px var(--spc)}
+.role-arg{border-bottom:2px dotted var(--mut)}
+.dot-alg{display:inline-block;width:.6rem;height:.6rem;border-radius:999px;background:var(--alg)}
+.dot-spc{display:inline-block;width:.6rem;height:.6rem;border-radius:999px;background:var(--spc)}
+.pt{display:flex;align-items:center;justify-content:center;width:3rem;height:3rem;border-radius:999px;background:var(--spc-dim);border:2px solid var(--spc);color:var(--spc);font-size:1.25rem}
+.step{display:none}
+.step.on{display:block;animation:rise .4s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.step.on{animation:none}.tok{transition:none}}
+.tabbtn{border:1px solid var(--line);border-radius:999px;padding:.45rem 1.1rem;font-weight:500;color:var(--mut)}
+.tabbtn.on{background:var(--panel2);color:var(--text);border-color:var(--mut)}
+.navbtn{border:1px solid var(--line);border-radius:10px;padding:.5rem 1.2rem;font-weight:600;background:var(--panel)}
+.navbtn:disabled{opacity:.35}
+.sdot{width:.55rem;height:.55rem;border-radius:999px;background:var(--line)}
+.sdot.on{background:var(--text)}
+.segbtn{border:1px solid var(--line);padding:.35rem 1rem;font-weight:600;color:var(--mut)}
+.segbtn.on-a{background:var(--alg-dim);color:var(--alg);border-color:var(--alg)}
+.segbtn.on-b{background:var(--spc-dim);color:var(--spc);border-color:var(--spc)}
+button:focus-visible{outline:2px solid var(--spc);outline-offset:2px}
+</style>
+</head>
+<body class="min-h-screen">
+
+<div class="max-w-5xl mx-auto px-4 pb-28 pt-6">
+
+  <!-- Header -->
+  <header class="flex flex-wrap items-center justify-between gap-3 mb-6">
+    <div>
+      <div class="eyebrow">Gelfand duality &middot; two points</div>
+    </div>
+    <div class="flex items-center gap-4 text-sm" style="color:var(--mut)">
+      <span class="flex items-center gap-2"><span class="dot-alg"></span>algebra role</span>
+      <span class="flex items-center gap-2"><span class="dot-spc"></span>space role</span>
+    </div>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="flex flex-wrap gap-2 mb-8">
+    <button class="tabbtn on" data-tab="t1">One expression</button>
+    <button class="tabbtn" data-tab="t2">A &rarr; B</button>
+    <button class="tabbtn" data-tab="t3">B &rarr; A</button>
+  </nav>
+
+  <!-- ============ TAB 1 : ONE EXPRESSION ============ -->
+  <section id="t1">
+
+    <div class="step" data-step="1">
+      <div class="text-center py-10">
+        <div class="math" style="font-size:clamp(2.6rem,9vw,5.2rem)">
+          <span id="heroF" class="tok">f<sub>z&#8321;z&#8322;</sub></span><span class="upright">(</span><span id="heroX" class="tok">x&#8321;</span><span class="upright">)</span>
+          <span class="upright" style="color:var(--mut)">=</span>
+          <span>z&#8321;</span>
+        </div>
+      </div>
+      <div class="text-center"><span class="cue">One equation.</span></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4 mt-8">
+      <div class="step" data-step="2">
+        <div class="card p-6 h-full" style="border-top:3px solid var(--alg)">
+          <div class="eyebrow mb-4" style="color:var(--alg)">A &middot; algebra reading</div>
+          <div class="math text-3xl mb-5">
+            <span class="tok role-arg">f<sub>z&#8321;z&#8322;</sub></span><span class="upright">(</span><span class="tok role-fn-a">x&#8321;</span><span class="upright">)</span>
+            <span class="upright" style="color:var(--mut)">=</span> z&#8321;
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip"><span class="math" style="color:var(--alg)">x&#8321;</span> acts on <span class="math">f<sub>z&#8321;z&#8322;</sub></span></span>
+            <span class="chip">the character probes</span>
+          </div>
+        </div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="card p-6 h-full" style="border-top:3px solid var(--spc)">
+          <div class="eyebrow mb-4" style="color:var(--spc)">B &middot; space reading</div>
+          <div class="math text-3xl mb-5">
+            <span class="tok role-fn-b">f<sub>z&#8321;z&#8322;</sub></span><span class="upright">(</span><span class="tok role-arg">x&#8321;</span><span class="upright">)</span>
+            <span class="upright" style="color:var(--mut)">=</span> z&#8321;
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="chip"><span class="math" style="color:var(--spc)">f<sub>z&#8321;z&#8322;</sub></span> acts on <span class="math">x&#8321;</span></span>
+            <span class="chip">the function is sampled</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step mt-10" data-step="4">
+      <div class="flex flex-col items-center gap-5">
+        <div class="inline-flex rounded-full overflow-hidden" role="group" aria-label="Choose reading">
+          <button id="readA" class="segbtn rounded-l-full">Read on A</button>
+          <button id="readB" class="segbtn rounded-r-full">Read on B</button>
+        </div>
+        <span class="cue both">Same items, two readings.</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============ TAB 2 : A -> B ============ -->
+  <section id="t2" class="hidden">
+
+    <div class="step" data-step="1">
+      <div class="card p-6" style="border-top:3px solid var(--alg)">
+        <div class="eyebrow mb-4" style="color:var(--alg)">The algebra &nbsp;A = &#8450;&sup2;</div>
+        <div class="math text-4xl mb-5">f<sub>z&#8321;z&#8322;</sub> <span class="upright" style="color:var(--mut)">=</span> (z&#8321;, z&#8322;)</div>
+        <div class="flex flex-wrap gap-2 math text-base">
+          <span class="chip">(z&#8321;, z&#8322;)(w&#8321;, w&#8322;) <span class="upright">=</span> (z&#8321;w&#8321;, z&#8322;w&#8322;)</span>
+          <span class="chip"><span class="upright">&#8214;</span>f<span class="upright">&#8214; = max(|</span>z&#8321;<span class="upright">|, |</span>z&#8322;<span class="upright">|)</span></span>
+        </div>
+      </div>
+      <div class="mt-4"><span class="cue alg">The algebra comes first.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="2">
+      <div class="card p-6">
+        <div class="eyebrow mb-4">Idempotents</div>
+        <div class="math text-2xl mb-4">e&#8321; <span class="upright" style="color:var(--mut)">=</span> (1, 0) &nbsp;&nbsp; e&#8322; <span class="upright" style="color:var(--mut)">=</span> (0, 1)</div>
+        <div class="flex flex-wrap gap-2 math text-lg">
+          <span class="chip">e&#8321;&sup2; <span class="upright">=</span> e&#8321;</span>
+          <span class="chip">e&#8321;e&#8322; <span class="upright">=</span> 0</span>
+          <span class="chip">e&#8321; + e&#8322; <span class="upright">=</span> 1</span>
+        </div>
+      </div>
+      <div class="mt-4"><span class="cue">Exactly two characters.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="3">
+      <div class="card p-6" style="border-top:3px solid var(--alg)">
+        <div class="eyebrow mb-4" style="color:var(--alg)">Characters</div>
+        <div class="math text-3xl">
+          <span style="color:var(--alg)">x&#8321;</span>(f<sub>z&#8321;z&#8322;</sub>) <span class="upright" style="color:var(--mut)">=</span> z&#8321;
+          <span class="upright px-4" style="color:var(--mut)">&middot;</span>
+          <span style="color:var(--alg)">x&#8322;</span>(f<sub>z&#8321;z&#8322;</sub>) <span class="upright" style="color:var(--mut)">=</span> z&#8322;
+        </div>
+      </div>
+      <div class="mt-4"><span class="cue alg">Characters &mdash; carved from A.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="4">
+      <div class="card p-6" style="border-top:3px solid var(--spc)">
+        <div class="eyebrow mb-4" style="color:var(--spc)">The space</div>
+        <div class="flex items-center gap-6">
+          <div class="math text-3xl">X <span class="upright" style="color:var(--mut)">=</span> {</div>
+          <div class="pt math">x&#8321;</div>
+          <div class="pt math">x&#8322;</div>
+          <div class="math text-3xl">}</div>
+        </div>
+      </div>
+      <div class="mt-4"><span class="cue spc">Characters become points.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="5">
+      <div class="card p-6" style="border-top:3px solid var(--spc)">
+        <div class="eyebrow mb-4" style="color:var(--spc)">The transform</div>
+        <div class="math text-3xl mb-5">
+          <span style="color:var(--spc)">f<sub>z&#8321;z&#8322;</sub></span>(x&#8321;) <span class="upright" style="color:var(--mut)">=</span> z&#8321;
+          <span class="upright px-4" style="color:var(--mut)">&middot;</span>
+          <span style="color:var(--spc)">f<sub>z&#8321;z&#8322;</sub></span>(x&#8322;) <span class="upright" style="color:var(--mut)">=</span> z&#8322;
+        </div>
+        <span class="chip math text-lg">f(x) <span class="upright">=</span> x(f)</span>
+      </div>
+      <div class="mt-4"><span class="cue spc">Elements become functions.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="6">
+      <div class="card p-8 text-center">
+        <div class="math text-4xl mb-4">A <span class="upright" style="color:var(--mut)">&cong;</span> C(X)</div>
+        <div class="chip math">max(|z&#8321;|, |z&#8322;|) <span class="upright">on both sides</span></div>
+      </div>
+      <div class="mt-4 text-center"><span class="cue both">Same items, two readings.</span></div>
+    </div>
+
+  </section>
+
+  <!-- ============ TAB 3 : B -> A ============ -->
+  <section id="t3" class="hidden">
+
+    <div class="step" data-step="1">
+      <div class="card p-6" style="border-top:3px solid var(--spc)">
+        <div class="eyebrow mb-4" style="color:var(--spc)">The space</div>
+        <div class="flex items-center gap-6">
+          <div class="pt math">x&#8321;</div>
+          <div class="pt math">x&#8322;</div>
+        </div>
+      </div>
+      <div class="mt-4"><span class="cue spc">Bare points.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="2">
+      <div class="card p-6">
+        <div class="eyebrow mb-4">Build C(X)</div>
+        <div class="math text-3xl mb-4">f <span class="upright" style="color:var(--mut)">&harr;</span> (f(x&#8321;), f(x&#8322;)) <span class="upright" style="color:var(--mut)">=</span> (z&#8321;, z&#8322;)</div>
+        <span class="chip math"><span class="upright">&#8214;</span>f<span class="upright">&#8214; = max(|</span>z&#8321;<span class="upright">|, |</span>z&#8322;<span class="upright">|)</span></span>
+      </div>
+      <div class="mt-4"><span class="cue">C(X) is built by hand.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="3">
+      <div class="card p-6" style="border-top:3px solid var(--alg)">
+        <div class="eyebrow mb-4" style="color:var(--alg)">Evaluation</div>
+        <div class="math text-3xl">
+          <span style="color:var(--alg)">ev<sub class="upright">x&#8321;</sub></span>(f) <span class="upright" style="color:var(--mut)">=</span> f(x&#8321;)
+        </div>
+      </div>
+      <div class="mt-4"><span class="cue alg">Points enter the algebra&rsquo;s world.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="4">
+      <div class="card p-6 flex flex-col items-center">
+        <svg viewBox="0 0 340 220" class="w-full max-w-md" aria-label="Circular dependency loop">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#8b93a8"/>
+            </marker>
+          </defs>
+          <path d="M 170 38 A 80 80 0 0 1 240 158" fill="none" stroke="#8b93a8" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 225 172 A 80 80 0 0 1 115 172" fill="none" stroke="#8b93a8" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 100 158 A 80 80 0 0 1 152 40" fill="none" stroke="#8b93a8" stroke-width="2" marker-end="url(#arr)"/>
+          <text x="170" y="26" text-anchor="middle" fill="#6fc6e8" font-family="STIX Two Text" font-style="italic" font-size="20">X</text>
+          <text x="262" y="176" text-anchor="middle" fill="#e9e7de" font-family="STIX Two Text" font-style="italic" font-size="20">C(X)</text>
+          <text x="76" y="176" text-anchor="middle" fill="#eeb45c" font-family="IBM Plex Sans" font-size="15">characters</text>
+          <text x="170" y="122" text-anchor="middle" fill="#8b93a8" font-family="IBM Plex Sans" font-weight="600" font-size="30">?</text>
+        </svg>
+      </div>
+      <div class="mt-4"><span class="cue">Chicken and egg.</span></div>
+    </div>
+
+    <div class="step mt-8" data-step="5">
+      <div class="card p-6" style="border-top:3px solid var(--alg); background:linear-gradient(0deg, var(--alg-dim), var(--alg-dim)), var(--panel)">
+        <div class="eyebrow mb-4" style="color:var(--alg)">The anchor</div>
+        <div class="math text-3xl mb-4">A&#8320; <span class="upright" style="color:var(--mut)">=</span> &#8450;&sup2;</div>
+        <div class="math text-2xl mb-5" style="color:var(--mut)">characters: <span style="color:var(--alg)">x&#8321;</span>, <span style="color:var(--alg)">x&#8322;</span></div>
+        <div class="math text-3xl">X <span class="upright" style="color:var(--mut)">:=</span> {<span style="color:var(--alg)">x&#8321;</span>, <span style="color:var(--alg)">x&#8322;</span>}</div>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <span class="cue alg">The anchor breaks the loop.</span>
+        <span class="cue">Points are characters &mdash; by definition.</span>
+      </div>
+    </div>
+
+    <div class="step mt-8" data-step="6">
+      <div class="card p-8 text-center">
+        <div class="math text-4xl mb-5">C(X) <span class="upright" style="color:var(--mut)">&cong;</span> A&#8320;</div>
+        <div class="math text-3xl mb-5"><span style="color:var(--alg)">ev<sub class="upright">x&#8321;</sub></span> <span class="upright" style="color:var(--mut)">=</span> <span style="color:var(--spc)">x&#8321;</span></div>
+        <span class="chip math">&theta; <span class="upright">=</span> id</span>
+      </div>
+      <div class="mt-4 text-center"><span class="cue both">Same items &mdash; literally.</span></div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- Step controls -->
+<div class="fixed bottom-0 inset-x-0" style="background:linear-gradient(180deg, transparent, var(--ink) 35%)">
+  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+    <button id="prev" class="navbtn">&larr; Back</button>
+    <div id="dots" class="flex items-center gap-2"></div>
+    <button id="next" class="navbtn">Next &rarr;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var STEPS = { t1:4, t2:6, t3:6 };
+  var state = { t1:1, t2:1, t3:1 };
+  var active = 't1';
+
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+  var dots = document.getElementById('dots');
+
+  function render(){
+    ['t1','t2','t3'].forEach(function(id){
+      document.getElementById(id).classList.toggle('hidden', id !== active);
+    });
+    document.querySelectorAll('.tabbtn').forEach(function(b){
+      b.classList.toggle('on', b.dataset.tab === active);
+    });
+    var n = state[active];
+    document.querySelectorAll('#' + active + ' .step').forEach(function(el){
+      el.classList.toggle('on', Number(el.dataset.step) <= n);
+    });
+    dots.innerHTML = '';
+    for (var i = 1; i <= STEPS[active]; i++){
+      var d = document.createElement('div');
+      d.className = 'sdot' + (i <= n ? ' on' : '');
+      dots.appendChild(d);
+    }
+    prev.disabled = n <= 1;
+    next.disabled = n >= STEPS[active];
+  }
+
+  function advance(delta){
+    var n = state[active] + delta;
+    if (n < 1 || n > STEPS[active]) return;
+    state[active] = n;
+    render();
+  }
+
+  prev.addEventListener('click', function(){ advance(-1); });
+  next.addEventListener('click', function(){ advance(1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') advance(1);
+    if (e.key === 'ArrowLeft') advance(-1);
+  });
+  document.querySelectorAll('.tabbtn').forEach(function(b){
+    b.addEventListener('click', function(){ active = b.dataset.tab; render(); });
+  });
+
+  // Tab 1 reading toggle
+  var heroF = document.getElementById('heroF');
+  var heroX = document.getElementById('heroX');
+  var readA = document.getElementById('readA');
+  var readB = document.getElementById('readB');
+  function setReading(side){
+    if (side === 'A'){
+      heroX.className = 'tok role-fn-a';
+      heroF.className = 'tok role-arg';
+      readA.classList.add('on-a'); readB.classList.remove('on-b');
+    } else {
+      heroF.className = 'tok role-fn-b';
+      heroX.className = 'tok role-arg';
+      readB.classList.add('on-b'); readA.classList.remove('on-a');
+    }
+  }
+  readA.addEventListener('click', function(){ setReading('A'); });
+  readB.addEventListener('click', function(){ setReading('B'); });
+  setReading('A');
+
+  render();
+})();
+</script>
+</body>
+</html>
