@@ -151,7 +151,7 @@ const CARDS = [
     format: "Infographic",
     date: "Oct 2026",
     thumb: "img/good-samaritan.jpg",
-    url: "https://claude.ai/artifact/6Q9nixtQKoqhtEdAmAE5xq"
+    url: "good-samaritan/"
   }
 ];
 
@@ -163,7 +163,7 @@ root.innerHTML = SHELVES.map(s => {
   return `<section class="shelf wrap" id="${s.id}">
     <div class="shelf-head"><h2>${esc(s.title)}</h2><i></i><span>${items.length} ${items.length === 1 ? "piece" : "pieces"}</span></div>
     <div class="grid">${items.map(c => `
-      <a class="card" href="${esc(c.url)}" target="_blank" rel="noopener">
+      <a class="card" href="${esc(c.url)}">
         <div class="thumb" style="background-image:url('${esc(c.thumb)}')" role="img" aria-label="${esc(c.title)}"></div>
         <div class="card-body">
           <span class="tag">${esc(c.format)}</span>
