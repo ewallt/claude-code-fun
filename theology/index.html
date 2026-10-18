@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tom's Theology Hub</title>
+<meta name="description" content="However good you think God is, He's better than that. Infographics and studies on the character of God, seen through Jesus.">
+<meta property="og:title" content="Tom's Theology Hub">
+<meta property="og:description" content="However good you think God is, He's better than that.">
+<meta property="og:image" content="https://ewallt.github.io/claude-code-fun/theology/img/good-samaritan.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=EB+Garamond:ital,wght@0,500;1,500&family=Oswald:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: a narrow reading column for the Why, then shelves of cards (3 across on desktop, 1 on a phone). */
+:root{
+  --bg:#081429; --surface:#0E1F3D; --line:#2B4472; --fg:#D5DCE8; --muted:#9FADC4; --head:#F7F3EA;
+  --accent:#E2B84A; --accent-soft:rgba(226,184,74,.12); --on-accent:#081429;
+  --display:'Anton',Impact,'Arial Narrow',sans-serif;
+  --label:'Oswald','Arial Narrow',sans-serif;
+  --serif:'EB Garamond',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Arial,sans-serif;
+  color-scheme:dark;
+}
+:root[data-theme="parchment"]{
+  --bg:#F3EBDD; --surface:#1E2A3A; --line:#C9B79A; --fg:#2A2620; --muted:#6E6250; --head:#1E2A3A;
+  --accent:#B5652B; --accent-soft:rgba(181,101,43,.12); --on-accent:#F3EBDD;
+  color-scheme:light;
+}
+/* cards stay dark in Parchment; their text needs its own tokens */
+:root{ --card-fg:#D5DCE8; --card-head:#F7F3EA; --card-muted:#9FADC4; --card-accent:#E2B84A }
+:root[data-theme="parchment"]{ --card-accent:#E0A56E }
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font:400 18px/1.6 var(--body);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  transition:background .25s,color .25s}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--line)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.brand{font:500 15px/1 var(--label);letter-spacing:.22em;text-transform:uppercase;color:var(--head);text-decoration:none}
+.brand b{color:var(--accent);font-weight:500}
+.theme{font:500 13px/1 var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  background:none;border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+.theme:hover{color:var(--head);border-color:var(--accent)}
+
+/* hero + why */
+.hero{padding-block:64px 40px;text-align:center}
+.kicker{font:500 14px/1 var(--label);letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+h1{font:400 clamp(44px,8vw,92px)/1 var(--display);text-transform:uppercase;color:var(--head);letter-spacing:.01em;text-wrap:balance}
+.rule{display:flex;align-items:center;gap:18px;max-width:420px;margin:28px auto 0}
+.rule i{flex:1;height:1px;background:var(--accent)}
+.rule span{width:7px;height:7px;transform:rotate(45deg);background:var(--accent)}
+
+.why{max-width:66ch;margin:0 auto;padding-block:8px 56px}
+.why .lead{font:500 clamp(26px,3.6vw,34px)/1.25 var(--serif);color:var(--head);text-align:center;text-wrap:balance;margin-bottom:28px}
+.why .lead em{color:var(--accent);font-style:italic}
+.why p{font:500 21px/1.6 var(--serif);margin-bottom:18px}
+.why q{quotes:"\201C" "\201D"}
+.why cite{font:400 15px/1 var(--body);font-style:normal;color:var(--muted);white-space:nowrap}
+
+/* shelves */
+.shelf{padding-block:24px 56px;scroll-margin-top:24px}
+.shelf-head{display:flex;align-items:baseline;gap:18px;margin-bottom:24px}
+.shelf-head h2{font:400 34px/1 var(--display);text-transform:uppercase;color:var(--head);letter-spacing:.02em}
+.shelf-head i{flex:1;height:1px;background:var(--line)}
+.shelf-head span{font:500 13px/1 var(--label);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  text-decoration:none;color:var(--card-fg);transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.thumb{aspect-ratio:16/10;max-width:100%;background:#050c1c center/cover;border-bottom:3px solid var(--card-accent)}
+.card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1;min-width:0}
+.tag{align-self:flex-start;font:600 12px/1 var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--card-accent);
+  border:1px solid currentColor;border-radius:999px;padding:6px 10px}
+.card h3{font:400 28px/1.05 var(--display);text-transform:uppercase;color:var(--card-head);letter-spacing:.01em}
+.card .sub{font:500 italic 19px/1.3 var(--serif);color:var(--card-head)}
+.card .blurb{font-size:16px;line-height:1.5}
+.card .meta{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;
+  font:500 13px/1 var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--card-muted)}
+.card .meta b{color:var(--card-accent);font-weight:500}
+
+/* footer */
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px 40px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;
+  font:500 14px/1.4 var(--label);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+@media (max-width:560px){
+  body{font-size:17px}
+  .hero{padding-block:44px 28px}
+  .why p{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="#top">Tom's <b>Theology</b> Hub</a>
+    <button class="theme" id="theme-toggle" type="button" aria-pressed="false">Parchment</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="kicker">Infographics &amp; studies</p>
+    <h1>Better<br>than that</h1>
+    <div class="rule" aria-hidden="true"><i></i><span></span><i></i></div>
+  </section>
+
+  <section class="why wrap" aria-label="Why this hub exists">
+    <p class="lead">However good you think God is, <em>He's better than that.</em></p>
+    <p>That conviction runs through everything here. Jesus said, <q>He who has seen Me has seen the Father</q> <cite>(John 14:9)</cite>. <q>No one has seen God at any time. His only Son, who knew Him best, has shown us what He is really like</q> <cite>(John 1:18, paraphrased)</cite>. As we keep looking at God through Jesus, He keeps turning out to be better than we thought.</p>
+  </section>
+
+  <div id="shelves"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Tom's Theology Hub</span>
+    <span>Each card opens on claude.ai</span>
+  </div>
+</footer>
+
+<script>
+/* Shelves and cards. To add a piece: add one object to CARDS. Empty shelves are hidden. */
+const SHELVES = [
+  { id: "the-cross",          title: "The Cross" },
+  { id: "texts-reconsidered", title: "Texts Reconsidered" },
+  { id: "voices",             title: "Voices" }
+];
+
+const CARDS = [
+  {
+    shelf: "texts-reconsidered",
+    title: "Who Is the Samaritan?",
+    subtitle: "Luke 10 as a portrait of Christ",
+    blurb: "The parable everyone knows as a lesson in kindness is first a picture of Jesus. Ellen White: “This Samaritan represents Christ.”",
+    format: "Infographic",
+    date: "Oct 2026",
+    thumb: "img/good-samaritan.jpg",
+    url: "https://claude.ai/artifact/6Q9nixtQKoqhtEdAmAE5xq"
+  }
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const root = document.getElementById("shelves");
+root.innerHTML = SHELVES.map(s => {
+  const items = CARDS.filter(c => c.shelf === s.id);
+  if (!items.length) return "";
+  return `<section class="shelf wrap" id="${s.id}">
+    <div class="shelf-head"><h2>${esc(s.title)}</h2><i></i><span>${items.length} ${items.length === 1 ? "piece" : "pieces"}</span></div>
+    <div class="grid">${items.map(c => `
+      <a class="card" href="${esc(c.url)}" target="_blank" rel="noopener">
+        <div class="thumb" style="background-image:url('${esc(c.thumb)}')" role="img" aria-label="${esc(c.title)}"></div>
+        <div class="card-body">
+          <span class="tag">${esc(c.format)}</span>
+          <h3>${esc(c.title)}</h3>
+          <p class="sub">${esc(c.subtitle)}</p>
+          <p class="blurb">${esc(c.blurb)}</p>
+          <p class="meta"><span>${esc(c.date)}</span><b>Open &rarr;</b></p>
+        </div>
+      </a>`).join("")}
+    </div></section>`;
+}).join("");
+
+/* Theme: Navy & Gold by default, Parchment as the light alternative. */
+const btn = document.getElementById("theme-toggle");
+function setTheme(t){
+  if (t === "parchment") document.documentElement.setAttribute("data-theme","parchment");
+  else document.documentElement.removeAttribute("data-theme");
+  btn.textContent = t === "parchment" ? "Navy & Gold" : "Parchment";
+  btn.setAttribute("aria-pressed", t === "parchment");
+  try { localStorage.setItem("hub-theme", t); } catch(e) {}
+}
+let saved = "navy"; try { saved = localStorage.getItem("hub-theme") || "navy"; } catch(e) {}
+setTheme(saved);
+btn.addEventListener("click", () => setTheme(document.documentElement.getAttribute("data-theme") === "parchment" ? "navy" : "parchment"));
+</script>
+</body>
+</html>
